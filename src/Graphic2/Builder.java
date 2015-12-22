@@ -11,6 +11,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionListener;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -18,13 +19,12 @@ import javax.swing.JList;
 
 @SuppressWarnings("serial")
 public class Builder extends JFrame {
-	
+
 	public Builder(){
-		
+
 		setSize(800,600);
 		this.setJMenuBar(createMenuWithButton());
-		getContentPane().setLayout(null);
-		getContentPane().add(createActionPanel());
+		getContentPane().add(createActionPanel(),BorderLayout.NORTH);
 		getContentPane().add(createList());
 		this.setTitle("Cliente");
 
@@ -32,36 +32,36 @@ public class Builder extends JFrame {
 	public JMenuBar createMenuWithButton(){
 		JMenuBar SelectionMenu = new JMenuBar();
 		JPanel selettori = menuButton();
-		
+
 		SelectionMenu.add(selettori);
-		 
+
 		return SelectionMenu;
 	}
-	
+
 	public JPanel menuButton(){
-		
+
 		btnCarrello = new JButton("Carrello");
 		btnCarrello.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		btnIndietro = new JButton("Indietro");
-		
+
 		btnIndietro.setEnabled(false);
-		
+
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		panel.add(btnCarrello, BorderLayout.EAST);
 		panel.add(btnIndietro, BorderLayout.WEST);
 		return panel;
 	}
-	
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public JPanel createActionPanel(){
-		
+
 		JLabel lSettimana = new JLabel("Settimana");
 		JLabel lStadio = new JLabel("Stadio");
-		
+
 		btnEsegui = new JButton("Esegui");
 		btnEsegui.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -72,14 +72,14 @@ public class Builder extends JFrame {
 		});
 		settimana = new JTextField(12);
 		stadio = new JTextField(10);
-		
+
 		cmbOrdine = new JComboBox();
 		cmbOrdine.addItem("Ordine cronologico");
 		cmbOrdine.addItem("Ordine Lessicografico fra le sfidanti");
 		cmbOrdine.addItem("Ordine Id Stadio");
-		
+
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 784, 33);
+	
 
 
 		panel.add(lSettimana);
@@ -88,20 +88,21 @@ public class Builder extends JFrame {
 		panel.add(stadio);
 		panel.add(cmbOrdine);
 		panel.add(btnEsegui);
-		
-		return panel;
-		
-	}
-	 public JList createList(){
-		 
-		 
-			list = new JList();
-			list.setBounds(10, 44, 764, 471);
 
-			return list;
-	 }
-	
-	
+		return panel;
+
+	}
+	public JList createList(){
+
+
+		list = new JList();
+		list.setBounds(10, 44, 764, 471);
+		list.addListSelectionListener(listner);
+
+		return list;
+	}
+
+
 	private JButton btnIndietro;
 	private JButton btnCarrello;
 	@SuppressWarnings("rawtypes")
@@ -110,4 +111,5 @@ public class Builder extends JFrame {
 	private JTextField stadio;
 	private JButton btnEsegui;
 	private JList list;
+	private ListSelectionListener listner; 
 }
