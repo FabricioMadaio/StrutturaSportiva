@@ -18,9 +18,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JList;
 
 @SuppressWarnings("serial")
-public class Builder extends JFrame {
+public class ScreenClient extends JFrame {
 
-	public Builder(){
+	public ScreenClient(){
 
 		setSize(800,600);
 		this.setJMenuBar(createMenuWithButton());
