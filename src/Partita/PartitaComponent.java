@@ -3,6 +3,7 @@ package Partita;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EtchedBorder;
 
 public class PartitaComponent extends JPanel
 {
@@ -13,6 +14,7 @@ public class PartitaComponent extends JPanel
 		JLabel nomeMatchLabel = new JLabel(partita.getGame());
 		add(nomeMatchLabel);
 		add(creaBottonePrenota());
+		this.setBorder(new EtchedBorder());
 	}
 
 	public JButton creaBottonePrenota()
