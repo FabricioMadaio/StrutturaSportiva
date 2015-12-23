@@ -9,16 +9,16 @@ public class Tester extends JFrame
 {
 	public static void main(String[] args) 
 	{
-		GregorianCalendar data1 = new GregorianCalendar(2015, 2+1, 12);
-		Partita p1 = new Partita(data1, "squadraA", "squadraB", "idStadio");
+		//GregorianCalendar data1 = new GregorianCalendar(2015, 2+1, 12);
+		//Partita p1 = new Partita(data1, "squadraA", "squadraB", "idStadio");
+		ScreenPartita sp1 = new ScreenPartita();
 		
+		//JFrame frame = new JFrame();
 		
-		JFrame frame = new JFrame();
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		/*frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(500, 500);
 		frame.add(new PartitaComponent(p1));
-		frame.setVisible(true);
+		frame.setVisible(true);*/
 	}
 
 	

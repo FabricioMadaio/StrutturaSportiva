@@ -28,5 +28,12 @@ public class PrenotazioneComponent extends JPanel
 		return rimuoviBtn;
 	}
 	
+	public JButton creaBottonePrenota()
+	{
+		JButton prenotaBtn = new JButton("Prenota");
+		
+		return prenotaBtn;
+	}
+	
 	private String prenotazione;
 }
