@@ -16,6 +16,8 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import javax.swing.border.EmptyBorder;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class ScreenClient extends JFrame {
@@ -25,7 +27,10 @@ public class ScreenClient extends JFrame {
 		setSize(800,600);
 		this.setJMenuBar(createMenuWithButton());
 		getContentPane().add(createActionPanel(),BorderLayout.NORTH);
-		getContentPane().add(createList());
+		
+		ScrollablePanelList sl = new ScrollablePanelList();
+		
+		getContentPane().add(sl,BorderLayout.CENTER);
 		this.setTitle("Cliente");
 
 	}
@@ -45,14 +50,15 @@ public class ScreenClient extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnIndietro = new JButton("Indietro");
-
-		btnIndietro.setEnabled(false);
-
+		
 		JPanel panel = new JPanel();
+		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panel.setLayout(new BorderLayout());
 		panel.add(btnCarrello, BorderLayout.EAST);
-		panel.add(btnIndietro, BorderLayout.WEST);
+		
+		JLabel lblBenvenuto = new JLabel("Benvenuto Cliente!");
+		lblBenvenuto.setFont(new Font("Tahoma", Font.BOLD, 15));
+		panel.add(lblBenvenuto, BorderLayout.WEST);
 		return panel;
 	}
 
@@ -65,9 +71,7 @@ public class ScreenClient extends JFrame {
 		btnEsegui = new JButton("Esegui");
 		btnEsegui.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DefaultListModel dml = new DefaultListModel();
-				list.setModel(dml);
-				dml.addElement("Ciao");
+
 			}
 		});
 		settimana = new JTextField(12);
@@ -79,7 +83,8 @@ public class ScreenClient extends JFrame {
 		cmbOrdine.addItem("Ordine Id Stadio");
 
 		JPanel panel = new JPanel();
-	
+		panel.setBorder(new EmptyBorder(5, 0, 0, 0));
+		
 
 
 		panel.add(lSettimana);
@@ -92,24 +97,11 @@ public class ScreenClient extends JFrame {
 		return panel;
 
 	}
-	public JList createList(){
 
-
-		list = new JList();
-		list.setBounds(10, 44, 764, 471);
-		list.addListSelectionListener(listner);
-
-		return list;
-	}
-
-
-	private JButton btnIndietro;
 	private JButton btnCarrello;
 	@SuppressWarnings("rawtypes")
 	private JComboBox cmbOrdine;
 	private JTextField settimana;
 	private JTextField stadio;
 	private JButton btnEsegui;
-	private JList list;
-	private ListSelectionListener listner; 
 }
