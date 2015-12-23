@@ -12,6 +12,7 @@ import javax.swing.border.EtchedBorder;
 
 import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
 
+import Graphic2.ScrollablePanelList;
 import javafx.scene.layout.Border;
 
 public class Carrello extends JFrame
@@ -48,10 +49,9 @@ public class Carrello extends JFrame
 
 	public JPanel pannelloVisualizzazioneRimozione()
 	{
-		JPanel panel = new JPanel();
+		JPanel panel = new ScrollablePanelList();
 		panel.add(new PrenotazioneComponent("Prenotazione1"));
 		panel.add(new PrenotazioneComponent("Prenotazione2"));
-		panel.setBorder(new EtchedBorder());
 		return panel;
 	}
 
