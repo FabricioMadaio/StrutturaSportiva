@@ -11,6 +11,8 @@ import javax.swing.JTextArea;
 
 import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
 
+import Stadio.StadioCanvas;
+
 public class ScreenPartita extends JFrame
 {
 	public ScreenPartita()
@@ -23,6 +25,7 @@ public class ScreenPartita extends JFrame
 	{
 		questoFrame.setSize(800, 700);
 		questoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		questoFrame.add(new StadioCanvas(),BorderLayout.CENTER);
 		questoFrame.add(creaPannelloInformazioniTransazioni(),BorderLayout.SOUTH);
 		
 		questoFrame.setVisible(true);
