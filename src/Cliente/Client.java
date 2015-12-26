@@ -1,4 +1,4 @@
-package Graphic2;
+package Cliente;
 
 import javax.swing.JFrame;
 

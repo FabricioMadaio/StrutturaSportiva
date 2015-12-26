@@ -12,7 +12,7 @@ import javax.swing.border.EtchedBorder;
 
 import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
 
-import Graphic2.ScrollablePanelList;
+import Cliente.ScrollablePanelList;
 import javafx.scene.layout.Border;
 
 public class Carrello extends JFrame

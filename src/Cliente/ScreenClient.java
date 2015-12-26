@@ -1,4 +1,4 @@
-package Graphic2;
+package Cliente;
 
 import java.awt.BorderLayout;
 
