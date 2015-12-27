@@ -1,10 +1,10 @@
-package Gestore;
+package gui.gestore;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-import Stadio.StadioCanvas;
+import gui.stadio.StadioCanvas;
 import javafx.scene.layout.Border;
 
 import java.awt.*;

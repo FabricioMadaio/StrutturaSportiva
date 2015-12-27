@@ -1,4 +1,4 @@
-package Cliente;
+package gui.cliente;
 
 import javax.swing.JFrame;
 

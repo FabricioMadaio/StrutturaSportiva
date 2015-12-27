@@ -1,4 +1,4 @@
-package Partita;
+package gui.partita;
 
 import java.awt.Frame;
 import java.util.GregorianCalendar;

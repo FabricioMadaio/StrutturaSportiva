@@ -1,15 +1,14 @@
-package Gestore;
+package gui.gestore;
 
 import java.awt.*;
 import java.util.GregorianCalendar;
 
 import javax.swing.*;
 
-import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
 
-import Cliente.ScrollablePanelList;
-import Partita.Partita;
-import Partita.PartitaComponent;
+import gui.cliente.ScrollablePanelList;
+import gui.partita.Partita;
+import gui.partita.PartitaComponent;
 import javafx.scene.layout.Border;
 
 

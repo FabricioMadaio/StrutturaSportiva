@@ -1,4 +1,4 @@
-package Partita;
+package gui.partita;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;

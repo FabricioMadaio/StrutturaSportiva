@@ -1,4 +1,4 @@
-package Stadio;
+package gui.stadio;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import Graphics.Sprite;
+import gui.graphics.Sprite;
 
 
 /**

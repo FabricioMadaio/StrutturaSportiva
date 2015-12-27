@@ -1,4 +1,4 @@
-package Graphics;
+package gui.graphics;
 
 public class PhysicBody {
 	

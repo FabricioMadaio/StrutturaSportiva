@@ -1,4 +1,4 @@
-package Graphics;
+package gui.graphics;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -6,8 +6,9 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Random;
 
-import Graphics.Animation;
-import Graphics.Executable;
+import gui.graphics.PhysicBody;
+import gui.graphics.Animation;
+import gui.graphics.Executable;
 
 public class Sprite extends PhysicBody{
 	

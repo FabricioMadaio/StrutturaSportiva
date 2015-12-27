@@ -1,9 +1,9 @@
-package Stadio;
+package gui.stadio;
 
 import java.awt.Image;
 import java.awt.Rectangle;
 
-import Graphics.Sprite;
+import gui.graphics.Sprite;
 
 public class Poltroncina extends Sprite{
 	

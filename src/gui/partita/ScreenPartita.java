@@ -1,4 +1,4 @@
-package Partita;
+package gui.partita;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 
 import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
 
-import Stadio.StadioCanvas;
+import gui.stadio.StadioCanvas;
 
 public class ScreenPartita extends JFrame
 {

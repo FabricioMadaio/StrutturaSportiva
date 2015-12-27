@@ -1,4 +1,4 @@
-package Carrello;
+package gui.carrello;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -10,9 +10,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 
-import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
 
-import Cliente.ScrollablePanelList;
+import gui.cliente.ScrollablePanelList;
 import javafx.scene.layout.Border;
 
 public class Carrello extends JFrame

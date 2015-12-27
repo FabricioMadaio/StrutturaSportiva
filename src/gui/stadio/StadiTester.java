@@ -1,4 +1,4 @@
-package Stadio;
+package gui.stadio;
 
 import javax.swing.JFrame;
 

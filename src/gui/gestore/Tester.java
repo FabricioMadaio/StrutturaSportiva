@@ -1,4 +1,4 @@
-package Gestore;
+package gui.gestore;
 
 public class Tester {
 

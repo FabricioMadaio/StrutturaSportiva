@@ -1,4 +1,4 @@
-package Carrello;
+package gui.carrello;
 
 import java.awt.Color;
 import java.awt.GridLayout;
