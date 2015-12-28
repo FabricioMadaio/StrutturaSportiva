@@ -1,5 +1,6 @@
 package gui.partita;
 
+import core.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 

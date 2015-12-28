@@ -1,5 +1,6 @@
 package gui.gestore;
 
+import core.elementi.*;
 import java.awt.*;
 import java.util.GregorianCalendar;
 
@@ -7,7 +8,6 @@ import javax.swing.*;
 
 
 import gui.cliente.ScrollablePanelList;
-import gui.partita.Partita;
 import gui.partita.PartitaComponent;
 import javafx.scene.layout.Border;
 
