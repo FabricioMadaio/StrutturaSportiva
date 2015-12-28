@@ -4,8 +4,8 @@ public class Tester {
 
 	public static void main(String[] args) {
 
-		//GestoreScreen s = new GestoreScreen();
-		StadioGestore s = new StadioGestore();
+		GestoreScreen s = new GestoreScreen(null);
+		//StadioGestore s = new StadioGestore();
 	}
 
 }

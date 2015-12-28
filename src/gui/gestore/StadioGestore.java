@@ -61,7 +61,7 @@ public class StadioGestore extends JFrame
 		panel.add(creaBottoneModifica());
 		panel.add(creaBottoneCancella());
 		
-		panel.setBorder(new TitledBorder(new EtchedBorder(),"Modalità"));
+		panel.setBorder(new TitledBorder(new EtchedBorder(),"Poltroncine"));
 		
 		return panel;
 	}

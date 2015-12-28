@@ -70,19 +70,19 @@ public class ListaUtenti implements Serializable{
 	
 	/**
 	 * effettua il login e restituisce l'utente trovato
-	 * @param login		login utente
+	 * @param username		username utente
 	 * @param password	password
 	 * @return utente loggato
 	 */
-	public Utente login(String login,String password){
+	public Utente login(String username,String password){
 		
 		for(Gestore ui:gestori){
-			if(ui.getLogin().equals(login) && ui.getPassword().equals(password))
+			if(ui.getUsername().equals(username) && ui.getPassword().equals(password))
 				return ui;
 		}
 		
 		for(Cliente ui:clienti){
-			if(ui.getLogin().equals(login) && ui.getPassword().equals(password))
+			if(ui.getUsername().equals(username) && ui.getPassword().equals(password))
 				return ui;
 		}
 		

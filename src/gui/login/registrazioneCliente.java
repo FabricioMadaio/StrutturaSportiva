@@ -111,7 +111,7 @@ public class registrazioneCliente extends Finestra{
 
 					
 					//creo un nuovo studente		
-					Cliente s = new Cliente(nome.getText(),cognome.getText(),"00",login.getText(),password.getText());
+					Cliente s = new Cliente(nome.getText(),cognome.getText(),login.getText(),password.getText());
 					//lo registro e salvo le modifiche su file
 					try {
 						listaUtenti.registra(s);

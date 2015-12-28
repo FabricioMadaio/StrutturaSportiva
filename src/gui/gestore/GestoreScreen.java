@@ -8,11 +8,7 @@ import javax.swing.*;
 
 
 import gui.cliente.ScrollablePanelList;
-<<<<<<< HEAD
 import gui.graphics.Finestra;
-import gui.partita.Partita;
-=======
->>>>>>> 2f537b6e7171866fca4a7a01943fd253e3c5fc13
 import gui.partita.PartitaComponent;
 import javafx.scene.layout.Border;
 

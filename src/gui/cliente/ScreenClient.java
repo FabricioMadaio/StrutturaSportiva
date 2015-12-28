@@ -13,7 +13,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 
+import core.elementi.Partita;
 import gui.graphics.Finestra;
+import gui.partita.PartitaPrenotabileComponent;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -30,6 +32,8 @@ public class ScreenClient extends Finestra {
 		getContentPane().add(createActionPanel(),BorderLayout.NORTH);
 		
 		ScrollablePanelList sl = new ScrollablePanelList();
+		
+		//sl.add(new PartitaPrenotabileComponent(new Partita(null,"a","b","a")));
 		
 		getContentPane().add(sl,BorderLayout.CENTER);
 		this.setTitle("Cliente");

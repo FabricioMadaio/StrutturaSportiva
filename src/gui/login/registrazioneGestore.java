@@ -112,9 +112,8 @@ public class registrazioneGestore extends Finestra{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				//creo il nuovo docente
-				String selezione = (String)insegnamento.getSelectedItem();
-				Gestore s = new Gestore(nome.getText(),cognome.getText(),login.getText(),password.getText(),selezione);
+				//creo il nuovo Gestore
+				Gestore s = new Gestore(nome.getText(),cognome.getText(),login.getText(),password.getText());
 				
 				
 				//lo registro e salvo le modifiche su file

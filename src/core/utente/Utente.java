@@ -14,7 +14,7 @@ public class Utente implements Serializable{
 	
 	private String nome;
 	private String cognome;
-	private String login;
+	private String username;
 	private String password;
 	
 	/**
@@ -22,14 +22,14 @@ public class Utente implements Serializable{
 	 * 
 	 * @param nome	nome
 	 * @param cognome	cognome
-	 * @param login	login
+	 * @param username	username
 	 * @param password	password
 	 */
-	public Utente(String nome, String cognome, String login, String password) {
+	public Utente(String nome, String cognome, String username, String password) {
 
 		this.nome = nome;
 		this.cognome = cognome;
-		this.login = login;
+		this.username = username;
 		this.password = password;
 	}
 	
@@ -48,10 +48,10 @@ public class Utente implements Serializable{
 	}
 
 	/**
-	 * @return login
+	 * @return username
 	 */
-	public String getLogin() {
-		return login;
+	public String getUsername() {
+		return username;
 	}
 
 	/**
@@ -88,7 +88,7 @@ public class Utente implements Serializable{
 	 * @throws ParametroIllegaleException due utenti hanno gli stessi parametri
 	 */
 	public void checkSameParameters(Utente u) throws ParametroIllegaleException{
-		if(this.getLogin().equals(u.getLogin()))
+		if(this.getUsername().equals(u.getUsername()))
 			throw new ParametroIllegaleException();
 	}
 		
