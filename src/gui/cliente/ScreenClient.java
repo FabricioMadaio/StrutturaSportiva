@@ -13,6 +13,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 
+import gui.graphics.Finestra;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
@@ -20,11 +22,10 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Font;
 
 @SuppressWarnings("serial")
-public class ScreenClient extends JFrame {
+public class ScreenClient extends Finestra {
 
-	public ScreenClient(){
-
-		setSize(800,600);
+	public ScreenClient(JFrame parent){
+		super(parent,800,600);
 		this.setJMenuBar(createMenuWithButton());
 		getContentPane().add(createActionPanel(),BorderLayout.NORTH);
 		

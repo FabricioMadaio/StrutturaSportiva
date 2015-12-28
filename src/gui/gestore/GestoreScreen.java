@@ -7,24 +7,23 @@ import javax.swing.*;
 
 
 import gui.cliente.ScrollablePanelList;
+import gui.graphics.Finestra;
 import gui.partita.Partita;
 import gui.partita.PartitaComponent;
 import javafx.scene.layout.Border;
 
 
-public class GestoreScreen extends JFrame
+public class GestoreScreen extends Finestra
 {
-	public GestoreScreen()
+	public GestoreScreen(JFrame parent)
 	{
+		super(parent,800,600);
 		this.questoFrame = this;
 		operazioniSuFrame();
 	}
 
 	public void operazioniSuFrame()
 	{
-		questoFrame.setSize(800, 600);
-		questoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		questoFrame.setJMenuBar(creaMenuBar());
 		questoFrame.add(creaPannelloComboBox(),BorderLayout.NORTH);
 		questoFrame.add(creaPanelloInterattivo(),BorderLayout.CENTER);
