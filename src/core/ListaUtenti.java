@@ -24,6 +24,7 @@ public class ListaUtenti implements Serializable{
 	
 	private ArrayList<Gestore> gestori;
 	private ArrayList<Cliente> clienti;
+	
 	private transient String path;
 		
 	/**
