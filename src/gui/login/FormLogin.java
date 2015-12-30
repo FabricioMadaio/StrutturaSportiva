@@ -27,7 +27,7 @@ import gui.graphics.Finestra;
 import javax.swing.border.EmptyBorder;
 
 /**
- * @author Fabricio Nicolas Madaio
+ * @author Fabricio Nicolas Madaio 
  */
 public class FormLogin extends Finestra{
 	

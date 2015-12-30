@@ -18,10 +18,21 @@ public class Cliente extends Utente implements Serializable{
 	 * @param login	login
 	 * @param password	password
 	 */
-	public Cliente(String nome, String cognome, String username, String password) {
+	public Cliente(String nome, String cognome, String username, String password,String categoria) {
 		
 		super(nome, cognome, username, password);
+		this.categoria = categoria;
+		scontoAttivo = true;
 	}
+	
+	
+	public String getCategoria() {
+		return categoria;
+	}
+
+
+	private String categoria;
+	private boolean scontoAttivo;
 	
 	
 	

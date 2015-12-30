@@ -1,5 +1,6 @@
 package core;
 
+import core.sconti.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -20,10 +21,15 @@ import core.ParametroIllegaleException;
 public class ListaUtenti implements Serializable{
 	
 
+
+
+
 	private static final long serialVersionUID = 7L;
 	
 	private ArrayList<Gestore> gestori;
 	private ArrayList<Cliente> clienti;
+	//Sconti Che si applicano a più partite
+	private ArrayList<Sconto> scontiGlobali;
 	
 	private transient String path;
 		
@@ -37,6 +43,7 @@ public class ListaUtenti implements Serializable{
 		this.path = path; 
 		gestori = new ArrayList<Gestore>();
 		clienti = new ArrayList<Cliente>();
+		scontiGlobali = new ArrayList<>();
 		
 		File f = new File(path);
 		ObjectInputStream ois;
@@ -130,5 +137,13 @@ public class ListaUtenti implements Serializable{
 			e.printStackTrace();
 		}
 		
+	}
+	public void addSconto(Sconto s)
+	{
+		scontiGlobali.add(s);
+	}
+	
+	public ArrayList<Sconto> getScontiGlobali() {
+		return scontiGlobali;
 	}
 }

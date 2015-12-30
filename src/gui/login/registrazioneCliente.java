@@ -82,17 +82,23 @@ public class registrazioneCliente extends Finestra{
 		cognome = new JTextField();
 		r1Panel.add(cognome);
 		
-		JLabel loginlbl = new JLabel("login");
+		JLabel loginlbl = new JLabel("Username");
 		r1Panel.add(loginlbl);
 		
 		login = new JTextField();
 		r1Panel.add(login);
 		
-		JLabel passwordlbl = new JLabel("password");
+		JLabel passwordlbl = new JLabel("Password");
 		r1Panel.add(passwordlbl);
 		
 		password = new JPasswordField();
 		r1Panel.add(password);
+	
+		JLabel lblCategoria = new JLabel("Categoria");
+		r1Panel.add(lblCategoria);
+		//ComboBox scelta categoria 
+		final JComboBox comboBox = new JComboBox(categoria);
+		r1Panel.add(comboBox);
 		//pulsante accedi
 		JPanel r2Panel = new JPanel();
 		r2Panel.setBorder(new EmptyBorder(2,0,2,0));
@@ -111,7 +117,7 @@ public class registrazioneCliente extends Finestra{
 
 					
 					//creo un nuovo studente		
-					Cliente s = new Cliente(nome.getText(),cognome.getText(),login.getText(),password.getText());
+					Cliente s = new Cliente(nome.getText(),cognome.getText(),login.getText(),password.getText(),(String)comboBox.getSelectedItem());
 					//lo registro e salvo le modifiche su file
 					try {
 						listaUtenti.registra(s);
@@ -127,5 +133,7 @@ public class registrazioneCliente extends Finestra{
 			
 		});
 	}
+	
+	private String[] categoria = {"Studente","Pensionato","Bambini"};
 	
 }
