@@ -1,38 +1,45 @@
 package gui.stadio;
 
 import java.awt.Image;
-import java.awt.Rectangle;
 
+import core.elementi.Posto;
+import core.elementi.Posto.Stato;
 import gui.graphics.Sprite;
 
 public class Poltroncina extends Sprite{
 	
-	//cordinate della poltroncina in Canvas space (VEDI nota su StadioCanvas)
-	private float canvasSpaceX;
-	private float canvasSpaceY;
-	
+
 	public static int boxSize = 21; //dimensione area selezionabile
+	private Posto posto;
 	
-	private Stato stato;
-	
-	public enum Stato{PRENOTATO,VENDUTO,DISPONIBILE,NON_DISPONIBILE};
 
-	public Poltroncina(int xPos, int yPos, int frameW, int frameH, Image img) {
+	public Poltroncina(Posto p, int frameW, int frameH, Image img) {
 		
-		super(xPos, yPos, frameW, frameH, img);
+		super(p.getX(), p.getY(), frameW, frameH, img);
 
-		setCanvasSpacePos(xPos,yPos);
-		setStato(Stato.DISPONIBILE);
+		this.posto = p;
+		setStato(p.getStato());
 	}
 	
+	//cordinate della poltroncina in Canvas space (VEDI nota su StadioCanvas)
 	public void setCanvasSpacePos(float x,float y){
-		canvasSpaceX = x;
-		canvasSpaceY = y;
+		posto.setX((int)x);
+		posto.setY((int)y);
+	}
+	
+	public Stato getStato(){
+		return this.posto.getStato();
 	}
 	
 	public void setStato(Stato s){
+		this.posto.setStato(s);
 		this.setFrame(s.ordinal());
 	}
+	
+	public Posto getPosto() {
+		return posto;
+	}
+
 
 	//verifica in screen space
 	public boolean contains(float x,float y){
@@ -53,7 +60,7 @@ public class Poltroncina extends Sprite{
 	
 	//imposta lo sprite per disegnarlo in screen space
 	public void toScreenSpace(float csX,float csY){
-		setPos(canvasSpaceX*csX,canvasSpaceY*csY);
+		setPos(posto.getX()*csX,posto.getY()*csY);
 		setScale(csX, csY);
 	}
 }

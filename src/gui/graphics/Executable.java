@@ -1,5 +1,5 @@
 package gui.graphics;
 
 public interface Executable {
-	public void func();
+	public void func(Object obj);
 }

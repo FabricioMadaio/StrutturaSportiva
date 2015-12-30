@@ -1,7 +1,9 @@
 package gui.partita;
 
-import core.*;
-import java.awt.Frame;
+import core.elementi.Partita;
+import core.elementi.Posto;
+import core.elementi.Stadio;
+
 import java.util.GregorianCalendar;
 
 import javax.swing.JFrame;
@@ -10,9 +12,17 @@ public class Tester extends JFrame
 {
 	public static void main(String[] args) 
 	{
-		//GregorianCalendar data1 = new GregorianCalendar(2015, 2+1, 12);
-		//Partita p1 = new Partita(data1, "squadraA", "squadraB", "idStadio");
-		ScreenPartita sp1 = new ScreenPartita();
+		GregorianCalendar data1 = new GregorianCalendar(2015, 2+1, 12);
+		Partita p1 = new Partita(data1, "squadraA", "squadraB", "idStadio");
+		
+		Stadio st1 = new Stadio("stadio1",2);		
+		Posto posto1 = new Posto(100,100,"p1");
+		st1.addPosto(posto1);
+		//trasferisco i posti dello stadio nella partita
+		p1.copiaPosti(st1.getPosti());
+		
+		
+		ScreenPartita sp1 = new ScreenPartita(p1);
 		
 		//JFrame frame = new JFrame();
 		

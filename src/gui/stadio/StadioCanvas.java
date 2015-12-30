@@ -1,6 +1,5 @@
 package gui.stadio;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -15,6 +14,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import core.elementi.Posto;
 import gui.graphics.Sprite;
 
 
@@ -27,14 +27,17 @@ import gui.graphics.Sprite;
 public class StadioCanvas extends JPanel{
 	
 	private Sprite background;
-	private ArrayList<Poltroncina> poltroncine;
 	private Poltroncina selezione;
+	
 	private Sprite glowBorder;
 	
 	private float canvasSx,canvasSy;
 	
 	private Image poltroncinaImg;
+	private ArrayList<Poltroncina> poltroncine;
+	private ArrayList<Posto> posti;
 	
+	private StadioListener stadioListener;
 	
 	private editMode modalita;
 	public enum editMode{AGGIUNGI,MODIFICA,SELEZIONA};
@@ -55,8 +58,8 @@ public class StadioCanvas extends JPanel{
     	poltroncine = new ArrayList<Poltroncina>();
     	selezione = null;
     	
-    	modalita = editMode.MODIFICA;
-    	
+    	modalita = editMode.SELEZIONA;
+ 
 		try {
 			backgroundImg = ImageIO.read(backgroundFile);
 			poltroncinaImg = ImageIO.read(poltroncinaFile);
@@ -65,8 +68,6 @@ public class StadioCanvas extends JPanel{
 			background = new Sprite(0,0,0,0,backgroundImg);
 			glowBorder = new Sprite(0,0,0,0,glowBorderImg);
 			
-			Poltroncina p = new Poltroncina(100,100,50,50,poltroncinaImg);
-			poltroncine.add(p);
 			this.addMouseListener(new MouseListener());
 			this.addMouseMotionListener(new MouseMotionListener());
 			
@@ -78,6 +79,37 @@ public class StadioCanvas extends JPanel{
 		
 	}
 	
+	public void addStadioListener(StadioListener st){
+		stadioListener = st;
+	}
+	
+	public void setPosti(ArrayList<Posto> posti) {
+		
+		this.posti = posti;
+		
+		if(poltroncine!=null)
+			poltroncine.clear();
+		
+		poltroncine = new ArrayList<Poltroncina>();
+		
+		for(Posto p:posti){
+			Poltroncina pol = new Poltroncina(p,50,50,poltroncinaImg);
+			poltroncine.add(pol);
+		}
+		
+		resetSelezione();
+	}
+	
+	public editMode getModalita() {
+		return modalita;
+	}
+
+	public void setModalita(editMode modalita) {
+		this.modalita = modalita;
+		resetSelezione();
+		repaint();
+	}
+
 	class MouseListener extends MouseAdapter {
 		public void mousePressed(MouseEvent e) {
 			
@@ -89,15 +121,23 @@ public class StadioCanvas extends JPanel{
 						selezione = p;
 						//sposto la poltroncina in cima
 						poltroncine.remove(i);
+						
+						if(stadioListener!=null) stadioListener.onSelected(p);
 					}
 		    	}
 				repaint();
 			}
 			
 			if(modalita==editMode.AGGIUNGI){
-				Poltroncina p = new Poltroncina(0,0,50,50,poltroncinaImg);
-				p.setCanvasSpacePos(e.getX()/canvasSx, e.getY()/canvasSy);
-				poltroncine.add(p);
+				
+				Posto p = new Posto(0, 0,""+poltroncine.size());
+				posti.add(p);
+				
+				Poltroncina pol = new Poltroncina(p,50,50,poltroncinaImg);
+				pol.setCanvasSpacePos(e.getX()/canvasSx, e.getY()/canvasSy);
+				poltroncine.add(pol);
+				
+				resetSelezione();
 				repaint();
 			}
 		}
@@ -113,15 +153,22 @@ public class StadioCanvas extends JPanel{
 		}
 	}
 	
+	public Poltroncina getSelezione() {
+		return selezione;
+	}
+	
 	public void resetSelezione(){
 		if(selezione!=null){
 			poltroncine.add(selezione);
+			if(stadioListener!=null) stadioListener.onReleased(selezione);
 			selezione = null;
 		}
 	}
 	
 	public void destroySelezione(){
 		if(selezione!=null){
+			posti.remove(selezione.getPosto());
+			if(stadioListener!=null) stadioListener.onReleased(selezione);
 			selezione = null;
 		}
 	}
@@ -136,6 +183,8 @@ public class StadioCanvas extends JPanel{
     {
     	super.paintComponent(g);
     	
+    	if(background==null) return;
+    	
     	//aggiungere questa riga per usare la modalità filtro bilineare (scaling migliorato)
     	((Graphics2D)g).setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
     	
@@ -147,6 +196,7 @@ public class StadioCanvas extends JPanel{
     	
     	background.draw(g);
     	
+    	if(poltroncine!=null)
     	for(Poltroncina p:poltroncine){
     		p.toScreenSpace(canvasSx, canvasSy);
     		p.draw(g);

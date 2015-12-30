@@ -1,6 +1,7 @@
 package gui.partita;
 
-import core.*;
+import core.elementi.Partita;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
@@ -10,23 +11,28 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
 
 import gui.stadio.StadioCanvas;
 
 public class ScreenPartita extends JFrame
 {
-	public ScreenPartita()
+	public ScreenPartita(Partita partita)
 	{
+		this.partita = partita;
 		questoFrame = this;
 		operazioniSuFrame();
+		
+		stadioCanvas.setPosti(partita.getPosti());
 	}
 	
 	public void operazioniSuFrame()
 	{
 		questoFrame.setSize(800, 700);
 		questoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		questoFrame.add(new StadioCanvas(),BorderLayout.CENTER);
+		
+		stadioCanvas = new StadioCanvas();
+		
+		questoFrame.add(stadioCanvas,BorderLayout.CENTER);
 		questoFrame.add(creaPannelloInformazioniTransazioni(),BorderLayout.SOUTH);
 		
 		questoFrame.setVisible(true);
@@ -88,4 +94,6 @@ public class ScreenPartita extends JFrame
 	
 	private JFrame questoFrame;
 	private JTextArea textArea;
+	private Partita partita;
+	private StadioCanvas stadioCanvas;
 }
