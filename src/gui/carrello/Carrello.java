@@ -12,7 +12,6 @@ import javax.swing.border.EtchedBorder;
 
 
 import gui.cliente.ScrollablePanelList;
-import javafx.scene.layout.Border;
 
 public class Carrello extends JFrame
 {

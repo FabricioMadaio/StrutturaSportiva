@@ -9,7 +9,6 @@ import javax.swing.event.DocumentListener;
 import core.ListaUtenti;
 import core.elementi.Posto.Stato;
 import core.elementi.Stadio;
-import gui.graphics.Executable;
 import gui.graphics.Finestra;
 import gui.stadio.Poltroncina;
 import gui.stadio.StadioCanvas;
@@ -21,7 +20,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 public class StadioGestore extends Finestra
@@ -52,7 +50,6 @@ public class StadioGestore extends Finestra
 	public StadioGestore(JFrame parent,ListaUtenti listaUtenti)
 	{
 		super(parent,800, 600);
-		BorderLayout borderLayout = (BorderLayout) getContentPane().getLayout();
 		this.listaUtenti = listaUtenti;
 		questoFrame = this;
 		operazioniSuFrame();
