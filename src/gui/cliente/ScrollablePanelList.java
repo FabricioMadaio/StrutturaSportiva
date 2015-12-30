@@ -3,15 +3,11 @@ package gui.cliente;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.FlowLayout;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.border.MatteBorder;
 
 public class ScrollablePanelList extends JPanel{
 	

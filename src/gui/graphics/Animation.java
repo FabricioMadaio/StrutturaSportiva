@@ -58,7 +58,7 @@ public class Animation {
 				}else{
 					if(this.nloops==this.currentLoops)
 						if(this.endFunc!=null){
-							this.endFunc.func();
+							this.endFunc.func(this);
 							this.currentLoops+=1;
 						}
 				}

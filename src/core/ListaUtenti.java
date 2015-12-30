@@ -14,6 +14,7 @@ import core.utente.Gestore;
 import core.utente.Cliente;
 import core.utente.Utente;
 import core.ParametroIllegaleException;
+import core.elementi.Stadio;
 
 /**
  * @author Fabricio Nicolas Madaio
@@ -21,16 +22,21 @@ import core.ParametroIllegaleException;
 public class ListaUtenti implements Serializable{
 	
 
+<<<<<<< HEAD
 
 
 
 	private static final long serialVersionUID = 7L;
+=======
+	private static final long serialVersionUID = 6L;
+>>>>>>> c79c7ceffa571e661a42625c678593506353402c
 	
 	private ArrayList<Gestore> gestori;
 	private ArrayList<Cliente> clienti;
 	//Sconti Che si applicano a più partite
 	private ArrayList<Sconto> scontiGlobali;
 	
+	private ArrayList<Stadio> stadi;
 	private transient String path;
 		
 	/**
@@ -45,6 +51,8 @@ public class ListaUtenti implements Serializable{
 		clienti = new ArrayList<Cliente>();
 		scontiGlobali = new ArrayList<>();
 		
+		stadi = new ArrayList<Stadio>();
+		
 		File f = new File(path);
 		ObjectInputStream ois;
 
@@ -53,24 +61,40 @@ public class ListaUtenti implements Serializable{
 			ListaUtenti users = (ListaUtenti)ois.readObject();
 			gestori = users.getGestori();
 			clienti = users.getClienti();
+			stadi = users.getStadi();
+			
 			ois.close();
 		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
+			
+			Stadio st1 = new Stadio("stadio1",2);
+			Stadio st2 = new Stadio("stadio2",3);
+			addStadio(st1);
+			addStadio(st2);
+			
 			e.printStackTrace();
 		}
 			
 
 	}
 	
+	public ArrayList<Stadio> getStadi() {
+		return stadi;
+	}
+
+	public void addStadio(Stadio stadio) {
+		this.stadi.add(stadio);
+	}
+
 	/**
-	 * @return lista di docenti
+	 * @return lista di gestori
 	 */
 	public ArrayList<Gestore> getGestori() {
 		return gestori;
 	}
 
 	/**
-	 * @return lista di studenti
+	 * @return lista di clienti
 	 */
 	public ArrayList<Cliente> getClienti() {
 		return clienti;

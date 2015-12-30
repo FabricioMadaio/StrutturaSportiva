@@ -1,7 +1,10 @@
 package gui.gestore;
 
+import core.ListaUtenti;
 import core.elementi.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.GregorianCalendar;
 
 import javax.swing.*;
@@ -10,15 +13,15 @@ import javax.swing.*;
 import gui.cliente.ScrollablePanelList;
 import gui.graphics.Finestra;
 import gui.partita.PartitaComponent;
-import javafx.scene.layout.Border;
 
 
 public class GestoreScreen extends Finestra
 {
-	public GestoreScreen(JFrame parent)
+	public GestoreScreen(JFrame parent,ListaUtenti listaUtenti)
 	{
 		super(parent,800,600);
 		this.questoFrame = this;
+		this.listaUtenti = listaUtenti;
 		operazioniSuFrame();
 	}
 
@@ -59,7 +62,16 @@ public class GestoreScreen extends Finestra
 	public JButton creaBottoneStadio()
 	{
 		JButton btn = new JButton("Stadio");
+		btn.addActionListener(new ActionListener(){
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				StadioGestore s = new StadioGestore(questoFrame,listaUtenti);
+			}
+			
+		});
+		
 		return btn;
 	}
 
@@ -117,7 +129,7 @@ public class GestoreScreen extends Finestra
 		return scroll;
 	}
 
-
-	private JComboBox comboBox;
+	private ListaUtenti listaUtenti;
+	private JComboBox<String> comboBox;
 	private JFrame questoFrame;
 }

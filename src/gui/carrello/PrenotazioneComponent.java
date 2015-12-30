@@ -1,7 +1,6 @@
 package gui.carrello;
 
 import java.awt.Color;
-import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;

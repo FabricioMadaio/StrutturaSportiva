@@ -8,8 +8,10 @@ public class StadiTester {
 		// TODO Auto-generated method stub
 		JFrame frame = new JFrame();
 		StadioCanvas s = new StadioCanvas();
-		frame.getContentPane().add(s);
-		frame.setSize(800,600);
+		s.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 300);
+		frame.setContentPane(s);
+		//frame.setSize(800,600);
 		frame.setVisible(true);
 	}
 

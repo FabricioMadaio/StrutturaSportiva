@@ -3,7 +3,6 @@ package gui.partita;
 
 import core.elementi.Partita;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
