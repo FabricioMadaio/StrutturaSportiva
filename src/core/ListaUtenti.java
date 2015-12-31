@@ -21,15 +21,7 @@ import core.elementi.Stadio;
  */
 public class ListaUtenti implements Serializable{
 	
-
-<<<<<<< HEAD
-
-
-
-	private static final long serialVersionUID = 7L;
-=======
 	private static final long serialVersionUID = 6L;
->>>>>>> c79c7ceffa571e661a42625c678593506353402c
 	
 	private ArrayList<Gestore> gestori;
 	private ArrayList<Cliente> clienti;
@@ -49,7 +41,7 @@ public class ListaUtenti implements Serializable{
 		this.path = path; 
 		gestori = new ArrayList<Gestore>();
 		clienti = new ArrayList<Cliente>();
-		scontiGlobali = new ArrayList<>();
+		scontiGlobali = new ArrayList<Sconto>();
 		
 		stadi = new ArrayList<Stadio>();
 		
