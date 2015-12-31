@@ -29,6 +29,15 @@ public class ScontoPerCliente implements Sconto
 
 		return true;
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "ScontoPerCliente [tipoCliente=" + tipoCliente + ", percentuale=" + percentuale + "]";
+	}
+
+
 
 	private String tipoCliente;
 	private int percentuale;

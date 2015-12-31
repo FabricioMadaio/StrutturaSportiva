@@ -5,16 +5,17 @@ import core.utente.Cliente;
 
 public class ScontoFasciaOraria implements Sconto 
 {
-	public ScontoFasciaOraria(double orario,int percentuale) 
+	public ScontoFasciaOraria(double oraInizio,double oraFine,int percentuale) 
 	{
-		this.orario = orario;
+		this.oraFine = oraFine;
+		this.oraInizio = oraInizio;
 		this.percentuale = percentuale;
 	}
 	
 	@Override
 	public int getPercentualeSconto(Partita p, Cliente c) 
 	{
-		if(p.getOra() == orario)
+		if(p.getOra() >= oraInizio && p.getOra() <= oraFine)
 		{
 			return percentuale;	
 		}
@@ -28,7 +29,18 @@ public class ScontoFasciaOraria implements Sconto
 		return true;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "ScontoFasciaOraria [percentuale=" + percentuale + ", oraInizio=" + oraInizio + ", oraFine=" + oraFine
+				+ "]";
+	}
+
+
+
 	private int percentuale;
-	private double orario;
+	private double oraInizio;
+	private double oraFine;
 
 }
