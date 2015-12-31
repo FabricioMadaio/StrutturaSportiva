@@ -55,6 +55,16 @@ public class ScontoGiornoDellaSettimana implements Sconto
 		}
 		return giornoSettimana;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "ScontoGiornoDellaSettimana [giornoDellaSettima=" + giornoDellaSettima + ", percentuale=" + percentuale
+				+ "]";
+	}
+
+
+
 	private String giornoDellaSettima;
 	private int percentuale;
 
