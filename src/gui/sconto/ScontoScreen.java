@@ -30,9 +30,9 @@ public class ScontoScreen extends Finestra{
 		setTitle("Sconti");
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{784, 0};
+		gridBagLayout.columnWidths = new int[] {784};
 		gridBagLayout.rowHeights = new int[] {0, 60};
-		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0};
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0};
 		getContentPane().setLayout(gridBagLayout);
 		
@@ -108,7 +108,7 @@ public class ScontoScreen extends Finestra{
 			
 			for(Sconto s:p.getSconti()){
 				//aggiungo solo quelli specifici della partita?
-				if(s instanceof ScontoPerPartita)
+				//if(s instanceof ScontoPerPartita)
 				scrollListPartita.add(new ScontoComponent(s));
 			}
 		}

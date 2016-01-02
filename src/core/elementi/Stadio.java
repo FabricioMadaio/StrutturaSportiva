@@ -13,6 +13,8 @@ public class Stadio implements Serializable
 	private String nome;
 	private int capienza;
 	private double prezzoBase;
+	private double incasso;
+
 	private ArrayList<Posto> posti;
 	
 	
@@ -20,6 +22,7 @@ public class Stadio implements Serializable
 		
 		this.posti = new ArrayList<Posto>();
 		this.nome = nome;
+		this.incasso = 0;
 		this.setPrezzoBase(prezzoBase);
 	}
 	
@@ -51,5 +54,13 @@ public class Stadio implements Serializable
 	
 	public void addPosto(Posto posto) {
 		this.posti.add(posto);
+	}
+
+	public double getIncasso() {
+		return incasso;
+	}
+
+	public void setIncasso(double incasso) {
+		this.incasso = incasso;
 	}
 }

@@ -71,7 +71,7 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 	private JComboBox BoxCategorie;
 	private JTextField percentualeField;
 	private Finestra questaFinestra;
-	private String[] giorniDellaSettimana = {"Lunedì","Martedì","Mecodì","Giovdì","Venerdì","Sabato","Domenica"};
+	private String[] giorniDellaSettimana = {"Lunedì","Martedì","Mecodì","Giovedì","Venerdì","Sabato","Domenica"};
 
 
 }

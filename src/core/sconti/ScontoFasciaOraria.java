@@ -15,18 +15,17 @@ public class ScontoFasciaOraria implements Sconto
 	@Override
 	public int getPercentualeSconto(Partita p, Cliente c) 
 	{
-		if(p.getOra() >= oraInizio && p.getOra() <= oraFine)
-		{
-			return percentuale;	
-		}
-		return 0;
-		
+		return percentuale;	
 	}
 
 	@Override
 	public boolean verificaApplicabilita(Partita p) 
 	{
-		return true;
+		if(p.getOra() >= oraInizio && p.getOra() <= oraFine)
+		{
+			return true;
+		}
+		return false;
 	}
 	
 	//converte double in stringa

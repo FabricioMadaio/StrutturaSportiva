@@ -1,6 +1,7 @@
 package core.elementi;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import core.sconti.Sconto;
@@ -11,15 +12,15 @@ public class Partita
 {
 	
 	
-	public Partita(GregorianCalendar data, String squadraA , String squadraB, String idStadio,double ora,double prezzoBase)
+	public Partita(GregorianCalendar data, String squadraA , String squadraB, String idStadio,double prezzoBase)
 	{
 		this.data = data;
 		this.squadraA = squadraA;
 		this.squadraB = squadraB;
 		this.idStadio = idStadio;
-		this.ora = ora;
 		this.prezzoBase = prezzoBase;
 		this.sconti= new ArrayList<>();
+		
 	}
 
 
@@ -49,9 +50,9 @@ public class Partita
 		return idStadio;
 	}
 	
-	public double getOra()
+	public float getOra()
 	{
-		return ora;
+		return data.get(Calendar.HOUR_OF_DAY) + data.get(Calendar.MINUTE)*0.01f;
 	}
 	
 	public void aggiungiSconti(ArrayList<Sconto> scontiGlobali)
@@ -119,7 +120,6 @@ public class Partita
 	private String squadraA;
 	private String squadraB;
 	private String idStadio;
-	private double ora;
 	private double prezzoBase;
 	
 }
