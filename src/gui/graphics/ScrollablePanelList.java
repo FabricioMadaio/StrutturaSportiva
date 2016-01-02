@@ -1,4 +1,4 @@
-package gui.cliente;
+package gui.graphics;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -25,7 +25,6 @@ public class ScrollablePanelList extends JPanel{
         mainList.add(new JPanel(), gbc);
 
         JScrollPane scrollPane = new JScrollPane(mainList);
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         super.add(scrollPane);
 	}
 	
@@ -35,7 +34,7 @@ public class ScrollablePanelList extends JPanel{
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.weightx = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        mainList.add(newPanel, gbc,0);
+        mainList.add(newPanel, gbc,mainList.getComponentCount()-1);
 	}
 
 	public void reset(){

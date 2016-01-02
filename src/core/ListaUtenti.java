@@ -14,6 +14,7 @@ import core.utente.Gestore;
 import core.utente.Cliente;
 import core.utente.Utente;
 import core.ParametroIllegaleException;
+import core.elementi.Partita;
 import core.elementi.Stadio;
 
 /**
@@ -29,6 +30,8 @@ public class ListaUtenti implements Serializable{
 	private ArrayList<Sconto> scontiGlobali;
 	
 	private ArrayList<Stadio> stadi;
+	private ArrayList<Partita> partite;
+	
 	private transient String path;
 		
 	/**
@@ -44,6 +47,7 @@ public class ListaUtenti implements Serializable{
 		scontiGlobali = new ArrayList<Sconto>();
 		
 		stadi = new ArrayList<Stadio>();
+		partite = new ArrayList<Partita>();
 		
 		File f = new File(path);
 		ObjectInputStream ois;
@@ -74,10 +78,7 @@ public class ListaUtenti implements Serializable{
 		return stadi;
 	}
 
-	public void addStadio(Stadio stadio) {
-		this.stadi.add(stadio);
-	}
-
+	
 	/**
 	 * @return lista di gestori
 	 */
@@ -90,6 +91,18 @@ public class ListaUtenti implements Serializable{
 	 */
 	public ArrayList<Cliente> getClienti() {
 		return clienti;
+	}
+	
+	/**
+	 * @return lista di partite
+	 */
+	public ArrayList<Partita> getPartite() {
+		return partite;
+	}
+	
+	
+	public ArrayList<Sconto> getScontiGlobali() {
+		return scontiGlobali;
 	}
 	
 	/**
@@ -159,7 +172,11 @@ public class ListaUtenti implements Serializable{
 		scontiGlobali.add(s);
 	}
 	
-	public ArrayList<Sconto> getScontiGlobali() {
-		return scontiGlobali;
+	public void addStadio(Stadio stadio) {
+		this.stadi.add(stadio);
+	}
+
+	public void addPartita(Partita partita) {
+		this.partite.add(partita);
 	}
 }
