@@ -133,6 +133,6 @@ public class registrazioneCliente extends Finestra{
 		});
 	}
 	
-	private String[] categoria = {"Studente","Pensionato","Bambini"};
+	private String[] categoria = {"Studente","Pensionato","Bambino"};
 	
 }

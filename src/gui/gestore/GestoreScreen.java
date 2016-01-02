@@ -32,6 +32,7 @@ public class GestoreScreen extends Finestra
 		questoFrame.add(creaPanelloInterattivo(),BorderLayout.CENTER);
 		questoFrame.add(creaPaneelloAggiugiPartita(),BorderLayout.SOUTH);
 
+		questoFrame.setResizable(false);
 		questoFrame.setVisible(true);
 	}
 
