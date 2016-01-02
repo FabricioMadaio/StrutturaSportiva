@@ -18,11 +18,11 @@ public class Tester {
 
 	public static void main(String[] args) {
 
-<<<<<<< HEAD
-	//ScontoFasciaOrarariaGui sc = new ScontoFasciaOrarariaGui(null);
-	//ScontoCategoriaClienteGui sc2 = new ScontoCategoriaClienteGui(null);
-	ScontoGiornoDellaSettimanaGui sc3 = new ScontoGiornoDellaSettimanaGui(null);
-=======
+
+		//ScontoFasciaOrarariaGui sc = new ScontoFasciaOrarariaGui(null);
+		//ScontoCategoriaClienteGui sc2 = new ScontoCategoriaClienteGui(null);
+		//ScontoGiornoDellaSettimanaGui sc3 = new ScontoGiornoDellaSettimanaGui(null);
+
 		ListaUtenti ls = new ListaUtenti("utenti");
 		
 		Sconto s1 = new ScontoGiornoDellaSettimana("Mercoledì", 20);
@@ -45,7 +45,7 @@ public class Tester {
 		
 		ScontoScreen ss = new ScontoScreen((JFrame)null,ls);
 		ss.setVisible(true);
->>>>>>> fc2e39a96f28c4a77808bc9583199329a06893ec
+
 	}
 	
 }
