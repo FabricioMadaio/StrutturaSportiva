@@ -48,7 +48,7 @@ public class StadioCanvas extends JPanel{
 		canvasSx = 1;
 		canvasSy = 1;
 		
-		File backgroundFile = new File("res/Stadio1.png");
+		File backgroundFile = new File("res/Stadio.png");
     	File poltroncinaFile = new File("res/Sprite.png");
     	File glowBorderFile = new File("res/glowBorder.png");
     	

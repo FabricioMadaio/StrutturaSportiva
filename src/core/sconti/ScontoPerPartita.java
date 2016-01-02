@@ -29,7 +29,7 @@ public class ScontoPerPartita implements Sconto
 
 	@Override
 	public String toString() {
-		return "ScontoPerPartita [percentuale=" + percentuale + "]";
+		return "Sconto partita - " + percentuale + "%";
 	}
 
 

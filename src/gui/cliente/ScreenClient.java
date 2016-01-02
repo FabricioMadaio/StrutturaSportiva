@@ -16,6 +16,7 @@ import javax.swing.event.ListSelectionListener;
 import core.elementi.Partita;
 import gui.graphics.Finestra;
 import gui.partita.PartitaPrenotabileComponent;
+import gui.graphics.ScrollablePanelList;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

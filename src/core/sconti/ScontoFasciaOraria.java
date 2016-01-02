@@ -29,12 +29,15 @@ public class ScontoFasciaOraria implements Sconto
 		return true;
 	}
 	
-	
+	//converte double in stringa
+	private String formatTime(double ora){
+		return String.format("%.2f", ora).replace(",", ":"); 
+	}
 	
 	@Override
 	public String toString() {
-		return "ScontoFasciaOraria [percentuale=" + percentuale + ", oraInizio=" + oraInizio + ", oraFine=" + oraFine
-				+ "]";
+		
+		return "Sconto sulla fascia oraria [ " + formatTime(oraInizio)  + " - " + formatTime(oraFine) + " ] - "+ percentuale + "%";
 	}
 
 

@@ -10,9 +10,10 @@ import java.util.GregorianCalendar;
 import javax.swing.*;
 
 
-import gui.cliente.ScrollablePanelList;
+import gui.graphics.ScrollablePanelList;
 import gui.graphics.Finestra;
 import gui.partita.PartitaComponent;
+import gui.sconto.ScontoScreen;
 
 
 public class GestoreScreen extends Finestra
@@ -56,7 +57,15 @@ public class GestoreScreen extends Finestra
 	public JButton creaBottoneSconti()
 	{
 		JButton btn = new JButton("Sconti");
+		btn.addActionListener(new ActionListener(){
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ScontoScreen s = new ScontoScreen(questoFrame,listaUtenti);
+			}
+			
+		});
 		return btn;
 	}
 

@@ -86,6 +86,10 @@ public class Partita
 	
 	}
 	
+	public ArrayList<Sconto> getSconti() {
+		return sconti;
+	}
+	
 	public ArrayList<Posto> getPosti() {
 		return posti;
 	}

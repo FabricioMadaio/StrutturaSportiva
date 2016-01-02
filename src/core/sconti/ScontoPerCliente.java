@@ -34,7 +34,7 @@ public class ScontoPerCliente implements Sconto
 
 	@Override
 	public String toString() {
-		return "ScontoPerCliente [tipoCliente=" + tipoCliente + ", percentuale=" + percentuale + "]";
+		return "Sconto per cliente " + tipoCliente + " - " + percentuale + "%";
 	}
 
 

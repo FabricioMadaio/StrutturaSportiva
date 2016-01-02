@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 
 
-import gui.cliente.ScrollablePanelList;
+import gui.graphics.ScrollablePanelList;
 
 public class Carrello extends JFrame
 {
