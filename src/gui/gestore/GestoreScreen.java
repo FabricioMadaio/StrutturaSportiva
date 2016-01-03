@@ -1,8 +1,12 @@
 package gui.gestore;
 
 import core.ListaUtenti;
+<<<<<<< HEAD
 import core.comparator.OrdineCapienzaStadioComparator;
 import core.comparator.OrdineCronologicoComparator;
+=======
+import gui.incassi.*;
+>>>>>>> 3adfe103749a2240a32ffecde85b2b343be65d98
 import core.elementi.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -62,8 +66,20 @@ public class GestoreScreen extends Finestra
 	public JButton creaBottoneIncassi()
 	{
 		JButton btn = new JButton("Incassi");
+<<<<<<< HEAD
 		
 		btn.addActionListener(new ActionListener(){
+=======
+		btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				Incassi incassi = new Incassi(questoFrame, listaUtenti.getStadi());
+				
+			}
+		});
+>>>>>>> 3adfe103749a2240a32ffecde85b2b343be65d98
 
 			@Override
 			public void actionPerformed(ActionEvent e) {

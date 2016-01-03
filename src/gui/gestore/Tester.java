@@ -19,12 +19,15 @@ public class Tester {
 		/*s
 		Stadio st1 = new Stadio("stadio1",2);
 		Stadio st2 = new Stadio("stadio2",3);
+		st1.setIncasso(400);
+		st2.setIncasso(500);
 		ls.addStadio(st1);
 		ls.addStadio(st2);
 		
 		Posto p1 = new Posto(0,0,"p1");
 		st1.addPosto(p1);
 		
+<<<<<<< HEAD
 		StadioGestore s = new StadioGestore((JFrame)null,ls);
 		*/
 		
@@ -32,6 +35,10 @@ public class Tester {
 		
 		GestoreScreen s = new GestoreScreen(null,ls);
 		//AggiungiPartitaScreen s = new AggiungiPartitaScreen(null,ls);
+=======
+		GestoreScreen s = new GestoreScreen(null,ls);
+		//StadioGestore s = new StadioGestore((JFrame)null,ls);
+>>>>>>> 3adfe103749a2240a32ffecde85b2b343be65d98
 	}
 
 }
