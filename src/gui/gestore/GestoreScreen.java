@@ -35,6 +35,7 @@ public class GestoreScreen extends Finestra
 		super(parent,800,600);
 		this.questoFrame = this;
 		this.listaUtenti = listaUtenti;
+		comparator = new OrdineCronologicoComparator();
 		operazioniSuFrame();
 	}
 
@@ -138,9 +139,9 @@ public class GestoreScreen extends Finestra
 					 String item = (String)e.getItem();
 
 			          if(item=="Ordine per Capienza")
-			        	  listaUtenti.getPartite().sort(new OrdineCapienzaStadioComparator());
+			        	  comparator = new OrdineCapienzaStadioComparator();
 			          if(item=="Ordine Cronologico")
-			        	  listaUtenti.getPartite().sort(new OrdineCronologicoComparator());
+			        	  comparator = new OrdineCronologicoComparator();
 			          
 			          updateListaPartite();
 			       }
@@ -192,6 +193,8 @@ public class GestoreScreen extends Finestra
 		
 		scroll.removeAll();
 		
+		listaUtenti.getPartite().sort(comparator);	
+		
 		for(Partita p:listaUtenti.getPartite()){
 			PartitaComponent p1 = new PartitaComponent(p);
 			scroll.add(p1);
@@ -207,7 +210,7 @@ public class GestoreScreen extends Finestra
 		updateListaPartite();
 	}
 
-
+	private Comparator<Partita> comparator;
 
 	private ScrollablePanelList scroll;
 	private ListaUtenti listaUtenti;

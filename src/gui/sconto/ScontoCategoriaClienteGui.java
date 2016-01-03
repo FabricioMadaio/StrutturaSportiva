@@ -21,7 +21,7 @@ public class ScontoCategoriaClienteGui extends Finestra
 	public ScontoCategoriaClienteGui(JFrame parent,ListaUtenti listaUtenti) {
 		super(parent, 400, 230);
 		questaFinestra = this;
-		this.scontiGlobali = listaUtenti.getScontiGlobali();
+		this.listaUtenti = listaUtenti;
 		operazioniSuFrame();
 	}
 
@@ -75,7 +75,7 @@ public class ScontoCategoriaClienteGui extends Finestra
 				String categoria = (String)BoxCategorie.getSelectedItem();
 				int percentuale = Integer.parseInt(percentualeField.getText());
 				ScontoPerCliente sconto = new ScontoPerCliente (categoria, percentuale);
-				scontiGlobali.add(sconto);
+				listaUtenti.addSconto(sconto);
 
 				questaFinestra.closeFrame();
 
@@ -90,6 +90,6 @@ public class ScontoCategoriaClienteGui extends Finestra
 	private JTextField percentualeField;
 	private Finestra questaFinestra;
 	private String[] categoria = {"Studente","Pensionato","Bambino"};
-	private ArrayList<Sconto> scontiGlobali;
+	private ListaUtenti listaUtenti;
 
 }

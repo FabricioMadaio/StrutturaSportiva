@@ -25,7 +25,7 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 	public ScontoGiornoDellaSettimanaGui(JFrame parent,ListaUtenti listaUtenti) {
 		super(parent, 400, 230);
 		questaFinestra = this;
-		this.scontiGlobali = listaUtenti.getScontiGlobali();
+		this.listaUtenti = listaUtenti;
 		operazioniSuFrame();
 	}
 
@@ -79,7 +79,7 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 				String gionoSettimana = (String)BoxGiorni.getSelectedItem();
 				int percentuale = Integer.parseInt(percentualeField.getText());
 				ScontoGiornoDellaSettimana sconto = new ScontoGiornoDellaSettimana(gionoSettimana, percentuale);
-				scontiGlobali.add(sconto);
+				listaUtenti.addSconto(sconto);
 				questaFinestra.closeFrame();
 
 			}
@@ -94,5 +94,5 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 	private Finestra questaFinestra;
 	
 	private String[] giorniDellaSettimana = {"Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato","Domenica"};
-	private ArrayList<Sconto> scontiGlobali;
+	private ListaUtenti listaUtenti;
 }

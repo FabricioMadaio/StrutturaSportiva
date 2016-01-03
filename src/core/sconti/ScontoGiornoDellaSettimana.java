@@ -23,18 +23,19 @@ public class ScontoGiornoDellaSettimana implements Sconto,Serializable
 	@Override
 	public int getPercentualeSconto(Partita p, Cliente c) 
 	{
-		if(dammiGiornoDellaSettima(p).equalsIgnoreCase(giornoDellaSettima))
-		{
-			return percentuale;
-		}
-		return 0;
+		
+		return percentuale;
+
 	}
 
 
 	@Override
 	public boolean verificaApplicabilita(Partita p) 
 	{
-		return true;
+		if(dammiGiornoDellaSettima(p).equalsIgnoreCase(giornoDellaSettima))
+			return true;
+		
+		return false;
 	}
 	/**
 	 * Il metodo attraverso un case switch trova il giorno della settimana della partita
@@ -65,7 +66,7 @@ public class ScontoGiornoDellaSettimana implements Sconto,Serializable
 	
 	@Override
 	public String toString() {
-		return "Sconto per tutti i " + giornoDellaSettima + " - " + percentuale
+		return "Sconto per ogni " + giornoDellaSettima + " - " + percentuale
 				+ "%";
 	}
 
