@@ -26,13 +26,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ScontoScreen extends Finestra{
+	
 	private JButton btnGiornoSettimana;
-
-	public ScontoScreen(JFrame parent, ListaUtenti listaUtenti) {
+	
+	private Finestra questoFrame;
+	private ListaUtenti listaUtenti;
+	private ScrollablePanelList scrollListPartita;
+	private ScrollablePanelList scrollListGlobal;
+	
+	public ScontoScreen(JFrame parent, ListaUtenti lu) {
 
 		super(parent, 800, 600);
 		setTitle("Sconti");
-		Finestra questoFrame = this;
+		questoFrame = this;
+		listaUtenti = lu;
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] {784};
@@ -49,14 +56,14 @@ public class ScontoScreen extends Finestra{
 		gbc_tabbedPane.gridy = 0;
 		getContentPane().add(tabbedPane, gbc_tabbedPane);
 
-		ScrollablePanelList scrollListGlobal = new ScrollablePanelList();
+		scrollListGlobal = new ScrollablePanelList();
 		JPanel panelScontiGlobali = new JPanel();
 		tabbedPane.addTab("Sconti Globali", null, panelScontiGlobali, null);
 		panelScontiGlobali.setBorder(new EmptyBorder(10, 10, 10, 10));
 		panelScontiGlobali.setLayout(new BorderLayout(0, 0));
 		panelScontiGlobali.add(scrollListGlobal);
 
-		ScrollablePanelList scrollListPartita = new ScrollablePanelList();
+		scrollListPartita = new ScrollablePanelList();
 		JPanel panelScontiPerPartita = new JPanel();
 		panelScontiPerPartita.setBorder(new EmptyBorder(10, 10, 10, 10));
 		tabbedPane.addTab("Sconti per partita", null, panelScontiPerPartita, null);
