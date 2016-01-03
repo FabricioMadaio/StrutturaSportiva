@@ -42,6 +42,13 @@ public class ScrollablePanelList extends JPanel{
 	}
 	
 	@Override
+	public void removeAll() {
+		while(mainList.getComponentCount() > 1){
+			mainList.remove(0);
+		}
+	}
+
+	@Override
 	public Component add(Component comp) {
 		if(comp instanceof JPanel){
 			this.addPanel((JPanel)comp);

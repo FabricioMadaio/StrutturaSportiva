@@ -17,6 +17,7 @@ import core.elementi.Partita;
 import gui.graphics.Finestra;
 import gui.partita.PartitaPrenotabileComponent;
 import gui.graphics.ScrollablePanelList;
+import gui.graphics.WeekPicker;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -80,7 +81,7 @@ public class ScreenClient extends Finestra {
 
 			}
 		});
-		settimana = new JTextField(12);
+		settimana = new WeekPicker();
 		stadio = new JTextField(10);
 
 		cmbOrdine = new JComboBox();
@@ -107,7 +108,7 @@ public class ScreenClient extends Finestra {
 	private JButton btnCarrello;
 	@SuppressWarnings("rawtypes")
 	private JComboBox cmbOrdine;
-	private JTextField settimana;
+	private WeekPicker settimana;
 	private JTextField stadio;
 	private JButton btnEsegui;
 }
