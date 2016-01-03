@@ -1,6 +1,7 @@
 package gui.gestore;
 
 import core.ListaUtenti;
+import gui.incassi.*;
 import core.elementi.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -50,6 +51,15 @@ public class GestoreScreen extends Finestra
 	public JButton creaBottoneIncassi()
 	{
 		JButton btn = new JButton("Incassi");
+		btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				Incassi incassi = new Incassi(questoFrame, listaUtenti.getStadi());
+				
+			}
+		});
 
 		return btn;
 	}

@@ -111,6 +111,12 @@ public class Partita
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public String toString()
+	{
+		return this.getGame() + "   " +this.getData().getTime().toString();
+	}
 
 
 	//sconti che si applicano alla singola partita

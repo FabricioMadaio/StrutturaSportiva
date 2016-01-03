@@ -1,5 +1,6 @@
 package gui.sconto;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -20,37 +21,33 @@ public class Tester {
 	public static void main(String[] args) {
 
 
-		//ScontoFasciaOrarariaGui sc = new ScontoFasciaOrarariaGui(null);
-		//ScontoCategoriaClienteGui sc2 = new ScontoCategoriaClienteGui(null);
-		//ScontoGiornoDellaSettimanaGui sc3 = new ScontoGiornoDellaSettimanaGui(null);
 
-		
 		ListaUtenti ls = new ListaUtenti("utenti");
-		
+
 		Sconto s1 = new ScontoGiornoDellaSettimana("Mercoledì", 20);
 		Sconto s2 = new ScontoPerCliente("Studente", 20);
 		Sconto s3 = new ScontoFasciaOraria(12.30,13.00, 20);
-		
+
 		ls.addSconto(s1);
 		ls.addSconto(s2);
 		ls.addSconto(s3);
-		
+
 		for(int i=0;i<4;i++){
-			
+
 			GregorianCalendar g = new GregorianCalendar();
 			g.set(Calendar.MINUTE, 27+i);
-			Partita p = new Partita(g, "SquadraA", "SquadraB"+i,"idStadio", i);
-			
+			Partita p = new Partita(g, "SquadraA", "SquadraB"+i,"idStadio", i+10);
+
 			for(int j=0;j<i;j++)
 				p.aggiungiSconto(new ScontoPerPartita(i));
-			
+
 			ls.addPartita(p);
 			p.aggiungiSconti(ls.getScontiGlobali());
 		}
-		
+
 		ScontoScreen ss = new ScontoScreen((JFrame)null,ls);
 		ss.setVisible(true);
-		
-	}
-	
+
+	} 
+
 }
