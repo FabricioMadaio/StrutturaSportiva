@@ -1,12 +1,18 @@
 package core.sconti;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import core.elementi.Partita;
 import core.utente.Cliente;
 
-public class ScontoGiornoDellaSettimana implements Sconto 
+public class ScontoGiornoDellaSettimana implements Sconto,Serializable  
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8L;
+	
 	public ScontoGiornoDellaSettimana(String giornoDellaSettiman,int percentuale) 
 	{
 		this.giornoDellaSettima = giornoDellaSettiman;
@@ -51,7 +57,7 @@ public class ScontoGiornoDellaSettimana implements Sconto
 		case 5: giornoSettimana = "Giovedì"; break;
 		case 6: giornoSettimana = "Venerdì"; break;
 		case 7: giornoSettimana = "Sabato"; break;
-		default:throw new GiornoDellaSettimaNonSpecifcatoException();		
+		default:throw new GiornoDellaSettimaNonSpecificatoException();		
 		}
 		return giornoSettimana;
 	}

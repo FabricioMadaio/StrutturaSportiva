@@ -22,7 +22,7 @@ import core.elementi.Stadio;
  */
 public class ListaUtenti implements Serializable{
 	
-	private static final long serialVersionUID = 7L;
+	private static final long serialVersionUID = 11L;
 	
 	private ArrayList<Gestore> gestori;
 	private ArrayList<Cliente> clienti;
@@ -59,6 +59,7 @@ public class ListaUtenti implements Serializable{
 			clienti = users.getClienti();
 			partite = users.getPartite();
 			stadi = users.getStadi();
+			scontiGlobali = users.getScontiGlobali();
 			
 			ois.close();
 		} catch (IOException | ClassNotFoundException e) {
@@ -170,6 +171,10 @@ public class ListaUtenti implements Serializable{
 	}
 	public void addSconto(Sconto s)
 	{
+		//aggiungo lo sconto anche a tutte le partite
+		for(Partita p:partite)
+			p.aggiungiSconto(s);
+		
 		scontiGlobali.add(s);
 	}
 	

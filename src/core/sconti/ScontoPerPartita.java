@@ -1,12 +1,18 @@
 package core.sconti;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import core.elementi.Partita;
 import core.utente.Cliente;
 
-public class ScontoPerPartita implements Sconto 
+public class ScontoPerPartita implements Sconto,Serializable  
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 10L;
+	
 	public  ScontoPerPartita(int percentuale)
 	{
 		this.percentuale = percentuale;

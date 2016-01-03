@@ -20,10 +20,9 @@ public class ScontoPerPartitaGui extends Finestra
 {
 
 
-	public ScontoPerPartitaGui(JFrame parent, ListaUtenti listaUtenti,ScrollablePanelList scroll) {
+	public ScontoPerPartitaGui(JFrame parent, ListaUtenti listaUtenti) {
 		super(parent,550, 260);
 		questaFinestra = this;
-		this.scroll = scroll;
 		this.partite = listaUtenti.getPartite();
 		operazioniSuFrame();
 	}
@@ -87,20 +86,7 @@ public class ScontoPerPartitaGui extends Finestra
 				ScontoPerPartita sconto = new ScontoPerPartita(percentuale);
 				p.aggiungiSconto(sconto);
 				
-			
-				for(Partita p1 :partite){
-					scroll.add(new PartitaTitleComponent(p));
-					
-					for(Sconto s:p1.getSconti()){
-						//aggiungo solo quelli specifici della partita?
-						//if(s instanceof ScontoPerPartita)
-						scroll.add(new ScontoComponent(s));
-					}
-				}
-			
-				scroll.revalidate();
 				questaFinestra.closeFrame();
-
 			}
 		});
 		panel.add(AggiungiScontoBtn);
@@ -111,7 +97,7 @@ public class ScontoPerPartitaGui extends Finestra
 	private JComboBox<Partita> BoxPartita;
 	private JTextField percentualeField;
 	private Finestra questaFinestra;
+	
 	private ArrayList<Partita> partite;
-	private ScrollablePanelList scroll;
 
 }

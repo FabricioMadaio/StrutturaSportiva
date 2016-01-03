@@ -36,7 +36,6 @@ public class GestoreScreen extends Finestra
 		this.questoFrame = this;
 		this.listaUtenti = listaUtenti;
 		operazioniSuFrame();
-		addWindowListener();
 	}
 
 	public void operazioniSuFrame()
@@ -189,58 +188,6 @@ public class GestoreScreen extends Finestra
 		return scroll;
 	}
 	
-	public void addWindowListener(){
-		
-		this.addWindowListener(new WindowListener(){
-
-			@Override
-			public void windowOpened(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowClosing(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowClosed(WindowEvent e) {
-				// TODO Auto-generated method stub
-				questoFrame.closeFrame();
-			}
-
-			@Override
-			public void windowIconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowDeiconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowActivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-				//aggiorna la lista se torniamo da una finestra diversa
-				if(e.getOppositeWindow()!=null)
-				updateListaPartite();
-			}
-
-			@Override
-			public void windowDeactivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-	}
-	
 	public void updateListaPartite(){
 		
 		scroll.removeAll();
@@ -252,6 +199,15 @@ public class GestoreScreen extends Finestra
 		
 		validate();
 	}
+
+	
+	
+	@Override
+	public void OnReturnFromChild() {
+		updateListaPartite();
+	}
+
+
 
 	private ScrollablePanelList scroll;
 	private ListaUtenti listaUtenti;

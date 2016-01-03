@@ -1,6 +1,7 @@
 package gui.sconto;
 
 import gui.graphics.Finestra;
+import gui.graphics.OrarioComponent;
 import gui.graphics.ScrollablePanelList;
 
 import javax.swing.*;
@@ -18,12 +19,11 @@ public class ScontoFasciaOrarariaGui extends Finestra
 {
 	private JTextField textField;
 
-	public ScontoFasciaOrarariaGui(JFrame parent,ListaUtenti listaUtenti,ScrollablePanelList scroll) 
+	public ScontoFasciaOrarariaGui(JFrame parent,ListaUtenti listaUtenti) 
 	{
 		super(parent, 400, 300);
-		this.scontiGlobali = listaUtenti.getScontiGlobali();
-		this.scroll = scroll;
 		questaFinestra = this;
+		this.listaUtenti = listaUtenti;
 		operazioniSuFrame();
 	}
 
@@ -46,9 +46,9 @@ public class ScontoFasciaOrarariaGui extends Finestra
 	{
 		JPanel panel = new JPanel();
 
-		oraFineField = new JTextField(10);
+		oraFineField = new OrarioComponent();
 		oraFineField.setBounds(197, 68, 180, 30);
-		oraInizioField = new JTextField(10);
+		oraInizioField = new OrarioComponent();
 		oraInizioField.setBounds(197, 11, 180, 30);
 		percentualeFiel = new JTextField(10);
 		percentualeFiel.setBounds(197, 127, 180, 30);
@@ -82,14 +82,12 @@ public class ScontoFasciaOrarariaGui extends Finestra
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				double oraInizio = Double.parseDouble(oraInizioField.getText());
-				double oraFine = Double.parseDouble(oraFineField.getText());
+				double oraInizio = oraInizioField.getOrario();
+				double oraFine = oraFineField.getOrario();
 				int percentuale = Integer.parseInt(percentualeFiel.getText());
 				ScontoFasciaOraria sconto = new ScontoFasciaOraria(oraInizio, oraFine, percentuale);
-				scontiGlobali.add(sconto);
-				scroll.add(new ScontoComponent(sconto));
-
-				scroll.revalidate();
+				listaUtenti.addSconto(sconto);
+				
 				questaFinestra.closeFrame();
 			}
 		});
@@ -99,10 +97,10 @@ public class ScontoFasciaOrarariaGui extends Finestra
 	}
 
 
-	private JTextField oraInizioField;
-	private JTextField oraFineField;
+	private OrarioComponent oraInizioField;
+	private OrarioComponent oraFineField;
 	private JTextField percentualeFiel;
 	private Finestra questaFinestra;
-	private ArrayList<Sconto> scontiGlobali;
-	private ScrollablePanelList scroll;
+
+	private ListaUtenti listaUtenti;
 }
