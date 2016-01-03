@@ -139,7 +139,7 @@ public class GestoreScreen extends Finestra
 					 String item = (String)e.getItem();
 
 			          if(item=="Ordine per Capienza")
-			        	  listaUtenti.getPartite().sort(new OrdineCronologicoComparator());
+			        	  listaUtenti.getPartite().sort(new OrdineCapienzaStadioComparator());
 			          if(item=="Ordine Cronologico")
 			        	  listaUtenti.getPartite().sort(new OrdineCronologicoComparator());
 			          

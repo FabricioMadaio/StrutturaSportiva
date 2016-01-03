@@ -1,6 +1,9 @@
 package core.utente;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import core.elementi.Biglietto;
 
 
 /**
@@ -30,10 +33,13 @@ public class Cliente extends Utente implements Serializable{
 		return categoria;
 	}
 
+	public void aggiungiBiglietto(Biglietto b){
+		biglietti.add(b);
+	}
 
 	private String categoria;
 	private boolean scontoAttivo;
-	
+	private ArrayList<Biglietto> biglietti;
 	
 	
 }

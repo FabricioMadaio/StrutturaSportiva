@@ -36,7 +36,7 @@ public class Tester {
 
 			GregorianCalendar g = new GregorianCalendar();
 			g.set(Calendar.MINUTE, 27+i);
-			Partita p = new Partita(g, "SquadraA", "SquadraB"+i,"idStadio", i+10);
+			Partita p = new Partita(g, "SquadraA", "SquadraB"+i,ls.getStadi().get(0));
 
 			for(int j=0;j<i;j++)
 				p.aggiungiSconto(new ScontoPerPartita(i));

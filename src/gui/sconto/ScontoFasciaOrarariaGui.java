@@ -89,6 +89,7 @@ public class ScontoFasciaOrarariaGui extends Finestra
 				scontiGlobali.add(sconto);
 				scroll.add(new ScontoComponent(sconto));
 
+				scroll.revalidate();
 				questaFinestra.closeFrame();
 			}
 		});

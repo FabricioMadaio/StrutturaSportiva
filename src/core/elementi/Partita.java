@@ -1,5 +1,6 @@
 package core.elementi;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -8,19 +9,24 @@ import core.sconti.Sconto;
 import core.utente.Cliente;
 
 
-public class Partita
+public class Partita implements Serializable
 {
 	
 	
-	public Partita(GregorianCalendar data, String squadraA , String squadraB, String idStadio,double prezzoBase)
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6L;
+	
+	public Partita(GregorianCalendar data, String squadraA , String squadraB, Stadio stadio)
 	{
 		this.data = data;
 		this.squadraA = squadraA;
 		this.squadraB = squadraB;
-		this.idStadio = idStadio;
-		this.prezzoBase = prezzoBase;
+		this.stadio = stadio;
 		this.sconti= new ArrayList<>();
 		
+		copiaPosti(stadio.getPosti());
 	}
 
 
@@ -45,9 +51,10 @@ public class Partita
 		return squadraB;
 	}
 
-	public String getIdStadio() 
+	
+	public Stadio getStadio() 
 	{
-		return idStadio;
+		return stadio;
 	}
 	
 	public float getOra()
@@ -75,7 +82,7 @@ public class Partita
 	
 	public double generaPrezzoBiglietto(Cliente c)
 	{
-		double prezzo = prezzoBase;
+		double prezzo = stadio.getPrezzoBase();
 		
 		for(int i = 0 ; i < sconti.size() ; i++)
 		{
@@ -125,7 +132,6 @@ public class Partita
 	private GregorianCalendar data;
 	private String squadraA;
 	private String squadraB;
-	private String idStadio;
-	private double prezzoBase;
+	private Stadio stadio;
 	
 }

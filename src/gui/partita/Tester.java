@@ -13,12 +13,14 @@ public class Tester extends JFrame
 	public static void main(String[] args) 
 	{
 		GregorianCalendar data1 = new GregorianCalendar(2015, 2+1, 12);
-		Partita p1 = new Partita(data1, "squadraA", "squadraB", "idStadio",0);
+		
 		
 		Stadio st1 = new Stadio("stadio1",2);		
 		Posto posto1 = new Posto(100,100,"p1");
 		st1.addPosto(posto1);
 		//trasferisco i posti dello stadio nella partita
+		
+		Partita p1 = new Partita(data1, "squadraA", "squadraB", st1);
 		p1.copiaPosti(st1.getPosti());
 		
 		

@@ -9,8 +9,8 @@ public class OrdineIdStadioComparator  implements Comparator<Partita>
 	@Override
 	public int compare(Partita p1, Partita p2) 
 	{
-		if(p1.getIdStadio().compareTo(p2.getIdStadio()) > 0) return 1;
-		if(p1.getIdStadio().compareTo(p2.getIdStadio()) < 0) return -1;
+		if(p1.getStadio().getNome().compareTo(p2.getStadio().getNome()) > 0) return 1;
+		if(p1.getStadio().getNome().compareTo(p2.getStadio().getNome()) < 0) return -1;
 		return 0;
 	}
 

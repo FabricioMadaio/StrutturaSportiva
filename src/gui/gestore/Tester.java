@@ -31,7 +31,7 @@ public class Tester {
 		StadioGestore s = new StadioGestore((JFrame)null,ls);
 		*/
 		
-		ls.addPartita(new Partita(new GregorianCalendar(),"a","b","stadio",10));
+		ls.addPartita(new Partita(new GregorianCalendar(),"a","b",ls.getStadi().get(0)));
 		
 		GestoreScreen s = new GestoreScreen(null,ls);
 		//AggiungiPartitaScreen s = new AggiungiPartitaScreen(null,ls);

@@ -98,6 +98,7 @@ public class ScontoPerPartitaGui extends Finestra
 					}
 				}
 			
+				scroll.revalidate();
 				questaFinestra.closeFrame();
 
 			}

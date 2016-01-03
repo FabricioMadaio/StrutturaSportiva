@@ -22,7 +22,7 @@ import core.elementi.Stadio;
  */
 public class ListaUtenti implements Serializable{
 	
-	private static final long serialVersionUID = 6L;
+	private static final long serialVersionUID = 7L;
 	
 	private ArrayList<Gestore> gestori;
 	private ArrayList<Cliente> clienti;
@@ -57,6 +57,7 @@ public class ListaUtenti implements Serializable{
 			ListaUtenti users = (ListaUtenti)ois.readObject();
 			gestori = users.getGestori();
 			clienti = users.getClienti();
+			partite = users.getPartite();
 			stadi = users.getStadi();
 			
 			ois.close();
