@@ -91,8 +91,15 @@ public class Finestra extends JFrame{
 		if(parent!=null){
 			parent.setEnabled(true);
 			parent.toFront();
+			if(parent instanceof Finestra)
+				((Finestra)parent).OnReturnFromChild();
 		}
 		this.dispose();
 	}
 	
+	/**
+	 * listener al ritorno
+	 */
+	public void OnReturnFromChild(){
+	}
 }

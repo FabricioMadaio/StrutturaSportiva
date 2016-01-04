@@ -35,8 +35,8 @@ public class GestoreScreen extends Finestra
 		super(parent,800,600);
 		this.questoFrame = this;
 		this.listaUtenti = listaUtenti;
+		comparator = new OrdineCronologicoComparator();
 		operazioniSuFrame();
-		addWindowListener();
 	}
 
 	public void operazioniSuFrame()
@@ -136,12 +136,12 @@ public class GestoreScreen extends Finestra
 				// TODO Auto-generated method stub
 				 if (e.getStateChange() == ItemEvent.SELECTED) {
 			         
-					 String item = (String)e.getItem();
+					 int index = comboBox.getSelectedIndex();
 
-			          if(item=="Ordine per Capienza")
-			        	  listaUtenti.getPartite().sort(new OrdineCapienzaStadioComparator());
-			          if(item=="Ordine Cronologico")
-			        	  listaUtenti.getPartite().sort(new OrdineCronologicoComparator());
+			          if(index==0)
+			        	  comparator = new OrdineCapienzaStadioComparator();
+			          if(index==1)
+			        	  comparator = new OrdineCronologicoComparator();
 			          
 			          updateListaPartite();
 			       }
@@ -189,61 +189,11 @@ public class GestoreScreen extends Finestra
 		return scroll;
 	}
 	
-	public void addWindowListener(){
-		
-		this.addWindowListener(new WindowListener(){
-
-			@Override
-			public void windowOpened(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowClosing(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowClosed(WindowEvent e) {
-				// TODO Auto-generated method stub
-				questoFrame.closeFrame();
-			}
-
-			@Override
-			public void windowIconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowDeiconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowActivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-				//aggiorna la lista se torniamo da una finestra diversa
-				if(e.getOppositeWindow()!=null)
-				updateListaPartite();
-			}
-
-			@Override
-			public void windowDeactivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-	}
-	
 	public void updateListaPartite(){
 		
 		scroll.removeAll();
+		
+		listaUtenti.getPartite().sort(comparator);	
 		
 		for(Partita p:listaUtenti.getPartite()){
 			PartitaComponent p1 = new PartitaComponent(p);
@@ -252,6 +202,15 @@ public class GestoreScreen extends Finestra
 		
 		validate();
 	}
+
+	
+	
+	@Override
+	public void OnReturnFromChild() {
+		updateListaPartite();
+	}
+
+	private Comparator<Partita> comparator;
 
 	private ScrollablePanelList scroll;
 	private ListaUtenti listaUtenti;

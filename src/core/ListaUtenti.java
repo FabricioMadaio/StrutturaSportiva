@@ -16,13 +16,14 @@ import core.utente.Utente;
 import core.ParametroIllegaleException;
 import core.elementi.Partita;
 import core.elementi.Stadio;
+import core.filtri.FiltroPartita;
 
 /**
  * @author Fabricio Nicolas Madaio
  */
 public class ListaUtenti implements Serializable{
 	
-	private static final long serialVersionUID = 7L;
+	private static final long serialVersionUID = 11L;
 	
 	private ArrayList<Gestore> gestori;
 	private ArrayList<Cliente> clienti;
@@ -59,6 +60,7 @@ public class ListaUtenti implements Serializable{
 			clienti = users.getClienti();
 			partite = users.getPartite();
 			stadi = users.getStadi();
+			scontiGlobali = users.getScontiGlobali();
 			
 			ois.close();
 		} catch (IOException | ClassNotFoundException e) {
@@ -99,6 +101,21 @@ public class ListaUtenti implements Serializable{
 	 */
 	public ArrayList<Partita> getPartite() {
 		return partite;
+	}
+	
+	/**
+	 * filtra partite
+	 * @return lista di partite filtrate
+	 */
+	static public ArrayList<Partita> filtraPartite(FiltroPartita filter,ArrayList<Partita> pf) {
+		
+		ArrayList<Partita> partiteFiltrate = new ArrayList<Partita>();
+		
+		for(Partita p:pf){
+			if(filter.check(p))
+			partiteFiltrate.add(p);
+		}
+		return partiteFiltrate;
 	}
 	
 	
@@ -170,6 +187,10 @@ public class ListaUtenti implements Serializable{
 	}
 	public void addSconto(Sconto s)
 	{
+		//aggiungo lo sconto anche a tutte le partite
+		for(Partita p:partite)
+			p.aggiungiSconto(s);
+		
 		scontiGlobali.add(s);
 	}
 	
