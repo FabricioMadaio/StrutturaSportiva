@@ -32,6 +32,9 @@ import javax.swing.border.BevelBorder;
 public class WeekPicker extends JComponent{
 
 	public WeekPicker(){
+		
+		thisPicker = this;
+		
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel mainPanel = new JPanel();
@@ -69,6 +72,7 @@ public class WeekPicker extends JComponent{
 				initialDate.add(Calendar.DAY_OF_MONTH, 7);
 				finalDate.add(Calendar.DAY_OF_MONTH, 7);
 				updateFields();
+				itemListener.actionPerformed(new ActionEvent(thisPicker, ActionEvent.ACTION_PERFORMED, null));
 			}
 		});
 		
@@ -78,6 +82,7 @@ public class WeekPicker extends JComponent{
 				initialDate.add(Calendar.DAY_OF_MONTH, -7);
 				finalDate.add(Calendar.DAY_OF_MONTH, -7);
 				updateFields();
+				itemListener.actionPerformed(new ActionEvent(thisPicker, ActionEvent.ACTION_PERFORMED, null));
 			}
 		});
 		
@@ -89,6 +94,10 @@ public class WeekPicker extends JComponent{
 		if(amount == 1) amount = 7;
 		//sottraggo 2 perche la settimana parte dal lunedi che ha valore 2
 		initialDate.add(Calendar.DAY_OF_MONTH, -(amount-2));
+		
+		//setto la mezzanotte come riferimento
+		initialDate.set(Calendar.HOUR_OF_DAY, 0);
+		initialDate.set(Calendar.MINUTE, 0);
 		
 		//calcolo il giorno di fine settimana come data iniziale + 6 giorni
 		finalDate = (GregorianCalendar) initialDate.clone();
@@ -129,11 +138,27 @@ public class WeekPicker extends JComponent{
 		setEnabled(this.getComponent(0),enabled);
 		super.setEnabled(enabled);
 	}
+	
+	public GregorianCalendar getInitialDate(){
+		return initialDate;
+	}
+	
+	public GregorianCalendar getFinalDate(){
+		return finalDate;
+	}
+	
+	public void addActionListener(ActionListener l){
+		itemListener = l;
+	}
 
 
+	private ActionListener itemListener;
+	
 	private JLabel lblYear;
 	private JLabel lblWeek;
 	
 	private GregorianCalendar initialDate;
 	private GregorianCalendar finalDate;
+	
+	private WeekPicker thisPicker;
 }

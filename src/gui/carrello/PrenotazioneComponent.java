@@ -1,38 +1,64 @@
 package gui.carrello;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
-public class PrenotazioneComponent extends JPanel 
+import core.elementi.Biglietto;
+import gui.partita.ScreenPartita;
+
+public class PrenotazioneComponent extends BigliettoComponent
 {
-	public PrenotazioneComponent(String prenotazione)
+	public PrenotazioneComponent(Biglietto prenotazione,Carrello carrello)
 	{
 		//setLayout(new GridLayout(1, 2));
+		super(prenotazione);
+		this.carrello = carrello;
 		this.prenotazione = prenotazione;
-		JLabel prenotazioneLabel = new JLabel(this.prenotazione);
-		setBorder(new EtchedBorder());
-		add(prenotazioneLabel);
-		add(creaBottoneRimnuovi());
+		this.appendComponent(creaBottoneAcquista());
+		this.appendComponent(creaBottoneRimuovi());
 	}
 	
-	public JButton creaBottoneRimnuovi()
+	public JButton creaBottoneRimuovi()
 	{
 		JButton rimuoviBtn = new JButton("X");
 		rimuoviBtn.setBackground(Color.RED);
 		
+		rimuoviBtn.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				carrello.getCliente().annullaBiglietto(prenotazione);
+				
+				carrello.aggiornaListe();
+			}
+			
+		});
+		
 		return rimuoviBtn;
 	}
 	
-	public JButton creaBottonePrenota()
+	public JButton creaBottoneAcquista()
 	{
-		JButton prenotaBtn = new JButton("Prenota");
-		
+		JButton prenotaBtn = new JButton("Acquista");
+		prenotaBtn.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ScreenPartita sp = new ScreenPartita(carrello,prenotazione.getPartita(),carrello.getCliente());
+			}
+			
+		});
 		return prenotaBtn;
 	}
 	
-	private String prenotazione;
+	private Carrello carrello;
+	private Biglietto prenotazione;
 }

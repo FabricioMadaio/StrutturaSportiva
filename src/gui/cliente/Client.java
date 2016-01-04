@@ -10,7 +10,7 @@ public class Client {
 		
 		ListaUtenti ls = new ListaUtenti("utenti");
 		
-		JFrame frame = new ScreenClient(null,null,ls);
+		JFrame frame = new ScreenClient(null,ls.getClienti().get(0),ls);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		

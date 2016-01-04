@@ -130,9 +130,9 @@ public class ScreenPartita extends Finestra
 					biglietto.setAcquisto(true);
 					//TO DO
 					//devi aggiungere il prezzo del biglietto agli incassi dello stadio
-					stadioCanvas.getSelezione().getPosto().setStato(Stato.VENDUTO);
 					stadioCanvas.getSelezione().setStato(Stato.VENDUTO);
 					cliente.aggiungiBiglietto(biglietto);
+					stadioCanvas.repaint();
 				}
 			}
 		});
@@ -147,6 +147,8 @@ public class ScreenPartita extends Finestra
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				biglietto.setPosto(stadioCanvas.getSelezione().getPosto());
+				
 				if(!controllaStatoPostoDisponobile() || biglietto.isAcquisto() || biglietto.isPrenotazione())
 				{
 					try {
@@ -160,9 +162,9 @@ public class ScreenPartita extends Finestra
 				{
 					biglietto.setPrenotazione(true);
 					biglietto.setAcquisto(true);
-					stadioCanvas.getSelezione().getPosto().setStato(Stato.VENDUTO);
 					stadioCanvas.getSelezione().setStato(Stato.VENDUTO);
 					cliente.aggiungiBiglietto(biglietto);
+					stadioCanvas.repaint();
 				}
 			}
 		});

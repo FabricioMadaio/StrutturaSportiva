@@ -10,10 +10,11 @@ import javax.swing.JPanel;
 
 import core.elementi.Partita;
 import core.utente.Cliente;
+import gui.cliente.ScreenClient;
 
 public class PartitaPrenotabileComponent extends PartitaComponent {
 
-	public PartitaPrenotabileComponent(Partita p,Cliente c){
+	public PartitaPrenotabileComponent(Partita p,ScreenClient c){
 		super(p);
 		this.partita = p;
 		this.cliente = c;
@@ -24,12 +25,12 @@ public class PartitaPrenotabileComponent extends PartitaComponent {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ScreenPartita screenPartita = new ScreenPartita(null,partita,cliente);	
+				ScreenPartita screenPartita = new ScreenPartita(cliente,partita,cliente.getCliente());	
 			}
 		});
 	}
 
 	
-	private Cliente cliente;
+	private ScreenClient cliente;
 	private Partita partita;
 }

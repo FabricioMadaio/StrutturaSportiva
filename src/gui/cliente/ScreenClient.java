@@ -22,8 +22,10 @@ import core.comparator.OrdineIdStadioComparator;
 import core.comparator.OrdineLessicoGraficoComparatorNomeSquadre;
 import core.elementi.Partita;
 import core.elementi.Stadio;
+import core.filtri.FiltroPartitaPerSettimana;
 import core.filtri.FiltroPartitaSuStadio;
 import core.utente.Cliente;
+import gui.carrello.Carrello;
 import gui.graphics.Finestra;
 import gui.partita.PartitaPrenotabileComponent;
 import gui.graphics.ScrollablePanelList;
@@ -57,6 +59,8 @@ public class ScreenClient extends Finestra {
 		super(parent,800,600);
 		
 		this.listaUtenti = listaUtenti;
+		this.cliente = cliente;
+		this.questoFrame = this;
 		this.comparator = new OrdineCapienzaStadioComparator();
 		
 		this.setJMenuBar(createMenuWithButton());
@@ -157,6 +161,15 @@ public class ScreenClient extends Finestra {
 			
 		});
 		
+		settimana.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				updateScrollList();
+			}
+			
+		});
+		
 		//cambia ordinamento
 		comboBoxOrdine.addItemListener(new ItemListener(){
 
@@ -199,6 +212,7 @@ public class ScreenClient extends Finestra {
 		btnCarrello = new JButton("Carrello");
 		btnCarrello.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Carrello c = new Carrello(questoFrame, cliente);
 			}
 		});
 		
@@ -207,7 +221,7 @@ public class ScreenClient extends Finestra {
 		panel.setLayout(new BorderLayout());
 		panel.add(btnCarrello, BorderLayout.EAST);
 		
-		JLabel lblBenvenuto = new JLabel("Benvenuto Cliente!");
+		JLabel lblBenvenuto = new JLabel("Benvenuto " + cliente.getNome()+"!");
 		lblBenvenuto.setFont(new Font("Tahoma", Font.BOLD, 15));
 		panel.add(lblBenvenuto, BorderLayout.WEST);
 		return panel;
@@ -221,17 +235,22 @@ public class ScreenClient extends Finestra {
 		
 		ArrayList<Partita> partite = (ArrayList<Partita>) listaUtenti.getPartite().clone();
 		
-		if(chbxSettimana.isSelected())
-			partite = ListaUtenti.filtraPartite(new FiltroPartitaSuStadio((Stadio)comboBoxStadio.getSelectedItem()),partite);
-		
 		if(chbxStadio.isSelected())
 			partite = ListaUtenti.filtraPartite(new FiltroPartitaSuStadio((Stadio)comboBoxStadio.getSelectedItem()),partite);
 		
+		if(chbxSettimana.isSelected())
+			partite = ListaUtenti.filtraPartite(new FiltroPartitaPerSettimana(settimana.getInitialDate(),settimana.getFinalDate()),partite);
+	
 		
 		for(Partita p:partite)
-			listaPartite.add(new PartitaPrenotabileComponent(p,cliente));
+			listaPartite.add(new PartitaPrenotabileComponent(p,this));
 		
 		revalidate();
+		repaint();
+	}
+	
+	public Cliente getCliente(){
+		return cliente;
 	}
 
 	private JButton btnCarrello;
@@ -246,4 +265,6 @@ public class ScreenClient extends Finestra {
 	private Cliente cliente;
 	private ListaUtenti listaUtenti;
 	private ScrollablePanelList listaPartite;
+	
+	private Finestra questoFrame;
 }

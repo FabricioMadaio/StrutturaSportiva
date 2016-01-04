@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import core.elementi.Biglietto;
+import core.elementi.Posto;
 
 
 /**
@@ -26,7 +27,7 @@ public class Cliente extends Utente implements Serializable{
 		super(nome, cognome, username, password);
 		this.categoria = categoria;
 		scontoAttivo = true;
-		biglietti = new ArrayList<>();
+		biglietti = new ArrayList<Biglietto>();
 	}
 	
 	
@@ -49,6 +50,23 @@ public class Cliente extends Utente implements Serializable{
 		
 		biglietti.add(nb);
 	}
+
+	public ArrayList<Biglietto> getBiglietti() {
+		return biglietti;
+	}
+	
+	public void annullaBiglietto(Biglietto b){
+		
+		//setto il posto di nuovo come disponibile
+		for(Posto p:b.getPartita().getPosti()){
+			if(p.equals(b.getPosto()))
+				p.setStato(Posto.Stato.DISPONIBILE);
+		}
+		
+		biglietti.remove(b);
+	}
+
+
 
 	private String categoria;
 	private boolean scontoAttivo;
