@@ -30,8 +30,8 @@ public class ScreenPartita extends Finestra
 		operazioniSuFrame();
 		this.cliente = cliente;
 		stadioCanvas.setPosti(partita.getPosti());
+		//biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
 		biglietto = new Biglietto(partita);
-
 	}
 
 
@@ -128,6 +128,8 @@ public class ScreenPartita extends Finestra
 				else
 				{
 					biglietto.setAcquisto(true);
+					//TO DO
+					//devi aggiungere il prezzo del biglietto agli incassi dello stadio
 					stadioCanvas.getSelezione().getPosto().setStato(Stato.VENDUTO);
 					stadioCanvas.getSelezione().setStato(Stato.VENDUTO);
 					cliente.aggiungiBiglietto(biglietto);

@@ -1,7 +1,11 @@
 package core.elementi;
 
-public class Biglietto 
+import java.io.Serializable;
+
+public class Biglietto implements Serializable
 {
+	private static final long serialVersionUID = 11L;
+	
 	public Biglietto(Partita partita)
 	{
 		

@@ -23,7 +23,7 @@ import core.filtri.FiltroPartita;
  */
 public class ListaUtenti implements Serializable{
 	
-	private static final long serialVersionUID = 11L;
+	private static final long serialVersionUID = 12L;
 	
 	private ArrayList<Gestore> gestori;
 	private ArrayList<Cliente> clienti;
