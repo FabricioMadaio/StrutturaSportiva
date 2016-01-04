@@ -19,6 +19,7 @@ public class PartitaPrenotabileComponent extends PartitaComponent {
 		this.cliente = c;
 		
 		JButton prenotaBtn = new JButton("Prenota");
+		this.appendComponent(prenotaBtn);
 		prenotaBtn.addActionListener(new ActionListener() {
 			
 			@Override

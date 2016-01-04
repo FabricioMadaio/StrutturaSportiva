@@ -152,7 +152,9 @@ public class AggiungiPartitaScreen extends Finestra {
 					if(squadraA.getText().isEmpty() || squadraB.getText().isEmpty()){
 						JOptionPane.showMessageDialog(frame,"Riempire tutti i campi","Errore", JOptionPane.ERROR_MESSAGE);
 					}else{
-						listaUtenti.addPartita(new Partita(gData, squadraA.getText(), squadraB.getText(),s));
+						Partita p = new Partita(gData, squadraA.getText(), squadraB.getText(),s);
+						listaUtenti.addPartita(p);
+						
 						frame.closeFrame();	
 					}
 			}

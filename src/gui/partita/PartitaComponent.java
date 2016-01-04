@@ -35,7 +35,7 @@ public class PartitaComponent extends JPanel
 		lblMatch.setFont(new Font("Tahoma", Font.BOLD, 15));
 		panel.add(lblMatch);
 				
-		JLabel lblStadio = new JLabel(" "+p.getStadio().getNome()+" - capienza: " + p.getStadio().getCapienza());
+		JLabel lblStadio = new JLabel(" "+p.getStadio().getNome()+" - capienza: " + p.getPosti().size());
 		lblStadio.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		panel.add(lblStadio);
 		
