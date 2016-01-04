@@ -12,6 +12,7 @@ import core.ListaUtenti;
 import core.elementi.Partita;
 import core.elementi.Stadio;
 import gui.graphics.Finestra;
+import gui.graphics.OrarioComponent;
 import gui.graphics.WeekPicker;
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
@@ -85,18 +86,9 @@ public class AggiungiPartitaScreen extends Finestra {
 		JLabel orariolbl = new JLabel("Orario");
 		r1Panel.add(orariolbl);
 		
-		JPanel panelloOrario = new JPanel();
-		panelloOrario.setLayout(new BoxLayout(panelloOrario, BoxLayout.X_AXIS));
-		ore = new JSpinField(0,23);
-		panelloOrario.add(ore);
+		panelloOrario = new OrarioComponent();
 		r1Panel.add(panelloOrario);
-		
-		JLabel separatorelbl = new JLabel(" : ");
-		separatorelbl.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		panelloOrario.add(separatorelbl);
-		
-		minuti = new JSpinField(0,59);
-		panelloOrario.add(minuti);
+
 		
 		JLabel squadraAlbl = new JLabel("Squadra A");
 		r1Panel.add(squadraAlbl);
@@ -127,8 +119,9 @@ public class AggiungiPartitaScreen extends Finestra {
 		
 		GregorianCalendar dataDiOggi = new GregorianCalendar();
 		data.setDate(dataDiOggi.getTime());
-		ore.setValue(dataDiOggi.get(Calendar.HOUR_OF_DAY));
-		minuti.setValue(dataDiOggi.get(Calendar.MINUTE));
+		
+		panelloOrario.setOre(dataDiOggi.get(Calendar.HOUR_OF_DAY));
+		panelloOrario.setMinuti(dataDiOggi.get(Calendar.MINUTE));
 		
 		for(Stadio s: listaUtenti.getStadi()){
 			comboBoxStadio.addItem(s);
@@ -151,8 +144,8 @@ public class AggiungiPartitaScreen extends Finestra {
 				
 					GregorianCalendar gData = new GregorianCalendar();
 					gData.setTime(data.getDate());
-					gData.set(Calendar.HOUR_OF_DAY, 10);
-					gData.set(Calendar.MINUTE, 10);
+					gData.set(Calendar.HOUR_OF_DAY, panelloOrario.getOre());
+					gData.set(Calendar.MINUTE, panelloOrario.getMinuti());
 					
 					Stadio s = (Stadio)comboBoxStadio.getSelectedItem();
 					
@@ -171,8 +164,7 @@ public class AggiungiPartitaScreen extends Finestra {
 	private JDateChooser data;
 	private JTextField squadraA;
 	private JTextField squadraB;
-	private JSpinField ore;
-	private JSpinField minuti;
+	private OrarioComponent panelloOrario;
 	private JComboBox<Stadio> comboBoxStadio;
 	
 	private Finestra frame;

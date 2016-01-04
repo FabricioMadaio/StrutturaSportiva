@@ -13,17 +13,10 @@ import core.utente.Cliente;
 
 public class PartitaPrenotabileComponent extends PartitaComponent {
 
-	public PartitaPrenotabileComponent(Partita partita,Cliente c){
-		super(partita);
-		this.partita = partita;
-		add(creaBottonePrenota(),BorderLayout.CENTER);
+	public PartitaPrenotabileComponent(Partita p,Cliente c){
+		super(p);
+		this.partita = p;
 		this.cliente = c;
-	}
-
-	public JPanel creaBottonePrenota()
-	{
-		JPanel panel = new JPanel(new BorderLayout());
-		panel.setBackground(SystemColor.activeCaption);
 		
 		JButton prenotaBtn = new JButton("Prenota");
 		prenotaBtn.addActionListener(new ActionListener() {
@@ -33,10 +26,9 @@ public class PartitaPrenotabileComponent extends PartitaComponent {
 				ScreenPartita screenPartita = new ScreenPartita(null,partita,cliente);	
 			}
 		});
-		
-		panel.add(prenotaBtn,BorderLayout.EAST);
-		return panel;
 	}
+
+	
 	private Cliente cliente;
 	private Partita partita;
 }

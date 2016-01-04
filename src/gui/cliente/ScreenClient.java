@@ -1,6 +1,8 @@
 package gui.cliente;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -13,38 +15,176 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 
+import core.ListaUtenti;
+import core.comparator.OrdineCapienzaStadioComparator;
+import core.comparator.OrdineCronologicoComparator;
+import core.comparator.OrdineIdStadioComparator;
+import core.comparator.OrdineLessicoGraficoComparatorNomeSquadre;
 import core.elementi.Partita;
 import core.elementi.Stadio;
+import core.filtri.FiltroPartitaSuStadio;
+import core.utente.Cliente;
 import gui.graphics.Finestra;
 import gui.partita.PartitaPrenotabileComponent;
 import gui.graphics.ScrollablePanelList;
 import gui.graphics.WeekPicker;
 
 import java.awt.event.ActionListener;
-import java.util.GregorianCalendar;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.border.EmptyBorder;
 import java.awt.Font;
+import javax.swing.border.EtchedBorder;
+import java.awt.GridLayout;
+import javax.swing.JToggleButton;
+import javax.swing.ListCellRenderer;
+import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
+import javax.swing.JCheckBox;
+import javax.swing.border.TitledBorder;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.border.CompoundBorder;
 
-@SuppressWarnings("serial")
 public class ScreenClient extends Finestra {
 
-	public ScreenClient(JFrame parent){
+	public ScreenClient(JFrame parent,Cliente cliente,ListaUtenti listaUtenti){
 		super(parent,800,600);
+		
+		this.listaUtenti = listaUtenti;
+		this.comparator = new OrdineCapienzaStadioComparator();
+		
 		this.setJMenuBar(createMenuWithButton());
-		getContentPane().add(createActionPanel(),BorderLayout.NORTH);
+		listaPartite = new ScrollablePanelList();
 		
-		ScrollablePanelList sl = new ScrollablePanelList();
+		getContentPane().add(listaPartite,BorderLayout.CENTER);
 		
-		/*GregorianCalendar data = new GregorianCalendar(2015, 11, 29,23,31);
-		Stadio st1 = new Stadio("stadio1",2);
-		sl.add(new PartitaPrenotabileComponent(new Partita(data,"a","b",st1)));
-		*/
-		getContentPane().add(sl,BorderLayout.CENTER);
+		JPanel panel = new JPanel();
+		getContentPane().add(panel, BorderLayout.NORTH);
+		panel.setLayout(new BorderLayout(0, 0));
+																				
+		JPanel panel_3 = new JPanel();
+		panel.add(panel_3, BorderLayout.NORTH);
+		panel_3.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_1 = new JPanel();
+		panel_3.add(panel_1, BorderLayout.CENTER);
+		panel_1.setBorder(new CompoundBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Filtro", TitledBorder.LEADING, TitledBorder.TOP, null, null), new EmptyBorder(0, 0, 0, 0)));
+		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		chbxSettimana = new JCheckBox("Settimana");
+		panel_1.add(chbxSettimana);
+		settimana = new WeekPicker();
+		settimana.setPreferredSize(new Dimension(220,32));
+		panel_1.add(settimana);
+		
+		chbxStadio = new JCheckBox("Stadio");
+		panel_1.add(chbxStadio);
+		
+		comboBoxStadio = new JComboBox<Stadio>();
+		comboBoxStadio.setPreferredSize(new Dimension(140,28));
+		comboBoxStadio.setEnabled(false);
+		panel_1.add(comboBoxStadio);
+		
+		JPanel panel_2 = new JPanel();
+		panel_3.add(panel_2, BorderLayout.EAST);
+		panel_2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Ordinamento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_2.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBorder(new EmptyBorder(8, 0, 8, 0));
+		panel_2.add(panel_5, BorderLayout.EAST);
+		panel_5.setLayout(new BorderLayout(0, 0));
+
+		comboBoxOrdine = new JComboBox<String>();
+		panel_5.add(comboBoxOrdine);
+		comboBoxOrdine.addItem("Ordine cronologico");
+		comboBoxOrdine.addItem("Ordine Lessicografico fra le sfidanti");
+		comboBoxOrdine.addItem("Ordine Id Stadio");
+				
 		this.setTitle("Cliente");
 
+		//carichiamo i campi
+		
+		updateScrollList();
+		
+		for(Stadio s: listaUtenti.getStadi())
+			comboBoxStadio.addItem(s);
+		
+		comboBoxStadio.setRenderer(new ListCellRenderer<Stadio>(){
+
+			@Override
+			public Component getListCellRendererComponent(JList<? extends Stadio> list, Stadio value, int index,
+					boolean isSelected, boolean cellHasFocus) {
+				// TODO Auto-generated method stub
+				return new JLabel(value.getNome());
+			}});
+		
+		//listeners
+		chbxSettimana.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				settimana.setEnabled(((JCheckBox)e.getSource()).isSelected());
+				updateScrollList();
+			}
+			
+		});
+		
+		chbxStadio.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				comboBoxStadio.setEnabled(((JCheckBox)e.getSource()).isSelected());
+				updateScrollList();
+			}
+			
+		});
+		
+		comboBoxStadio.addItemListener(new ItemListener(){
+
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				updateScrollList();
+			}
+			
+		});
+		
+		//cambia ordinamento
+		comboBoxOrdine.addItemListener(new ItemListener(){
+
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+				 if (e.getStateChange() == ItemEvent.SELECTED) {
+			         
+					 int index = comboBoxOrdine.getSelectedIndex();
+					 
+			          
+			          if(index==0)
+			        	  comparator = new OrdineCronologicoComparator();
+			          if(index==1)
+			        	  comparator = new OrdineLessicoGraficoComparatorNomeSquadre();
+			          if(index==2)
+			        	  comparator = new OrdineIdStadioComparator();
+			          
+			          updateScrollList();
+			       }
+			}
+			
+		});
+
+		
 	}
+	
+	
 	public JMenuBar createMenuWithButton(){
 		JMenuBar SelectionMenu = new JMenuBar();
 		JPanel selettori = menuButton();
@@ -72,47 +212,38 @@ public class ScreenClient extends Finestra {
 		panel.add(lblBenvenuto, BorderLayout.WEST);
 		return panel;
 	}
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public JPanel createActionPanel(){
-
-		JLabel lSettimana = new JLabel("Settimana");
-		JLabel lStadio = new JLabel("Stadio");
-
-		btnEsegui = new JButton("Esegui");
-		btnEsegui.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-			}
-		});
-		settimana = new WeekPicker();
-		stadio = new JTextField(10);
-
-		cmbOrdine = new JComboBox();
-		cmbOrdine.addItem("Ordine cronologico");
-		cmbOrdine.addItem("Ordine Lessicografico fra le sfidanti");
-		cmbOrdine.addItem("Ordine Id Stadio");
-
-		JPanel panel = new JPanel();
-		panel.setBorder(new EmptyBorder(5, 0, 0, 0));
+	
+	public void updateScrollList(){
 		
-
-
-		panel.add(lSettimana);
-		panel.add(settimana);
-		panel.add(lStadio);
-		panel.add(stadio);
-		panel.add(cmbOrdine);
-		panel.add(btnEsegui);
-
-		return panel;
-
+		listaPartite.removeAll();
+		
+		listaUtenti.getPartite().sort(comparator);
+		
+		ArrayList<Partita> partite = (ArrayList<Partita>) listaUtenti.getPartite().clone();
+		
+		if(chbxSettimana.isSelected())
+			partite = ListaUtenti.filtraPartite(new FiltroPartitaSuStadio((Stadio)comboBoxStadio.getSelectedItem()),partite);
+		
+		if(chbxStadio.isSelected())
+			partite = ListaUtenti.filtraPartite(new FiltroPartitaSuStadio((Stadio)comboBoxStadio.getSelectedItem()),partite);
+		
+		
+		for(Partita p:partite)
+			listaPartite.add(new PartitaPrenotabileComponent(p,cliente));
+		
+		revalidate();
 	}
 
 	private JButton btnCarrello;
-	@SuppressWarnings("rawtypes")
-	private JComboBox cmbOrdine;
+	private JComboBox<String> comboBoxOrdine;
+	private JComboBox<Stadio> comboBoxStadio;
 	private WeekPicker settimana;
-	private JTextField stadio;
-	private JButton btnEsegui;
+	private JCheckBox chbxSettimana;
+	private JCheckBox chbxStadio;
+	
+	private Comparator<Partita> comparator;
+	
+	private Cliente cliente;
+	private ListaUtenti listaUtenti;
+	private ScrollablePanelList listaPartite;
 }

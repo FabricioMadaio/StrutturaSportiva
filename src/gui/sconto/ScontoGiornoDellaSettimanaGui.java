@@ -22,11 +22,10 @@ import gui.graphics.ScrollablePanelList;
 public class ScontoGiornoDellaSettimanaGui extends Finestra 
 {
 
-	public ScontoGiornoDellaSettimanaGui(JFrame parent,ListaUtenti listaUtenti,ScrollablePanelList scroll) {
+	public ScontoGiornoDellaSettimanaGui(JFrame parent,ListaUtenti listaUtenti) {
 		super(parent, 400, 230);
 		questaFinestra = this;
-		this.scroll = scroll;
-		this.scontiGlobali = listaUtenti.getScontiGlobali();
+		this.listaUtenti = listaUtenti;
 		operazioniSuFrame();
 	}
 
@@ -55,7 +54,7 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 		percentualeLbl.setBounds(10, 62, 69, 40);
 
 
-		BoxGiorni = new JComboBox(giorniDellaSettimana);
+		BoxGiorni = new JComboBox<String>(giorniDellaSettimana);
 		BoxGiorni.setBounds(201, 0, 183, 40);
 		percentualeField = new JTextField(10);
 		percentualeField.setBounds(201, 62, 183, 40);
@@ -80,10 +79,7 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 				String gionoSettimana = (String)BoxGiorni.getSelectedItem();
 				int percentuale = Integer.parseInt(percentualeField.getText());
 				ScontoGiornoDellaSettimana sconto = new ScontoGiornoDellaSettimana(gionoSettimana, percentuale);
-				scontiGlobali.add(sconto);
-				scroll.add(new ScontoComponent(sconto));
-
-				scroll.revalidate();
+				listaUtenti.addSconto(sconto);
 				questaFinestra.closeFrame();
 
 			}
@@ -93,10 +89,10 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 	}
 
 
-	private JComboBox BoxGiorni;
+	private JComboBox<String> BoxGiorni;
 	private JTextField percentualeField;
 	private Finestra questaFinestra;
+	
 	private String[] giorniDellaSettimana = {"Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato","Domenica"};
-	private ArrayList<Sconto> scontiGlobali;
-	private ScrollablePanelList scroll;
+	private ListaUtenti listaUtenti;
 }
