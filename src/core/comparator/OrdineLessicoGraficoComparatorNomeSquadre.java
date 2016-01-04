@@ -10,8 +10,8 @@ public class OrdineLessicoGraficoComparatorNomeSquadre implements Comparator<Par
 	@Override
 	public int compare(Partita p1, Partita p2) 
 	{
-		if(p1.getSquadraA().compareTo(p2.getSquadraB()) > 0) return 1;
-		if(p1.getSquadraA().compareTo(p2.getSquadraB()) < 0) return -1;
+		if(p1.getGame().compareTo(p2.getGame()) > 0) return 1;
+		if(p1.getGame().compareTo(p2.getGame()) < 0) return -1;
 		return 0;
 	}
 

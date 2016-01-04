@@ -35,9 +35,19 @@ public class Cliente extends Utente implements Serializable{
 		return categoria;
 	}
 
-	public void aggiungiBiglietto(Biglietto b)
+	public void aggiungiBiglietto(Biglietto nb)
 	{
-		biglietti.add(b);
+		
+		for(int i=0;i<biglietti.size();i++){
+			
+			Biglietto b = biglietti.get(i);
+			
+			if(nb.getPartita() == b.getPartita() && nb.getPosto() == b.getPosto()){
+				biglietti.remove(i);
+			}
+		}
+		
+		biglietti.add(nb);
 	}
 
 	private String categoria;
