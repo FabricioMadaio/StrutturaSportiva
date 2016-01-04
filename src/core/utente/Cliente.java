@@ -26,14 +26,17 @@ public class Cliente extends Utente implements Serializable{
 		super(nome, cognome, username, password);
 		this.categoria = categoria;
 		scontoAttivo = true;
+		biglietti = new ArrayList<>();
 	}
 	
 	
-	public String getCategoria() {
+	public String getCategoria() 
+	{
 		return categoria;
 	}
 
-	public void aggiungiBiglietto(Biglietto b){
+	public void aggiungiBiglietto(Biglietto b)
+	{
 		biglietti.add(b);
 	}
 

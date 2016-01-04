@@ -14,12 +14,14 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 
 import core.elementi.Partita;
+import core.elementi.Stadio;
 import gui.graphics.Finestra;
 import gui.partita.PartitaPrenotabileComponent;
 import gui.graphics.ScrollablePanelList;
 import gui.graphics.WeekPicker;
 
 import java.awt.event.ActionListener;
+import java.util.GregorianCalendar;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.border.EmptyBorder;
@@ -35,8 +37,10 @@ public class ScreenClient extends Finestra {
 		
 		ScrollablePanelList sl = new ScrollablePanelList();
 		
-		//sl.add(new PartitaPrenotabileComponent(new Partita(null,"a","b","a")));
-		
+		/*GregorianCalendar data = new GregorianCalendar(2015, 11, 29,23,31);
+		Stadio st1 = new Stadio("stadio1",2);
+		sl.add(new PartitaPrenotabileComponent(new Partita(data,"a","b",st1)));
+		*/
 		getContentPane().add(sl,BorderLayout.CENTER);
 		this.setTitle("Cliente");
 

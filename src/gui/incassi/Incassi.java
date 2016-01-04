@@ -35,7 +35,7 @@ public class Incassi extends Finestra
 		getContentPane().add(pannelloVisualizzazioneIncassiTotali, BorderLayout.SOUTH);
 		pannelloVisualizzazioneIncassiTotali.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblIncassiTotatli = new JLabel("Incassi Totatli:"+calcolaIncassoTotale());
+		JLabel lblIncassiTotatli = new JLabel("Incassi Totali:"+calcolaIncassoTotale());
 		lblIncassiTotatli.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		pannelloVisualizzazioneIncassiTotali.add(lblIncassiTotatli);
 		

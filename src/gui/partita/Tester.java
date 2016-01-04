@@ -3,6 +3,7 @@ package gui.partita;
 import core.elementi.Partita;
 import core.elementi.Posto;
 import core.elementi.Stadio;
+import core.utente.Cliente;
 
 import java.util.GregorianCalendar;
 
@@ -19,12 +20,12 @@ public class Tester extends JFrame
 		Posto posto1 = new Posto(100,100,"p1");
 		st1.addPosto(posto1);
 		//trasferisco i posti dello stadio nella partita
-		
+		Cliente c = new Cliente("", "", "", "", "");
 		Partita p1 = new Partita(data1, "squadraA", "squadraB", st1);
 		p1.copiaPosti(st1.getPosti());
 		
 		
-		ScreenPartita sp1 = new ScreenPartita(p1);
+		ScreenPartita sp1 = new ScreenPartita(null,p1,c);
 		
 		//JFrame frame = new JFrame();
 		
