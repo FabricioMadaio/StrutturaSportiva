@@ -16,6 +16,7 @@ import core.utente.Utente;
 import core.ParametroIllegaleException;
 import core.elementi.Partita;
 import core.elementi.Stadio;
+import core.filtri.FiltroPartita;
 
 /**
  * @author Fabricio Nicolas Madaio
@@ -100,6 +101,21 @@ public class ListaUtenti implements Serializable{
 	 */
 	public ArrayList<Partita> getPartite() {
 		return partite;
+	}
+	
+	/**
+	 * filtra partite
+	 * @return lista di partite filtrate
+	 */
+	static public ArrayList<Partita> filtraPartite(FiltroPartita filter,ArrayList<Partita> pf) {
+		
+		ArrayList<Partita> partiteFiltrate = new ArrayList<Partita>();
+		
+		for(Partita p:pf){
+			if(filter.check(p))
+			partiteFiltrate.add(p);
+		}
+		return partiteFiltrate;
 	}
 	
 	

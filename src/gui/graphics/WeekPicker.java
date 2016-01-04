@@ -24,6 +24,7 @@ import java.awt.Color;
 import javax.swing.border.EmptyBorder;
 import javax.swing.BoxLayout;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.SystemColor;
 import javax.swing.border.BevelBorder;
@@ -33,17 +34,17 @@ public class WeekPicker extends JComponent{
 	public WeekPicker(){
 		setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		JPanel mainPanel = new JPanel();
+		mainPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		add(mainPanel, BorderLayout.CENTER);
+		mainPanel.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnPrev = new BasicArrowButton(BasicArrowButton.WEST);
-		panel_1.add(btnPrev, BorderLayout.WEST);
+		mainPanel.add(btnPrev, BorderLayout.WEST);
 		
 		
 		JPanel panel = new JPanel();
-		panel_1.add(panel, BorderLayout.CENTER);
+		mainPanel.add(panel, BorderLayout.CENTER);
 		panel.setBorder(new EmptyBorder(0, 6, 0, 6));
 		panel.setBackground(SystemColor.menu);
 		panel.setLayout(new BorderLayout(0, 0));
@@ -60,11 +61,8 @@ public class WeekPicker extends JComponent{
 		lblWeek.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblWeek);
 		
-		JPanel panel_2 = new JPanel();
-		panel.add(panel_2, BorderLayout.SOUTH);
-		
 		JButton btnNext  = new BasicArrowButton(BasicArrowButton.EAST);
-		panel_1.add(btnNext, BorderLayout.EAST);
+		mainPanel.add(btnNext, BorderLayout.EAST);
 		
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -97,6 +95,8 @@ public class WeekPicker extends JComponent{
 		finalDate.add(Calendar.DAY_OF_MONTH, 6);
 		
 		updateFields();
+
+		setEnabled(false);
 	}
 	
 	public String getDayAndMonth(GregorianCalendar gc){
@@ -115,6 +115,22 @@ public class WeekPicker extends JComponent{
 		
 	}
 	
+	void setEnabled(Component component, boolean enabled) {
+	    component.setEnabled(enabled);
+	    if (component instanceof Container) {
+	        for (Component child : ((Container) component).getComponents()) {
+	            setEnabled(child, enabled);
+	        }
+	    }
+	}
+	
+	@Override
+	public void setEnabled(boolean enabled) {
+		setEnabled(this.getComponent(0),enabled);
+		super.setEnabled(enabled);
+	}
+
+
 	private JLabel lblYear;
 	private JLabel lblWeek;
 	

@@ -136,11 +136,11 @@ public class GestoreScreen extends Finestra
 				// TODO Auto-generated method stub
 				 if (e.getStateChange() == ItemEvent.SELECTED) {
 			         
-					 String item = (String)e.getItem();
+					 int index = comboBox.getSelectedIndex();
 
-			          if(item=="Ordine per Capienza")
+			          if(index==0)
 			        	  comparator = new OrdineCapienzaStadioComparator();
-			          if(item=="Ordine Cronologico")
+			          if(index==1)
 			        	  comparator = new OrdineCronologicoComparator();
 			          
 			          updateListaPartite();
