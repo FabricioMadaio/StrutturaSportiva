@@ -117,7 +117,7 @@ public class FormLogin extends Finestra{
 				
 				if(u!=null){
 					if(u instanceof Cliente){
-						ScreenClient sc = new ScreenClient(frame,utenti);
+						ScreenClient sc = new ScreenClient(frame);
 						sc.setVisible(true);
 					}
 					if(u instanceof Gestore){

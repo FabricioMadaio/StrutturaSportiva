@@ -1,17 +1,10 @@
 package core.sconti;
 
-import java.io.Serializable;
-
 import core.elementi.Partita;
 import core.utente.Cliente;
 
-public class ScontoFasciaOraria implements Sconto,Serializable 
+public class ScontoFasciaOraria implements Sconto 
 {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7L;
-	
 	public ScontoFasciaOraria(double oraInizio,double oraFine,int percentuale) 
 	{
 		this.oraFine = oraFine;

@@ -34,12 +34,12 @@ public class ScontoScreen extends Finestra{
 	private ScrollablePanelList scrollListPartita;
 	private ScrollablePanelList scrollListGlobal;
 	
-	public ScontoScreen(JFrame parent, ListaUtenti listautenti) {
+	public ScontoScreen(JFrame parent, ListaUtenti lu) {
 
 		super(parent, 800, 600);
 		setTitle("Sconti");
 		questoFrame = this;
-		this.listaUtenti = listautenti;
+		listaUtenti = lu;
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] {784};
@@ -95,7 +95,7 @@ public class ScontoScreen extends Finestra{
 			public void actionPerformed(ActionEvent e) {
 
 
-				ScontoPerPartitaGui scntoPartita = new ScontoPerPartitaGui(questoFrame, listaUtenti);
+				ScontoPerPartitaGui scntoPartita = new ScontoPerPartitaGui(questoFrame, listaUtenti,scrollListPartita);
 
 			}
 		});
@@ -111,7 +111,8 @@ public class ScontoScreen extends Finestra{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				ScontoFasciaOrarariaGui scontoFasciaOrararia = new ScontoFasciaOrarariaGui(questoFrame, listaUtenti);
+				ScontoFasciaOrarariaGui scontoFasciaOrararia = new ScontoFasciaOrarariaGui(questoFrame, listaUtenti,scrollListGlobal);
+
 
 			}
 		});
@@ -130,7 +131,7 @@ public class ScontoScreen extends Finestra{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				ScontoGiornoDellaSettimanaGui scontoGiornoDellaSettimana = new ScontoGiornoDellaSettimanaGui(questoFrame,listaUtenti);
+				ScontoGiornoDellaSettimanaGui scontoGiornoDellaSettimana = new ScontoGiornoDellaSettimanaGui(questoFrame,listaUtenti,scrollListGlobal);
 
 			}
 		});
@@ -145,7 +146,7 @@ public class ScontoScreen extends Finestra{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				ScontoCategoriaClienteGui scontoCategoriaCliente = new ScontoCategoriaClienteGui(questoFrame,listaUtenti);
+				ScontoCategoriaClienteGui scontoCategoriaCliente = new ScontoCategoriaClienteGui(questoFrame,listaUtenti,scrollListGlobal);
 
 			}
 		});
@@ -153,18 +154,10 @@ public class ScontoScreen extends Finestra{
 
 
 		// aggiungo gli sconti
-		updateSconti();
-		
-		this.setVisible(true);
-	}
-	
-	public void updateSconti(){
-		
-		scrollListPartita.removeAll();
-		scrollListGlobal.removeAll();
-		
+
 		for(Partita p:listaUtenti.getPartite()){
 			scrollListPartita.add(new PartitaTitleComponent(p));
+
 			for(Sconto s:p.getSconti()){
 				//aggiungo solo quelli specifici della partita?
 				//if(s instanceof ScontoPerPartita)
@@ -176,15 +169,8 @@ public class ScontoScreen extends Finestra{
 			scrollListGlobal.add(new ScontoComponent(s));
 		}
 
-		
-		this.revalidate();
+		this.setVisible(true);
 	}
 
-	@Override
-	public void OnReturnFromChild() {
-		// TODO Auto-generated method stub
-		updateSconti();
-	}
 
-	
 }

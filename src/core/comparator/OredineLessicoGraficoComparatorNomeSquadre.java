@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import core.elementi.Partita;
 
-public class OrdineLessicoGraficoComparatorNomeSquadre implements Comparator<Partita> 
+public class OredineLessicoGraficoComparatorNomeSquadre implements Comparator<Partita> 
 {
 
 	@Override

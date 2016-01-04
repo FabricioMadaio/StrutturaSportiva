@@ -18,10 +18,11 @@ import java.util.ArrayList;
 public class ScontoCategoriaClienteGui extends Finestra
 {
 
-	public ScontoCategoriaClienteGui(JFrame parent,ListaUtenti listaUtenti) {
+	public ScontoCategoriaClienteGui(JFrame parent,ListaUtenti listaUtenti,ScrollablePanelList scroll) {
 		super(parent, 400, 230);
 		questaFinestra = this;
-		this.listaUtenti = listaUtenti;
+		this.scroll = scroll;
+		this.scontiGlobali = listaUtenti.getScontiGlobali();
 		operazioniSuFrame();
 	}
 
@@ -75,8 +76,10 @@ public class ScontoCategoriaClienteGui extends Finestra
 				String categoria = (String)BoxCategorie.getSelectedItem();
 				int percentuale = Integer.parseInt(percentualeField.getText());
 				ScontoPerCliente sconto = new ScontoPerCliente (categoria, percentuale);
-				listaUtenti.addSconto(sconto);
+				scontiGlobali.add(sconto);
+				scroll.add(new ScontoComponent(sconto));
 
+				scroll.revalidate();
 				questaFinestra.closeFrame();
 
 			}
@@ -90,6 +93,7 @@ public class ScontoCategoriaClienteGui extends Finestra
 	private JTextField percentualeField;
 	private Finestra questaFinestra;
 	private String[] categoria = {"Studente","Pensionato","Bambino"};
-	private ListaUtenti listaUtenti;
+	private ArrayList<Sconto> scontiGlobali;
+	private ScrollablePanelList scroll;
 
 }

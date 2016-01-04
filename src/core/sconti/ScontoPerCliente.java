@@ -1,18 +1,11 @@
 package core.sconti;
 
-import java.io.Serializable;
-
 import core.elementi.Partita;
 import core.utente.Cliente;
 
-public class ScontoPerCliente implements Sconto,Serializable  
+public class ScontoPerCliente implements Sconto 
 {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 9L;
-	
 	public  ScontoPerCliente(String tipoCliente, int percentualeSconto) 
 	{
 		this.tipoCliente = tipoCliente;

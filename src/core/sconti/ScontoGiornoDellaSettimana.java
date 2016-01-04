@@ -1,18 +1,12 @@
 package core.sconti;
 
-import java.io.Serializable;
 import java.util.Calendar;
 
 import core.elementi.Partita;
 import core.utente.Cliente;
 
-public class ScontoGiornoDellaSettimana implements Sconto,Serializable  
+public class ScontoGiornoDellaSettimana implements Sconto 
 {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 8L;
-	
 	public ScontoGiornoDellaSettimana(String giornoDellaSettiman,int percentuale) 
 	{
 		this.giornoDellaSettima = giornoDellaSettiman;
@@ -23,19 +17,18 @@ public class ScontoGiornoDellaSettimana implements Sconto,Serializable
 	@Override
 	public int getPercentualeSconto(Partita p, Cliente c) 
 	{
-		
-		return percentuale;
-
+		if(dammiGiornoDellaSettima(p).equalsIgnoreCase(giornoDellaSettima))
+		{
+			return percentuale;
+		}
+		return 0;
 	}
 
 
 	@Override
 	public boolean verificaApplicabilita(Partita p) 
 	{
-		if(dammiGiornoDellaSettima(p).equalsIgnoreCase(giornoDellaSettima))
-			return true;
-		
-		return false;
+		return true;
 	}
 	/**
 	 * Il metodo attraverso un case switch trova il giorno della settimana della partita
@@ -58,7 +51,7 @@ public class ScontoGiornoDellaSettimana implements Sconto,Serializable
 		case 5: giornoSettimana = "Giovedì"; break;
 		case 6: giornoSettimana = "Venerdì"; break;
 		case 7: giornoSettimana = "Sabato"; break;
-		default:throw new GiornoDellaSettimaNonSpecificatoException();		
+		default:throw new GiornoDellaSettimaNonSpecifcatoException();		
 		}
 		return giornoSettimana;
 	}
@@ -66,7 +59,7 @@ public class ScontoGiornoDellaSettimana implements Sconto,Serializable
 	
 	@Override
 	public String toString() {
-		return "Sconto per ogni " + giornoDellaSettima + " - " + percentuale
+		return "Sconto per tutti i " + giornoDellaSettima + " - " + percentuale
 				+ "%";
 	}
 
