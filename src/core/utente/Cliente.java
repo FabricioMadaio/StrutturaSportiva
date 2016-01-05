@@ -37,12 +37,6 @@ public class Cliente extends Utente implements Serializable{
 	}
 	
 	
-
-	public ArrayList<Biglietto> getBiglietti() {
-		return biglietti;
-	}
-
-
 	public void setBiglietti(ArrayList<Biglietto> biglietti) {
 		this.biglietti = biglietti;
 	}
