@@ -124,6 +124,11 @@ public class Partita implements Serializable
 	{
 		return this.getGame() + "   " +this.getData().getTime().toString();
 	}
+	
+	public String getInfo()
+	{
+		return this.getGame()+"\n"+this.getData().getTime().toString();
+	}
 
 
 	//sconti che si applicano alla singola partita

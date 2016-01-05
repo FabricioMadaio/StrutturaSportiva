@@ -119,10 +119,14 @@ public class FormLogin extends Finestra{
 					if(u instanceof Cliente){
 						ScreenClient sc = new ScreenClient(frame,(Cliente)u,utenti);
 						sc.setVisible(true);
+						loginField.setText("");
+						passField.setText("");
 					}
 					if(u instanceof Gestore){
 						GestoreScreen gs = new GestoreScreen(frame,utenti);
 						gs.setVisible(true);
+						loginField.setText("");
+						passField.setText("");
 					}
 				}else{
 					JOptionPane.showMessageDialog(frame, "Username e/o password errati");

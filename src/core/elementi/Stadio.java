@@ -63,4 +63,8 @@ public class Stadio implements Serializable
 	public void setIncasso(double incasso) {
 		this.incasso = incasso;
 	}
+	
+	public void aggiungiIncasso(double incasso) {
+		this.incasso += incasso;
+	}
 }

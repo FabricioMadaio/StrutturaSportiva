@@ -18,7 +18,9 @@ public class Tester extends JFrame
 		
 		Stadio st1 = new Stadio("stadio1",2);		
 		Posto posto1 = new Posto(100,100,"p1");
+		Posto posto2 = new Posto(200,200,"p2");
 		st1.addPosto(posto1);
+		st1.addPosto(posto2);
 		//trasferisco i posti dello stadio nella partita
 		Cliente c = new Cliente("", "", "", "", "");
 		Partita p1 = new Partita(data1, "squadraA", "squadraB", st1);
@@ -33,6 +35,7 @@ public class Tester extends JFrame
 		frame.setSize(500, 500);
 		frame.add(new PartitaComponent(p1));
 		frame.setVisible(true);*/
+		
 	}
 
 	
