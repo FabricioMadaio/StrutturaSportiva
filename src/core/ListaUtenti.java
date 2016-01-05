@@ -230,6 +230,8 @@ public class ListaUtenti implements Serializable{
 		}
 		
 	}
+	
+	
 	public void addSconto(Sconto s)
 	{
 		//aggiungo lo sconto anche a tutte le partite

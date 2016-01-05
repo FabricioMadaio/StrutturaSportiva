@@ -24,6 +24,7 @@ public class Carrello extends Finestra
 		questoFrame = this;
 		cliente = c;
 		operazioniSuFrame();
+
 	}
 
 	public void  operazioniSuFrame()
@@ -35,7 +36,7 @@ public class Carrello extends Finestra
 		questoFrame.getContentPane().add(creaPannnelloAquistiEffettuati());
 
 		aggiornaListe();
-		
+
 		questoFrame.setVisible(true);
 	}
 
@@ -77,24 +78,26 @@ public class Carrello extends Finestra
 
 		return acquisti;
 	}
-	
+
 	public void aggiornaListe(){
 
 		acquisti.removeAll();
 		prenotazioni.removeAll();
-		
+
 		for(Biglietto b:cliente.getBiglietti())
 			if(b.isAcquisto())
 				acquisti.add(new BigliettoComponent(b));
 			else
+			{
+				cliente.verificaScadenze();
 				prenotazioni.add(new PrenotazioneComponent(b,(Carrello)questoFrame));
-				
-		
+			}	
+
 		revalidate();
 		repaint();
 	}
-	
-	
+
+
 
 	@Override
 	public void OnReturnFromChild() {
@@ -107,9 +110,9 @@ public class Carrello extends Finestra
 	}
 
 	private Cliente cliente;
-	
+
 	private ScrollablePanelList acquisti;
 	private ScrollablePanelList prenotazioni;
-	
+
 	private Finestra questoFrame;
 }
