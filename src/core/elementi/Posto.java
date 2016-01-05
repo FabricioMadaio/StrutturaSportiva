@@ -53,6 +53,7 @@ public class Posto implements Serializable{
 	public void setStato(Stato stato) {
 		this.stato = stato;
 	}
+	
 
 	@Override
 	protected Object clone() throws CloneNotSupportedException {

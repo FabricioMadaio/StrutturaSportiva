@@ -2,6 +2,8 @@ package core.utente;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import core.elementi.Biglietto;
 import core.elementi.Posto;
@@ -72,7 +74,21 @@ public class Cliente extends Utente implements Serializable{
 		biglietti.remove(b);
 	}
 
-
+	//cancella i biglietti scaduti
+	public void verificaScadenze(){
+		//usare annullaBiglietto
+		/*
+		GregorianCalendar dataBiglietto;
+		
+		dataBiglietto.add(Calendar.HOUR_OF_DAY, 12);
+		if(dataBiglietto.before(new GregorianCalendar())){
+			//devi cancellare il biglietto
+		}
+	
+			Gregoriancalendar dataBiglietto = b.getData();
+		
+		*/
+	}
 
 	private String categoria;
 	private boolean scontoAttivo;
