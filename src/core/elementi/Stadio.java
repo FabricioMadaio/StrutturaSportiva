@@ -1,5 +1,5 @@
 package core.elementi;
-
+import java.awt.Image;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -15,14 +15,18 @@ public class Stadio implements Serializable
 	private double prezzoBase;
 	private double incasso;
 
+	private String pathImmagine;
+	private transient Image image;
+	
 	private ArrayList<Posto> posti;
 	
 	
-	public Stadio(String nome, int prezzoBase) {
+	public Stadio(String nome, int prezzoBase,String pathImmagine) {
 		
 		this.posti = new ArrayList<Posto>();
 		this.nome = nome;
 		this.incasso = 0;
+		this.pathImmagine = pathImmagine;
 		this.setPrezzoBase(prezzoBase);
 	}
 	
@@ -67,4 +71,22 @@ public class Stadio implements Serializable
 	public void aggiungiIncasso(double incasso) {
 		this.incasso += incasso;
 	}
+	
+
+	public String getPathImmagine() {
+		return pathImmagine;
+	}
+
+	public void setPathImmagine(String pathImmagine) {
+		this.pathImmagine = pathImmagine;
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+	
 }

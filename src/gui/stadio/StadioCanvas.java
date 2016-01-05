@@ -79,6 +79,10 @@ public class StadioCanvas extends JPanel{
 		
 	}
 	
+	public void setBackgroundImage(Image backgroundImg){			
+		this.background = new Sprite(0,0,0,0,backgroundImg);
+	}
+	
 	public void addStadioListener(StadioListener st){
 		stadioListener = st;
 	}

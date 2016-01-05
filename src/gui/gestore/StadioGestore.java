@@ -65,6 +65,7 @@ public class StadioGestore extends Finestra
 			stadioCorrente = s;
 			costoFieldStadio.setText(""+s.getPrezzoBase());
 			stadioCanvas.setPosti(s.getPosti());
+			stadioCanvas.setBackgroundImage(s.getImage());
 			stadioCanvas.repaint();
 		}
 	}

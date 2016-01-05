@@ -1,6 +1,8 @@
 package core;
 
 import core.sconti.*;
+
+import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,6 +23,10 @@ import core.filtri.FiltroPartita;
 /**
  * @author Fabricio Nicolas Madaio
  */
+/**
+ * @author Fabri
+ *
+ */
 public class ListaUtenti implements Serializable{
 	
 	private static final long serialVersionUID = 12L;
@@ -33,6 +39,8 @@ public class ListaUtenti implements Serializable{
 	private ArrayList<Stadio> stadi;
 	private ArrayList<Partita> partite;
 	
+	//lista immagini
+	private transient ArrayList<Immagine> immagini;
 	private transient String path;
 		
 	/**
@@ -50,6 +58,8 @@ public class ListaUtenti implements Serializable{
 		stadi = new ArrayList<Stadio>();
 		partite = new ArrayList<Partita>();
 		
+		immagini = new ArrayList<Immagine>();
+		
 		File f = new File(path);
 		ObjectInputStream ois;
 
@@ -66,15 +76,50 @@ public class ListaUtenti implements Serializable{
 		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			
-			Stadio st1 = new Stadio("stadio1",2);
-			Stadio st2 = new Stadio("stadio2",3);
+			Stadio st1 = new Stadio("stadio1",2,"res/Stadio.png");
+			Stadio st2 = new Stadio("stadio2",3,"res/Stadio2.png");
 			addStadio(st1);
 			addStadio(st2);
 			
+			
+			
 			e.printStackTrace();
 		}
-			
+		
+		caricaImaginiStadi();	
 
+	}
+	
+	/**
+	 *  Assegna a ogni stadio l'immagine del proprio path.
+	 *  costruisce l'array di immagini per evitare di caricare più volte la stessa immagine,
+	 *  in questo modo si passa solo il riferimento
+	 */
+	public void caricaImaginiStadi(){
+		
+		boolean imageNotFound;
+		
+		for(Stadio s:stadi){
+			
+			imageNotFound = true;
+			for(Immagine i: immagini){
+			 if(s.getPathImmagine() == i.getPath()){
+				 s.setImage(i.getImage());
+				 imageNotFound = false;
+				 break;
+			 }
+			}
+			if(imageNotFound){
+				try {
+					Immagine i = new Immagine(s.getPathImmagine());
+					s.setImage(i.load());
+					immagini.add(i);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
 	public ArrayList<Stadio> getStadi() {

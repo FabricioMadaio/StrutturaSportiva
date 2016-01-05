@@ -44,6 +44,7 @@ public class ScreenPartita extends Finestra
 		
 		
 		stadioCanvas.setPosti(partita.getPosti());
+		stadioCanvas.setBackgroundImage(partita.getStadio().getImage());
 
 		//Generare ogni voltra un biglietto diverso
 		//biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));

@@ -16,7 +16,7 @@ public class Tester extends JFrame
 		GregorianCalendar data1 = new GregorianCalendar(2015, 2+1, 12);
 		
 		
-		Stadio st1 = new Stadio("stadio1",2);		
+		Stadio st1 = new Stadio("stadio1",2,"res/Stadio.png");		
 		Posto posto1 = new Posto(100,100,"p1");
 		Posto posto2 = new Posto(200,200,"p2");
 		st1.addPosto(posto1);
