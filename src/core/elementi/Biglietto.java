@@ -6,12 +6,13 @@ public class Biglietto implements Serializable
 {
 	private static final long serialVersionUID = 11L;
 	
-	public Biglietto(Partita partita)
+	public Biglietto(Partita partita,double prezzo)
 	{
 		
 		this.partita = partita;
 		this.prenotazione = false;
 		this.acquisto = false;
+		this.prezzo = prezzo;
 	}
 	
 	
@@ -56,7 +57,13 @@ public class Biglietto implements Serializable
 		this.posto = posto;
 	}
 
+	public double getPrezzo() {
+		return prezzo;
+	}
 
+	public void setPrezzo(double prezzo) {
+		this.prezzo = prezzo;
+	}
 
 	private boolean prenotazione;
 	private boolean acquisto;

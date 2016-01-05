@@ -58,6 +58,7 @@ public class ScreenClient extends Finestra {
 		
 		this.listaUtenti = listaUtenti;
 		this.comparator = new OrdineCapienzaStadioComparator();
+		this.cliente = cliente;
 		
 		this.setJMenuBar(createMenuWithButton());
 		listaPartite = new ScrollablePanelList();

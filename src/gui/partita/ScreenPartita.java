@@ -6,19 +6,29 @@ import core.elementi.Posto.Stato;
 import core.utente.Cliente;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.GridLayout;
+import java.awt.Panel;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+
+import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
 
 import gui.graphics.Finestra;
 import gui.stadio.StadioCanvas;
+import java.awt.FlowLayout;
+import java.awt.Font;
 
 public class ScreenPartita extends Finestra
 {
@@ -30,8 +40,10 @@ public class ScreenPartita extends Finestra
 		operazioniSuFrame();
 		this.cliente = cliente;
 		stadioCanvas.setPosti(partita.getPosti());
+
+		//Generare ogni voltra un biglietto diverso
 		//biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
-		biglietto = new Biglietto(partita);
+
 	}
 
 
@@ -40,22 +52,23 @@ public class ScreenPartita extends Finestra
 	{
 
 
+
 		stadioCanvas = new StadioCanvas();
 
 		questoFrame.add(stadioCanvas,BorderLayout.CENTER);
-		questoFrame.add(creaPannelloInformazioniTransazioni(),BorderLayout.SOUTH);
+		questoFrame.add(creaPannelloInformazioniTransazioni(), BorderLayout.SOUTH);
 
 		questoFrame.setVisible(true);
 	}
 
 	public JPanel creaPannelloInformazioniTransazioni()
 	{
-		JPanel panel = new JPanel();
-
-		panel.setLayout(new BorderLayout());
-		panel.add(creaTextArea(),BorderLayout.WEST);
+		JPanel panel = new JPanel(new BorderLayout());
+		JLabel labelPrezzo = new JLabel("Prezzo Biglietto:"+partita.generaPrezzoBiglietto(cliente)+"€");
+		labelPrezzo.setFont(new Font(null, Font.BOLD, 18));
+		panel.add(labelPrezzo,BorderLayout.WEST);
+		panel.add(creaTextArea(),BorderLayout.CENTER);
 		panel.add(creaListaDiBottoni(),BorderLayout.EAST);
-
 		return panel;
 	}
 
@@ -67,6 +80,7 @@ public class ScreenPartita extends Finestra
 		panel.add(creaBottonePrenota());
 		panel.add(creaBottoneAcquista());
 		panel.add(creaBottoneAcquistaSubito());
+		panel.setBorder(new TitledBorder(new EtchedBorder(),"Azioni"));
 
 		return panel;
 	}
@@ -78,7 +92,7 @@ public class ScreenPartita extends Finestra
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				Biglietto biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
 				biglietto.setPosto(stadioCanvas.getSelezione().getPosto());
 				if(!controllaStatoPostoDisponobile())
 				{
@@ -95,7 +109,10 @@ public class ScreenPartita extends Finestra
 					biglietto.setPrenotazione(true);
 					stadioCanvas.getSelezione().getPosto().setStato(Stato.PRENOTATO);
 					stadioCanvas.getSelezione().setStato(Stato.PRENOTATO);
+					partita.getStadio().aggiungiIncasso(0);
 					cliente.aggiungiBiglietto(biglietto);
+					stadioCanvas.repaint();
+	
 				}
 
 
@@ -114,9 +131,12 @@ public class ScreenPartita extends Finestra
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				Biglietto biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
+
+
 				biglietto.setPosto(stadioCanvas.getSelezione().getPosto());
 
-				if(!controllaStatoPostoPrenotato() || !biglietto.isPrenotazione())
+				if(!controllaStatoPostoPrenotato())
 				{
 					try {
 						throw new PostoNonPrenotatoException();
@@ -127,12 +147,13 @@ public class ScreenPartita extends Finestra
 				}
 				else
 				{
+
 					biglietto.setAcquisto(true);
-					//TO DO
-					//devi aggiungere il prezzo del biglietto agli incassi dello stadio
+					partita.getStadio().aggiungiIncasso(biglietto.getPrezzo());
 					stadioCanvas.getSelezione().getPosto().setStato(Stato.VENDUTO);
 					stadioCanvas.getSelezione().setStato(Stato.VENDUTO);
 					cliente.aggiungiBiglietto(biglietto);
+					stadioCanvas.repaint();
 				}
 			}
 		});
@@ -143,11 +164,13 @@ public class ScreenPartita extends Finestra
 	{
 		JButton button = new JButton("Acquista Subito");
 		button.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				if(!controllaStatoPostoDisponobile() || biglietto.isAcquisto() || biglietto.isPrenotazione())
+				Biglietto biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
+				biglietto.setPosto(stadioCanvas.getSelezione().getPosto());
+
+				if(!controllaStatoPostoDisponobile() )
 				{
 					try {
 						throw new PostoNonAcquistabileRapidamente();
@@ -158,11 +181,13 @@ public class ScreenPartita extends Finestra
 				}
 				else
 				{
+					partita.getStadio().aggiungiIncasso(biglietto.getPrezzo());
 					biglietto.setPrenotazione(true);
 					biglietto.setAcquisto(true);
 					stadioCanvas.getSelezione().getPosto().setStato(Stato.VENDUTO);
 					stadioCanvas.getSelezione().setStato(Stato.VENDUTO);
 					cliente.aggiungiBiglietto(biglietto);
+					stadioCanvas.repaint();
 				}
 			}
 		});
@@ -172,11 +197,15 @@ public class ScreenPartita extends Finestra
 
 	public JPanel creaTextArea()
 	{
+		textArea = new JTextArea(10,30);
+		textArea.append(partita.getInfo());
+		textArea.setEditable(false);
 		JPanel panel = new JPanel();
-
-		textArea = new JTextArea(10,55);
 		JScrollPane scroll = new JScrollPane(textArea);
+
 		panel.add(scroll);
+
+		panel.setBorder(new TitledBorder(new EtchedBorder(),"Info Partita"));
 
 		return panel;
 	}
@@ -191,7 +220,7 @@ public class ScreenPartita extends Finestra
 		}
 		return true;
 	}
-	
+
 	public boolean controllaStatoPostoPrenotato()
 	{
 		Stato stato = Stato.PRENOTATO;
@@ -202,7 +231,7 @@ public class ScreenPartita extends Finestra
 		}
 		return true;
 	}
-	
+
 	public boolean controllaStatoPostoDisponobile()
 	{
 		Stato stato = Stato.DISPONIBILE;
@@ -213,11 +242,12 @@ public class ScreenPartita extends Finestra
 		}
 		return true;
 	}
+	
 
 	private JFrame questoFrame;
 	private JTextArea textArea;
 	private Partita partita;
 	private StadioCanvas stadioCanvas;
-	private Biglietto biglietto;
 	private Cliente cliente;
+
 }

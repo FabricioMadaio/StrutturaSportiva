@@ -34,6 +34,18 @@ public class Cliente extends Utente implements Serializable{
 	{
 		return categoria;
 	}
+	
+	
+
+	public ArrayList<Biglietto> getBiglietti() {
+		return biglietti;
+	}
+
+
+	public void setBiglietti(ArrayList<Biglietto> biglietti) {
+		this.biglietti = biglietti;
+	}
+
 
 	public void aggiungiBiglietto(Biglietto nb)
 	{
