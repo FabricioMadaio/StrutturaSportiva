@@ -35,7 +35,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Comparator;
+import java.util.GregorianCalendar;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.border.EmptyBorder;
@@ -242,7 +244,7 @@ public class ScreenClient extends Finestra {
 		if(chbxSettimana.isSelected())
 			partite = ListaUtenti.filtraPartite(new FiltroPartitaPerSettimana(settimana.getInitialDate(),settimana.getFinalDate()),partite);
 	
-		
+	
 		for(Partita p:partite)
 			listaPartite.add(new PartitaPrenotabileComponent(p,this));
 		
@@ -253,6 +255,7 @@ public class ScreenClient extends Finestra {
 	public Cliente getCliente(){
 		return cliente;
 	}
+	
 
 	private JButton btnCarrello;
 	private JComboBox<String> comboBoxOrdine;

@@ -1,6 +1,7 @@
 package core.elementi;
 
 import java.io.Serializable;
+import java.util.GregorianCalendar;
 
 public class Biglietto implements Serializable
 {
@@ -13,10 +14,23 @@ public class Biglietto implements Serializable
 		this.prenotazione = false;
 		this.acquisto = false;
 		this.prezzo = prezzo;
+		this.data = new GregorianCalendar();
 	}
 	
 	
 	
+	public GregorianCalendar getData() {
+		return data;
+	}
+
+
+
+	public void setData(GregorianCalendar data) {
+		this.data = data;
+	}
+
+
+
 	public boolean isPrenotazione() 
 	{
 		return prenotazione;
@@ -70,4 +84,5 @@ public class Biglietto implements Serializable
 	private Partita partita;
 	private Posto posto;
 	private double prezzo;
+	private GregorianCalendar data;
 }
