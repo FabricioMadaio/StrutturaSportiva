@@ -53,6 +53,7 @@ public class PrenotazioneComponent extends BigliettoComponent
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				ScreenPartita sp = new ScreenPartita(carrello,prenotazione.getPartita(),carrello.getCliente());
+				sp.caricaSelezione(prenotazione);
 			}
 			
 		});

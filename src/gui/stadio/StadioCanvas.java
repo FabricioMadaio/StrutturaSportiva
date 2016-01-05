@@ -157,6 +157,20 @@ public class StadioCanvas extends JPanel{
 		return selezione;
 	}
 	
+	//setta il posto p come posto selezionato
+	public void setSelezione(Posto p) {
+		resetSelezione();
+		
+		for(int i=0;i<poltroncine.size();i++){
+			Poltroncina pol = poltroncine.get(i);
+			if (pol.getPosto().equals(p)) {
+				selezione = pol;
+				//sposto la poltroncina in cima
+				poltroncine.remove(i);
+			}
+    	}
+	}
+	
 	public void resetSelezione(){
 		if(selezione!=null){
 			poltroncine.add(selezione);

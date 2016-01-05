@@ -4,13 +4,11 @@ import core.elementi.Biglietto;
 import core.elementi.Partita;
 import core.elementi.Posto;
 import core.elementi.Posto.Stato;
+import core.sconti.Sconto;
 import core.utente.Cliente;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.GridLayout;
-import java.awt.Panel;
-import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,8 +22,6 @@ import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
-
 import gui.graphics.Finestra;
 import gui.stadio.Poltroncina;
 import gui.stadio.StadioCanvas;
@@ -34,6 +30,7 @@ import gui.stadio.StadioListener;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import javax.swing.border.EmptyBorder;
+import java.awt.SystemColor;
 
 public class ScreenPartita extends Finestra
 {
@@ -42,8 +39,9 @@ public class ScreenPartita extends Finestra
 		super(parent, 800, 700);
 		this.partita = partita;
 		questoFrame = this;
-		operazioniSuFrame();
 		this.cliente = cliente;
+		operazioniSuFrame();
+		
 		
 		stadioCanvas.setPosti(partita.getPosti());
 
@@ -108,31 +106,37 @@ public class ScreenPartita extends Finestra
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Biglietto biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
-				biglietto.setPosto(stadioCanvas.getSelezione().getPosto());
-				if(!controllaStatoPostoDisponobile())
-				{
-					try {
-						throw new PostoIndisponibileException();
-					} catch (PostoIndisponibileException e1) {
-
-						JOptionPane.showMessageDialog(null, e1.getMessage());
-					}	
-				}
-				else 
-				{
-
-					biglietto.setPrenotazione(true);
-					stadioCanvas.getSelezione().getPosto().setStato(Stato.PRENOTATO);
-					stadioCanvas.getSelezione().setStato(Stato.PRENOTATO);
-					partita.getStadio().aggiungiIncasso(0);
-					cliente.aggiungiBiglietto(biglietto);
-					stadioCanvas.repaint();
+				
+				Poltroncina selezione = stadioCanvas.getSelezione();
+				
+				if(selezione!=null){
+					Biglietto biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
+					
+					biglietto.setPosto(selezione.getPosto());
+					
+					if(!controllaStatoPostoDisponobile())
+					{
+						try {
+							throw new PostoIndisponibileException();
+						} catch (PostoIndisponibileException e1) {
 	
-				}
+							JOptionPane.showMessageDialog(null, e1.getMessage());
+						}	
+					}
+					else 
+					{
+	
+						biglietto.setPrenotazione(true);
+						selezione.getPosto().setStato(Stato.PRENOTATO);
+						selezione.setStato(Stato.PRENOTATO);
+						partita.getStadio().aggiungiIncasso(0);
+						cliente.aggiungiBiglietto(biglietto);
+						stadioCanvas.repaint();
+		
+					}
 
 
-
+			   }
 			}
 		});
 		return button;
@@ -146,33 +150,35 @@ public class ScreenPartita extends Finestra
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				Biglietto biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
-
-
-				biglietto.setPosto(stadioCanvas.getSelezione().getPosto());
-
-				if(!controllaStatoPostoPrenotato())
-				{
-					try {
-						throw new PostoNonPrenotatoException();
-					} catch (PostoNonPrenotatoException e1) {
-
-						JOptionPane.showMessageDialog(null, e1.getMessage());
+				
+				Poltroncina selezione = stadioCanvas.getSelezione();
+				
+				if(selezione!=null){
+					Biglietto biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
+					biglietto.setPosto(selezione.getPosto());
+	
+					if(!controllaStatoPostoPrenotato())
+					{
+						try {
+							throw new PostoNonPrenotatoException();
+						} catch (PostoNonPrenotatoException e1) {
+	
+							JOptionPane.showMessageDialog(null, e1.getMessage());
+						}
 					}
-				}
-				else
-				{
-					//verifica se la prenotazione appartiene al cliente corrente
-					if(!postoDisponibilePerAcquisto()){
-						JOptionPane.showMessageDialog(null,"il biglietto è stato prenotato da un altro cliente");
-					}else{
-						biglietto.setAcquisto(true);
-						partita.getStadio().aggiungiIncasso(biglietto.getPrezzo());
-						stadioCanvas.getSelezione().getPosto().setStato(Stato.VENDUTO);
-						stadioCanvas.getSelezione().setStato(Stato.VENDUTO);
-						cliente.aggiungiBiglietto(biglietto);
-						stadioCanvas.repaint();
+					else
+					{
+						//verifica se la prenotazione appartiene al cliente corrente
+						if(!postoDisponibilePerAcquisto()){
+							JOptionPane.showMessageDialog(null,"il biglietto è stato prenotato da un altro cliente");
+						}else{
+							biglietto.setAcquisto(true);
+							partita.getStadio().aggiungiIncasso(biglietto.getPrezzo());
+							selezione.getPosto().setStato(Stato.VENDUTO);
+							selezione.setStato(Stato.VENDUTO);
+							cliente.aggiungiBiglietto(biglietto);
+							stadioCanvas.repaint();
+						}
 					}
 				}
 			}
@@ -187,28 +193,34 @@ public class ScreenPartita extends Finestra
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Biglietto biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
-				biglietto.setPosto(stadioCanvas.getSelezione().getPosto());
-
-				if(!controllaStatoPostoDisponobile() )
-				{
-					try {
-						throw new PostoNonAcquistabileRapidamente();
-					} catch (PostoNonAcquistabileRapidamente e1) {
-
-						JOptionPane.showMessageDialog(null, e1.getMessage());
-					}
-				}
-				else
-				{
+				
+				Poltroncina selezione = stadioCanvas.getSelezione();
+				
+				if(selezione!=null){
 					
-					partita.getStadio().aggiungiIncasso(biglietto.getPrezzo());
-					biglietto.setPrenotazione(true);
-					biglietto.setAcquisto(true);
-					stadioCanvas.getSelezione().getPosto().setStato(Stato.VENDUTO);
-					stadioCanvas.getSelezione().setStato(Stato.VENDUTO);
-					cliente.aggiungiBiglietto(biglietto);
-					stadioCanvas.repaint();
+					Biglietto biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
+					biglietto.setPosto(selezione.getPosto());
+	
+					if(!controllaStatoPostoDisponobile() )
+					{
+						try {
+							throw new PostoNonAcquistabileRapidamente();
+						} catch (PostoNonAcquistabileRapidamente e1) {
+	
+							JOptionPane.showMessageDialog(null, e1.getMessage());
+						}
+					}
+					else
+					{
+						
+						partita.getStadio().aggiungiIncasso(biglietto.getPrezzo());
+						biglietto.setPrenotazione(true);
+						biglietto.setAcquisto(true);
+						selezione.getPosto().setStato(Stato.VENDUTO);
+						selezione.setStato(Stato.VENDUTO);
+						cliente.aggiungiBiglietto(biglietto);
+						stadioCanvas.repaint();
+					}
 				}
 			}
 		});
@@ -220,9 +232,6 @@ public class ScreenPartita extends Finestra
 	{
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout(0, 0));
-		JLabel labelPrezzo = new JLabel("Prezzo Biglietto:"+partita.generaPrezzoBiglietto(cliente)+"€");
-		panel.add(labelPrezzo, BorderLayout.WEST);
-		labelPrezzo.setFont(new Font(null, Font.BOLD, 18));
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new EmptyBorder(0, 5, 0, 5));
@@ -251,22 +260,62 @@ public class ScreenPartita extends Finestra
 		
 		JScrollPane scrollPane = new JScrollPane(textAreaPosto);
 		panel_3.add(scrollPane);
-
-
-
 		panel.setBorder(new TitledBorder(new EtchedBorder(),"Info Partita"));
+		
+		JPanel panel_4 = new JPanel();
+		panel.add(panel_4, BorderLayout.WEST);
+		panel_4.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBorder(new EmptyBorder(0, 5, 0, 5));
+		panel_4.add(panel_5, BorderLayout.CENTER);
+		panel_5.setLayout(new BorderLayout(0, 0));
+		
+		String prezzo = String.format("%.2f",partita.generaPrezzoBiglietto(cliente));
+		
+		JLabel labelPrezzo = new JLabel("Prezzo Biglietto:"+prezzo+"€");
+		panel_5.add(labelPrezzo);
+		labelPrezzo.setFont(new Font(null, Font.BOLD, 18));
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBorder(new TitledBorder(new EmptyBorder(0, 0, 0, 0), "Sconti:", TitledBorder.LEFT, TitledBorder.TOP, null, null));
+		panel_4.add(panel_6, BorderLayout.SOUTH);
+		panel_6.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		
+		
+		
+		JTextArea scontiTextArea = new JTextArea();
+		scontiTextArea.setBackground(SystemColor.menu);
+		scontiTextArea.setEditable(false);
+		scontiTextArea.setTabSize(1);
+		scontiTextArea.setColumns(21);
+		scontiTextArea.setRows(3);
+		
+		scontiTextArea.append("Prezzo base: "+partita.getStadio().getPrezzoBase()+"\n");
+		
+		for(Sconto s:partita.getSconti())
+		scontiTextArea.append(s.toString()+"\n");
+		
+		JScrollPane scontiScrollPane = new JScrollPane(scontiTextArea);
+		panel_6.add(scontiScrollPane);
 
 		return panel;
 	}
 
 	public void aggiornaDettaglioPosto(){
 		
-		textAreaPosto.setText("");
-		textAreaPosto.append(stadioCanvas.getSelezione().getPosto().getSigla()+"\n");
-		if(postoDisponibilePerAcquisto()){
-			textAreaPosto.append("biglietto prenotato da questo cliente");
-		}else{
-			textAreaPosto.append("biglietto non prenotato da questo cliente");
+		Poltroncina selezione = stadioCanvas.getSelezione();
+		
+		if(selezione!=null){
+			textAreaPosto.setText("Posto: ");
+			textAreaPosto.append(stadioCanvas.getSelezione().getPosto().getSigla()+"\n");
+			if(postoDisponibilePerAcquisto()){
+				Posto.Stato stato = stadioCanvas.getSelezione().getPosto().getStato();
+				if(stato.equals(Posto.Stato.PRENOTATO))
+					textAreaPosto.append("posto già prenotato da te");
+				if(stato.equals(Posto.Stato.VENDUTO))
+					textAreaPosto.append("posto già acquistato da te");
+			}
 		}
 	}
 	
@@ -313,6 +362,14 @@ public class ScreenPartita extends Finestra
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * 	imposta il selettore posto con il posto del biglietto
+	 */
+	public void caricaSelezione(Biglietto b){ 
+		stadioCanvas.setSelezione(b.getPosto());
+		aggiornaDettaglioPosto();
 	}
 	
 
