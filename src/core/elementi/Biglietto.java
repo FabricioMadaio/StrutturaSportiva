@@ -1,6 +1,7 @@
 package core.elementi;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Biglietto implements Serializable
@@ -77,6 +78,31 @@ public class Biglietto implements Serializable
 
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
+	}
+	
+	public boolean verificaPrenotazioneScaduta(GregorianCalendar dataAttuale){
+		
+		//dataPartita - dataAttuale > 12
+		//dataPartita> 12 + dataAttuale
+		dataAttuale.add(Calendar.HOUR_OF_DAY, 12);
+
+		if(getPartita().getData().before(dataAttuale) && isPrenotazione())
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean verificaAcquistoScaduto(GregorianCalendar dataAttuale){
+		
+		//dataPartita - dataAttuale > 0
+		//dataPartita> dataAttuale
+
+		if(getPartita().getData().before(dataAttuale))
+		{
+			return true;
+		}
+		return false;
 	}
 
 	private boolean prenotazione;

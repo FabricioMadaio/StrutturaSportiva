@@ -77,16 +77,16 @@ public class Cliente extends Utente implements Serializable{
 	//cancella i biglietti scaduti
 	public void verificaScadenze()
 	{
-
-		GregorianCalendar dataBiglietto = new GregorianCalendar();
-
-		dataBiglietto.add(Calendar.HOUR_OF_DAY, 12);
+		
+		GregorianCalendar dataAttuale= new GregorianCalendar();
+		
 		for(int i = 0 ; i<biglietti.size() ; i++)
 		{
 			Biglietto b = biglietti.get(i);
-			if(dataBiglietto.before(b.getPartita().getData()))
+			if(b.verificaPrenotazioneScaduta(dataAttuale) && !b.isAcquisto())
 			{
 				annullaBiglietto(b);
+				i--;
 			}
 		}
 

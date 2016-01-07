@@ -83,13 +83,14 @@ public class Carrello extends Finestra
 
 		acquisti.removeAll();
 		prenotazioni.removeAll();
+		
+		cliente.verificaScadenze();
 
 		for(Biglietto b:cliente.getBiglietti())
 			if(b.isAcquisto())
 				acquisti.add(new BigliettoComponent(b));
 			else
 			{
-				cliente.verificaScadenze();
 				prenotazioni.add(new PrenotazioneComponent(b,(Carrello)questoFrame));
 			}	
 

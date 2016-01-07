@@ -5,6 +5,6 @@ public class PostoIndisponibileException extends Exception
 {
 	public PostoIndisponibileException()
 	{
-		super("Mi Dispiace il posto non è disponebile ne selezioni un altro.");
+		super("Mi dispiace il posto non è disponibile, ne selezioni un altro.");
 	}
 }	

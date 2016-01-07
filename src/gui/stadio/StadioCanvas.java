@@ -163,8 +163,10 @@ public class StadioCanvas extends JPanel{
 	
 	//setta il posto p come posto selezionato
 	public void setSelezione(Posto p) {
+		
 		resetSelezione();
 		
+		//cerca la poltroncina con posto p
 		for(int i=0;i<poltroncine.size();i++){
 			Poltroncina pol = poltroncine.get(i);
 			if (pol.getPosto().equals(p)) {
