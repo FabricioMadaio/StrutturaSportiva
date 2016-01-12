@@ -1,4 +1,4 @@
-package core;
+package core.utente;
 
 /**
  * @author Fabricio Nicolas Madaio

@@ -91,7 +91,7 @@ public class WeekPicker extends JComponent{
 		initialDate = new GregorianCalendar();
 		//calcolo il giorno iniziale della settimana
 		int amount = initialDate.get(Calendar.DAY_OF_WEEK);
-		if(amount == 1) amount = 7;
+		if(amount == 1) amount = 8;
 		//sottraggo 2 perche la settimana parte dal lunedi che ha valore 2
 		initialDate.add(Calendar.DAY_OF_MONTH, -(amount-2));
 		
@@ -102,6 +102,9 @@ public class WeekPicker extends JComponent{
 		//calcolo il giorno di fine settimana come data iniziale + 6 giorni
 		finalDate = (GregorianCalendar) initialDate.clone();
 		finalDate.add(Calendar.DAY_OF_MONTH, 6);
+		//setto la mezzanotte come riferimento
+		initialDate.set(Calendar.HOUR_OF_DAY, 23);
+		initialDate.set(Calendar.MINUTE, 59);
 		
 		updateFields();
 

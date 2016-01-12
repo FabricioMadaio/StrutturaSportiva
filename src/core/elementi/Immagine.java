@@ -1,4 +1,4 @@
-package core;
+package core.elementi;
 
 import java.awt.Image;
 import java.io.File;

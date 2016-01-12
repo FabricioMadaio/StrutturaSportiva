@@ -2,8 +2,8 @@ package core.utente;
 
 import java.io.Serializable;
 
-import core.ParametroIllegaleException;
-import core.PasswordException;
+import core.utente.ParametroIllegaleException;
+import core.utente.PasswordException;
 
 /**
  * @author Fabricio Nicolas Madaio

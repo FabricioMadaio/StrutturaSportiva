@@ -16,7 +16,7 @@ public class FiltroPartitaPerSettimana implements FiltroPartita {
 	public boolean check(Partita p) {
 		// TODO Auto-generated method stub
 		GregorianCalendar data = p.getData();
-		return data.after(inizio) && data.before(fine);
+		return (data.after(inizio) || data.equals(inizio)) && (data.before(fine) || data.equals(fine));
 	}
 
 	private GregorianCalendar inizio;

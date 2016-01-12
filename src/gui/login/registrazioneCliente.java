@@ -15,8 +15,8 @@ import javax.swing.border.EmptyBorder;
 
 import gui.graphics.Finestra;
 import core.ListaUtenti;
-import core.ParametroIllegaleException;
-import core.PasswordException;
+import core.utente.ParametroIllegaleException;
+import core.utente.PasswordException;
 import core.utente.Cliente;
 
 /**
