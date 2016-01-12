@@ -180,9 +180,7 @@ public class GestoreScreen extends Finestra
 		scroll = new ScrollablePanelList();
 		
 		GregorianCalendar data = new GregorianCalendar();
-		//Partita p = new Partita(data, "squadraA" , "squadraB", "idStadio",15.00,true);
-		//PartitaComponent p1 = new PartitaComponent(p);
-		//scroll.add(p1);
+
 		
 		updateListaPartite();
 		
