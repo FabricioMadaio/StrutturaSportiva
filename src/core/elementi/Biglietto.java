@@ -8,10 +8,10 @@ public class Biglietto implements Serializable
 {
 	private static final long serialVersionUID = 11L;
 	/**
-	 * Il costruttore della classe biglietto iniziallizza un oggetto biglietto prendendo
-	 * come riferimento una partita e un prezzo, verranno inizializzati gli stati del beglietto
+	 * Il costruttore della classe Niglietto inizializza un nuovo oggetto prendendo
+	 * come riferimento una partita e un prezzo, verranno inizializzati gli stati del biglietto
 	 * ovvero prenotazione e acquisto a false e verra salvato il prezzo passatogli nella variabile
-	 * di istanza prezzo, appena verra creato un oggetto biglietto esso avra come data la data
+	 * di istanza prezzo, la data del biglietto sarà la data
 	 * di creazione(data odierna).
 	 * 
 	 * @param Partita partita
@@ -148,10 +148,10 @@ public class Biglietto implements Serializable
 
 	/**
 	 *Al metodo viene passata la data attuale la quale verra confrontata con quella della
-	 *partitea se la data attuale e quella della partita differiscono almeno di 
-	 *12 ore o più ilo metodo ritornerà true altrimenti false.
+	 *partita. Se la data attuale e quella della partita differiscono almeno di 
+	 *12 ore o più il metodo ritornerà true altrimenti false.
 	 * @param GreagorianCalendar dataAttuale
-	 * @return boolean
+	 * @return boolean stato del biglietto (prenotabile /scaduto)
 	 */	
 	public boolean verificaPrenotazioneScaduta(GregorianCalendar dataAttuale)
 	{
@@ -169,10 +169,10 @@ public class Biglietto implements Serializable
 
 	/**
 	 *Al metodo gli viene passata la data attuale la quale viene confrontata con la data
-	 *della partita se la partita si è gia conclusa allara non permette di acquistare ritornando false
+	 *della partita se la partita si è gia conclusa allora non permette di acquistare ritornando false
 	 *alrimenti ritorna true. 
 	 * @param GreagorianCalendar dataAttuale
-	 * @return boolean
+	 * @return boolean stato del biglietto (acquistabile/scaduto)
 	 */
 
 	public boolean verificaAcquistoScaduto(GregorianCalendar dataAttuale)

@@ -21,7 +21,9 @@ public class Partita implements Serializable
 	/**
 	 * Al costruttore di partita gli passimo una data ,la Squadra A, la SquadraB e uno stadio poi
 	 * all'interno del costruttore viene inizializzato un ArrayList di sconti che vengono aggiunti 
-	 * alla partita se applicabili.
+	 * alla partita se applicabili. Inoltre viene creata una copia dei posti dallo stadio di
+	 * riferimento.
+	 * 
 	 * @param GregorianCalendar data
 	 * @param String squadraA
 	 * @param String squadraB
@@ -34,7 +36,8 @@ public class Partita implements Serializable
 		this.squadraB = squadraB;
 		this.stadio = stadio;
 		this.sconti= new ArrayList<>();
-		
+
+		this.prezzoBase = stadio.getPrezzoBase();
 		copiaPosti(stadio.getPosti());
 	}
 
@@ -48,10 +51,10 @@ public class Partita implements Serializable
 		return squadraA + " vs " + squadraB;
 	}
 
-/**
- * Il metodo ritorna la data della partita.
- * @return GregorianCalendar data
- */
+	/**
+	 * Il metodo ritorna la data della partita.
+	 * @return GregorianCalendar data
+	 */
 	public GregorianCalendar getData()
 	{
 		return data;
@@ -113,7 +116,7 @@ public class Partita implements Serializable
 	
 	/**
 	 * Il metodo prima di aggiunge lo sconto chiama il metodo
-	 * vrifica applicabilità di sconto che se ritornerà true lo 
+	 * verifica applicabilità di sconto che se ritornerà true lo 
 	 * aggiunge altrimenti non lo aggiunge
 	 * 
 	 * @param Sconto sconto
@@ -137,7 +140,7 @@ public class Partita implements Serializable
 	
 	public double generaPrezzoBiglietto(Cliente c)
 	{
-		double prezzo = stadio.getPrezzoBase();
+		double prezzo = prezzoBase;
 		
 		for(int i = 0 ; i < sconti.size() ; i++)
 		{
@@ -174,6 +177,12 @@ public class Partita implements Serializable
 	}
 
 
+	/**
+	 * Questo metodo copia nella partita la lista dei posti di uno stadio.
+	 * In questo modo ogni partita avrà una lista di posti con le informazioni relative
+	 * alle prenotazioni e gli acquisti indipendenti da modifiche successive allo stadio.
+	 * @param posti
+	 */
 	public void copiaPosti(ArrayList<Posto> posti) {
 		this.posti = new ArrayList<Posto>();
 		
@@ -211,5 +220,7 @@ public class Partita implements Serializable
 	private String squadraA;
 	private String squadraB;
 	private Stadio stadio;
+	
+	private double prezzoBase;
 	
 }

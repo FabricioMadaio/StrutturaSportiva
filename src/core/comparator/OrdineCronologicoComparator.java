@@ -10,13 +10,12 @@ import core.elementi.Partita;
 public class OrdineCronologicoComparator  implements Comparator<Partita> 
 {
 	/**
-	 * Il metodo serve ad ordinare le partite in ordine crescente a secondo della data, ritorna un intero che ssta ad indicare il tipo di relazione di ricorrenza 
-	 * 1 se la prima data viene dopo la seconda ,-1 se la prima data viene prima della seconda altrimenti
-	 *  0 se sono uguali.
+	 * Il metodo serve ad ordinare le partite in ordine crescente a secondo della data
 	 * 
 	 * @param Partita p1
 	 * @param Partita p2
-	 * @return int
+	 * @return int tipo della relazione di ricorrenza, vale -1 se il primo parametro è maggiore del secondo,
+	 * 1 se il primo parametro è minore del secondo, 0 se sono uguali
 	 * 
 	 */
 	@Override

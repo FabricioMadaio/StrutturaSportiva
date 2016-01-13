@@ -9,13 +9,12 @@ import core.elementi.Partita;
 public class OrdineLessicoGraficoComparatorNomeSquadre implements Comparator<Partita> 
 {
 	/**
-	 * Il metodo prende proprio la stringa "SquadraA vs SquadraB" e inizia a confrontare 
-	 * in questo modo da ordinare in modo giusto le partite.
-	 * Ritorna 1 se la prima partita è "maggiore" della seconda,-1 se la senconda è "maggiore"
-	 * della prima altrimenti ritorna 0 perchè sono uguali.  
+	 * Il metodo prende proprio la stringa "SquadraA vs SquadraB" restituita da getGame
+	 * in seguito avviene un semplice confronto di tipo lessicografico tra stringe.
 	 * @param Partita p1
 	 * @param Partita p2
-	 * @return int
+	 * @return int tipo della relazione di ricorrenza, vale -1 se il primo parametro è maggiore del secondo,
+	 * 1 se il primo parametro è minore del secondo, 0 se sono uguali
 	 */
 	@Override
 	public int compare(Partita p1, Partita p2) 

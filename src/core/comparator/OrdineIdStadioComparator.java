@@ -10,13 +10,12 @@ public class OrdineIdStadioComparator  implements Comparator<Partita>
 {
 	
 	/**
-	 * Il metodo ordina lessicograficamente le partite secondo l'id dello stadio il quale è 
-	 * una stringa ritorna 1 se l'id dello stadio dove si svolge la prima partita
-	 * è "maggiore"  dell'id dello stadio dove si svolge la seconda partita , -1 se l'id dello stadio dove si svolge la seconda partita 
-	 * è "maggiore " dell'id dello stadio dove si svolge la seconda partita poi se sono uguali ritorna 0.
+	 * Il metodo ordina lessicograficamente le partite secondo l'id dello stadio il quale 
+	 * coincide con il nome (di tipo Stringa) 
 	 * @param Partita p1
 	 * @param Partita p1
-	 * @return int
+	 * @return int tipo della relazione di ricorrenza, vale -1 se il primo parametro è maggiore del secondo,
+	 * 1 se il primo parametro è minore del secondo, 0 se sono uguali
 	 */
 	
 	@Override
