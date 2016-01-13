@@ -8,7 +8,7 @@ public class Biglietto implements Serializable
 {
 	private static final long serialVersionUID = 11L;
 	/**
-	 * Il costruttore della classe Niglietto inizializza un nuovo oggetto prendendo
+	 * Il costruttore della classe Biglietto inizializza un nuovo oggetto prendendo
 	 * come riferimento una partita e un prezzo, verranno inizializzati gli stati del biglietto
 	 * ovvero prenotazione e acquisto a false e verra salvato il prezzo passatogli nella variabile
 	 * di istanza prezzo, la data del biglietto sarà la data

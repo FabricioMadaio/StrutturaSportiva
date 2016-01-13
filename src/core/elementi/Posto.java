@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Posto implements Serializable{
 
 	/**
-	 * 
+	 * ######################### FABRI VEDI TU ######################
 	 */
 	private static final long serialVersionUID = 4L;
 	private int x;
