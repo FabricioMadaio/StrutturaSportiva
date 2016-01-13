@@ -23,12 +23,12 @@ import core.elementi.Stadio;
 import core.filtri.FiltroPartita;
 
 /**
- * @author Fabricio Nicolas Madaio
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
  */
-/**
- * @author Fabri
- *
- */
+
 public class ListaUtenti implements Serializable{
 	
 	private static final long serialVersionUID = 12L;
@@ -76,14 +76,11 @@ public class ListaUtenti implements Serializable{
 			
 			ois.close();
 		} catch (IOException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			
 			Stadio st1 = new Stadio("stadio1",2,"res/Stadio.png");
 			Stadio st2 = new Stadio("stadio2",3,"res/Stadio2.png");
 			addStadio(st1);
 			addStadio(st2);
-			
-			
 			
 			e.printStackTrace();
 		}
@@ -104,13 +101,20 @@ public class ListaUtenti implements Serializable{
 		for(Stadio s:stadi){
 			
 			imageNotFound = true;
+			
+			//cerco il path dello stadio nella lista delle immagini
 			for(Immagine i: immagini){
-			 if(s.getPathImmagine() == i.getPath()){
-				 s.setImage(i.getImage());
-				 imageNotFound = false;
-				 break;
-			 }
+			
+				//se trovo una immagine con lo stesso path, la passo allo stadio
+				if(s.getPathImmagine().equals(i.getPath())){
+					s.setImage(i.getImage());
+					imageNotFound = false;
+					break;
+				}
 			}
+			
+			//se non ho trovato l'immagine, la carico, la passo allo stadio e
+			//la inserisco nell'array di immagini
 			if(imageNotFound){
 				try {
 					Immagine i = new Immagine(s.getPathImmagine());
@@ -124,6 +128,9 @@ public class ListaUtenti implements Serializable{
 		}
 	}
 	
+	/**
+	 * @return lista di stadi
+	 */
 	public ArrayList<Stadio> getStadi() {
 		return stadi;
 	}
@@ -172,7 +179,7 @@ public class ListaUtenti implements Serializable{
 	
 	/**
 	 * effettua il login e restituisce l'utente trovato
-	 * @param username		username utente
+	 * @param username	username utente
 	 * @param password	password
 	 * @return utente loggato
 	 */
