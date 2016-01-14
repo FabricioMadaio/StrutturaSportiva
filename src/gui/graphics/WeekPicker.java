@@ -29,8 +29,20 @@ import java.awt.FlowLayout;
 import java.awt.SystemColor;
 import javax.swing.border.BevelBorder;
 
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ * 
+ * WeekPicker definisce un componente che consente di selezionare una settimana
+ * la settimana di partenza è quella attuale
+ */
 public class WeekPicker extends JComponent{
 
+	/**
+	 *  costruttore
+	 */
 	public WeekPicker(){
 		
 		thisPicker = this;
@@ -106,15 +118,25 @@ public class WeekPicker extends JComponent{
 		initialDate.set(Calendar.HOUR_OF_DAY, 23);
 		initialDate.set(Calendar.MINUTE, 59);
 		
+		//aggiorno i campi
 		updateFields();
 
 		setEnabled(false);
 	}
 	
+	/**
+	 * restituisce il giorno e il mese di un oggetto GregorianCalendar
+	 * 
+	 * @param gc data
+	 * @return giorno e mese
+	 */
 	public String getDayAndMonth(GregorianCalendar gc){
 		return new SimpleDateFormat("d MMMMM").format(gc.getTime());
 	}
 	
+	/**
+	 * aggiorna il selettore della settimana con i dati delle variabili di istanza
+	 */
 	public void updateFields(){
 		
 		lblWeek.setText(getDayAndMonth(initialDate) + " - "+ getDayAndMonth(finalDate));
@@ -127,6 +149,12 @@ public class WeekPicker extends JComponent{
 		
 	}
 	
+	/**
+	 * abilita/disabilita un componente e i sui primi figli
+	 * 
+	 * @param component componente
+	 * @param enabled abilitato/disabilitato
+	 */
 	void setEnabled(Component component, boolean enabled) {
 	    component.setEnabled(enabled);
 	    if (component instanceof Container) {
@@ -136,20 +164,32 @@ public class WeekPicker extends JComponent{
 	    }
 	}
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#setEnabled(boolean)
+	 */
 	@Override
 	public void setEnabled(boolean enabled) {
 		setEnabled(this.getComponent(0),enabled);
 		super.setEnabled(enabled);
 	}
 	
+	/**
+	 * @return data iniziale
+	 */
 	public GregorianCalendar getInitialDate(){
 		return initialDate;
 	}
 	
+	/**
+	 * @return data finale
+	 */
 	public GregorianCalendar getFinalDate(){
 		return finalDate;
 	}
 	
+	/**
+	 * @param l listener lanciato alla pressione dei pulsanti
+	 */
 	public void addActionListener(ActionListener l){
 		itemListener = l;
 	}
