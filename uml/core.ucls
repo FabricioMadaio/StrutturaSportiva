@@ -26,16 +26,7 @@
     <position height="519" width="907" x="868" y="113"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="6" language="java" name="core.Immagine" project="StrutturaSportiva" 
-    file="/StrutturaSportiva/src/core/Immagine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2046" y="717"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="core.ListaUtenti" project="StrutturaSportiva" 
+  <class id="6" language="java" name="core.ListaUtenti" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/ListaUtenti.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1384" y="943"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -44,7 +35,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="core.comparator.OrdineCapienzaStadioComparator" project="StrutturaSportiva" 
+  <class id="7" language="java" name="core.comparator.OrdineCapienzaStadioComparator" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/comparator/OrdineCapienzaStadioComparator.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="218" y="516"/>    
@@ -54,7 +45,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="core.comparator.OrdineCronologicoComparator" project="StrutturaSportiva" 
+  <class id="8" language="java" name="core.comparator.OrdineCronologicoComparator" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/comparator/OrdineCronologicoComparator.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="196" y="647"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -63,7 +54,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="core.comparator.OrdineIdStadioComparator" project="StrutturaSportiva" 
+  <class id="9" language="java" name="core.comparator.OrdineIdStadioComparator" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/comparator/OrdineIdStadioComparator.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="578" y="508"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -72,7 +63,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="core.comparator.OrdineLessicoGraficoComparatorNomeSquadre" 
+  <class id="10" language="java" name="core.comparator.OrdineLessicoGraficoComparatorNomeSquadre" 
     project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/comparator/OrdineLessicoGraficoComparatorNomeSquadre.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -83,7 +74,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="core.comparator.OredineLessicoGraficoComparatorNomeSquadre" 
+  <class id="11" language="java" name="core.comparator.OredineLessicoGraficoComparatorNomeSquadre" 
     project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/comparator/OredineLessicoGraficoComparatorNomeSquadre.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -94,7 +85,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="core.elementi.Biglietto" project="StrutturaSportiva" 
+  <class id="12" language="java" name="core.elementi.Biglietto" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/elementi/Biglietto.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2434" y="696"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -103,7 +94,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="core.elementi.Partita" project="StrutturaSportiva" 
+  <class id="13" language="java" name="core.elementi.Partita" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/elementi/Partita.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2081" y="1054"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -112,7 +103,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="15" language="java" name="core.elementi.Posto.Stato" project="StrutturaSportiva" 
+  <enumeration id="14" language="java" name="core.elementi.Posto.Stato" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/elementi/Posto.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2686" y="1082"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -121,7 +112,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="16" language="java" name="core.elementi.Posto" project="StrutturaSportiva" 
+  <class id="15" language="java" name="core.elementi.Posto" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/elementi/Posto.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2423" y="1144"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -130,7 +121,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="17" language="java" name="core.filtri.FiltroPartita" project="StrutturaSportiva" 
+  <interface id="16" language="java" name="core.filtri.FiltroPartita" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/filtri/FiltroPartita.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="424" y="1102"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -139,7 +130,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="18" language="java" name="core.filtri.FiltroPartitaPerSettimana" project="StrutturaSportiva" 
+  <class id="17" language="java" name="core.filtri.FiltroPartitaPerSettimana" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/filtri/FiltroPartitaPerSettimana.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="287" y="1279"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -148,7 +139,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="core.filtri.FiltroPartitaSuStadio" project="StrutturaSportiva" 
+  <class id="18" language="java" name="core.filtri.FiltroPartitaSuStadio" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/filtri/FiltroPartitaSuStadio.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="612" y="1282"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -157,17 +148,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="core.sconti.GiornoDellaSettimaNonSpecifcatoException" project="StrutturaSportiva" 
-    file="/StrutturaSportiva/src/core/sconti/GiornoDellaSettimaNonSpecifcatoException.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1641" y="1449"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="21" language="java" name="core.sconti.GiornoDellaSettimaNonSpecificatoException" 
+  <class id="19" language="java" name="core.sconti.GiornoDellaSettimaNonSpecificatoException" 
     project="StrutturaSportiva" file="/StrutturaSportiva/src/core/sconti/GiornoDellaSettimaNonSpecificatoException.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1639" y="1354"/>    
@@ -177,7 +158,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="22" language="java" name="core.sconti.Sconto" project="StrutturaSportiva" 
+  <interface id="20" language="java" name="core.sconti.Sconto" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/sconti/Sconto.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1199" y="1404"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -186,7 +167,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="23" language="java" name="core.sconti.ScontoFasciaOraria" project="StrutturaSportiva" 
+  <class id="21" language="java" name="core.sconti.ScontoFasciaOraria" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/sconti/ScontoFasciaOraria.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1215" y="1675"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -195,7 +176,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="core.sconti.ScontoGiornoDellaSettimana" project="StrutturaSportiva" 
+  <class id="22" language="java" name="core.sconti.ScontoGiornoDellaSettimana" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/sconti/ScontoGiornoDellaSettimana.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="979" y="1661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -204,7 +185,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="core.sconti.ScontoPerCliente" project="StrutturaSportiva" 
+  <class id="23" language="java" name="core.sconti.ScontoPerCliente" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/sconti/ScontoPerCliente.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1463" y="1661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -213,7 +194,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="core.sconti.ScontoPerPartita" project="StrutturaSportiva" 
+  <class id="24" language="java" name="core.sconti.ScontoPerPartita" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/sconti/ScontoPerPartita.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1701" y="1603"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -222,7 +203,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="core.utente.Cliente" project="StrutturaSportiva" 
+  <class id="25" language="java" name="core.utente.Cliente" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/utente/Cliente.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1642" y="398"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -231,7 +212,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="28" language="java" name="core.utente.Gestore" project="StrutturaSportiva" 
+  <class id="26" language="java" name="core.utente.Gestore" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/utente/Gestore.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="984" y="402"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -240,7 +221,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="core.utente.Utente" project="StrutturaSportiva" 
+  <class id="27" language="java" name="core.utente.Utente" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/utente/Utente.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1301" y="318"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -249,7 +230,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="30" language="java" name="core.utente.ParametroIllegaleException" project="StrutturaSportiva" 
+  <class id="28" language="java" name="core.utente.ParametroIllegaleException" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/utente/ParametroIllegaleException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1387" y="539"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -258,7 +239,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="31" language="java" name="core.utente.PasswordException" project="StrutturaSportiva" 
+  <class id="29" language="java" name="core.utente.PasswordException" project="StrutturaSportiva" 
     file="/StrutturaSportiva/src/core/utente/PasswordException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1205" y="541"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -267,176 +248,176 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <nesting id="32">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="15"/>  
-  </nesting>  
-  <association id="33">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="34" name="sconti">        
-        <position height="0" width="0" x="688" y="164"/>      
+  <realization id="30">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="20"/>  
+  </realization>  
+  <realization id="31">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="20"/>  
+  </realization>  
+  <association id="32">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="33" name="partite">        
+        <position height="0" width="0" x="1412" y="920"/>      
       </attribute>      
-      <multiplicity id="35" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="688" y="164"/>      
+      <multiplicity id="34" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="1412" y="920"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="22" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="36">    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="30"/>  
-  </dependency>  
-  <generalization id="37">    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="29"/>  
+  <generalization id="35">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
   </generalization>  
-  <association id="38">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="39" name="stato">        
-        <position height="0" width="0" x="1512" y="632"/>      
+  <association id="36">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="37" name="posto">        
+        <position height="0" width="0" x="1504" y="640"/>      
       </attribute>      
-      <multiplicity id="40" minimum="0" maximum="1">        
-        <position height="0" width="0" x="1512" y="632"/>      
+      <multiplicity id="38" minimum="0" maximum="1">        
+        <position height="0" width="0" x="1504" y="640"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="41">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="17"/>  
-  </realization>  
-  <dependency id="42">    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="31"/>  
-  </dependency>  
-  <dependency id="43">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="31"/>  
-  </dependency>  
-  <association id="44">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="45" name="posti">        
-        <position height="0" width="0" x="1504" y="640"/>      
-      </attribute>      
-      <multiplicity id="46" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="1504" y="640"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="47">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="22"/>  
-  </realization>  
-  <association id="48">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="49" name="partite">        
-        <position height="0" width="0" x="1412" y="920"/>      
-      </attribute>      
-      <multiplicity id="50" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="1412" y="920"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="51">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="30"/>  
-  </dependency>  
-  <association id="52">    
+  <association id="39">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="53" name="partita">        
-        <position height="0" width="0" x="1412" y="920"/>      
+      <attribute id="40" name="sconti">        
+        <position height="0" width="0" x="688" y="164"/>      
       </attribute>      
-      <multiplicity id="54" minimum="0" maximum="1">        
-        <position height="0" width="0" x="1412" y="920"/>      
+      <multiplicity id="41" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="688" y="164"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="55">    
+  <realization id="42">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="16"/>  
+  </realization>  
+  <dependency id="43">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="44">    
     <end type="SOURCE" refId="27"/>    
     <end type="TARGET" refId="29"/>  
-  </generalization>  
-  <realization id="56">    
+  </dependency>  
+  <association id="45">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="46" name="clienti">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="47" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="48">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="29"/>  
+  </dependency>  
+  <dependency id="49">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <realization id="50">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="20"/>  
+  </realization>  
+  <association id="51">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="52" name="scontiGlobali">        
+        <position height="0" width="0" x="688" y="164"/>      
+      </attribute>      
+      <multiplicity id="53" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="688" y="164"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="55" name="posti">        
+        <position height="0" width="0" x="1504" y="640"/>      
+      </attribute>      
+      <multiplicity id="56" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="1504" y="640"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="58" name="gestori">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="59" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="60">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="14"/>  
+  </nesting>  
+  <realization id="61">    
     <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="22"/>  
+    <end type="TARGET" refId="20"/>  
   </realization>  
-  <realization id="57">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="22"/>  
+  <realization id="62">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="16"/>  
   </realization>  
-  <association id="58">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="59" name="clienti"/>      
-      <multiplicity id="60" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="61">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="62" name="gestori"/>      
-      <multiplicity id="63" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="28" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="64">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="17"/>  
-  </realization>  
-  <realization id="65">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="22"/>  
-  </realization>  
-  <association id="66">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="67" name="immagini">        
-        <position height="0" width="0" x="1856" y="-56"/>      
+  <generalization id="63">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="64">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="65" name="stato">        
+        <position height="0" width="0" x="1512" y="632"/>      
       </attribute>      
-      <multiplicity id="68" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="1856" y="-56"/>      
+      <multiplicity id="66" minimum="0" maximum="1">        
+        <position height="0" width="0" x="1512" y="632"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="69">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="70" name="scontiGlobali">        
-        <position height="0" width="0" x="688" y="164"/>      
+  <association id="67">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="68" name="biglietti">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="71" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="688" y="164"/>      
+      <multiplicity id="69" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="22" navigable="true"/>    
+    <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="72">    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="73" name="biglietti"/>      
-      <multiplicity id="74" minimum="0" maximum="2147483647"/>    
+  <association id="70">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="71" name="partita">        
+        <position height="0" width="0" x="1412" y="920"/>      
+      </attribute>      
+      <multiplicity id="72" minimum="0" maximum="1">        
+        <position height="0" width="0" x="1412" y="920"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="75">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="76" name="posto">        
-        <position height="0" width="0" x="1504" y="640"/>      
-      </attribute>      
-      <multiplicity id="77" minimum="0" maximum="1">        
-        <position height="0" width="0" x="1504" y="640"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
