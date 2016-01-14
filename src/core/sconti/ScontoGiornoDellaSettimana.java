@@ -6,6 +6,12 @@ import java.util.Calendar;
 import core.elementi.Partita;
 import core.utente.Cliente;
 
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ */
 public class ScontoGiornoDellaSettimana implements Sconto,Serializable  
 {
 	/**

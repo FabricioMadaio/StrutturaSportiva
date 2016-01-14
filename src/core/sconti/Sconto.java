@@ -3,6 +3,12 @@ package core.sconti;
 import core.elementi.*;
 import core.utente.*;
 
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ */
 public interface Sconto
 {
 	/**
