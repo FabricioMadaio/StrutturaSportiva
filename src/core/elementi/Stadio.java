@@ -111,7 +111,7 @@ public class Stadio implements Serializable
 		this.incasso = incasso;
 	}
 	/**
-	 * Il metodo serve aricavare l'incasso totale.
+	 * Il metodo serve ricavare l'incasso totale.
 	 * @param double incasso
 	 */
 	public void aggiungiIncasso(double incasso) {

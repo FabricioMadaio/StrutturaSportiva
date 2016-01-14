@@ -59,5 +59,8 @@ public class ScontoPerPartita implements Sconto,Serializable
 
 
 	private int percentuale;
-
+	private String nome;
+	private String cognome;
+	private String username;
+	private String password;
 }

@@ -15,11 +15,6 @@ public class Utente implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private String nome;
-	private String cognome;
-	private String username;
-	private String password;
-	
 	/**
 	 * Utente: classe che modella l'utente (può essere Cliente o Gestore)
 	 * 
@@ -94,5 +89,9 @@ public class Utente implements Serializable{
 		if(this.getUsername().equals(u.getUsername()))
 			throw new ParametroIllegaleException();
 	}
-		
+	
+	private String nome;
+	private String cognome;
+	private String username;
+	private String password;
 }
