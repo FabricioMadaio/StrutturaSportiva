@@ -12,7 +12,13 @@ public class ScontoGiornoDellaSettimana implements Sconto,Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 8L;
-	
+	/**
+	 * Il costruttore della classe ScontoGiornoDellaSettimana inizializza un nuovo 
+	 * oggetto prendendo come riferimento un giorno della settimana e una percentuale
+	 *  
+	 * @param String giornoDellaSettiman
+	 * @param int percentuale
+	 */
 	public ScontoGiornoDellaSettimana(String giornoDellaSettiman,int percentuale) 
 	{
 		this.giornoDellaSettima = giornoDellaSettiman;
@@ -37,12 +43,13 @@ public class ScontoGiornoDellaSettimana implements Sconto,Serializable
 		
 		return false;
 	}
+	
 	/**
 	 * Il metodo attraverso un case switch trova il giorno della settimana della partita
 	 * poichè  p.getData().get(Calendar.DAY_OF_WEEK) ritorno un intero che indica i giorni
 	 * della settimana numerati da 1 a 7 partendo da domenica.
-	 * @param p
-	 * @return
+	 * @param  Partita p
+	 * @return String giornoDellaSettimana
 	 */
 
 	public String dammiGiornoDellaSettima(Partita p)

@@ -13,6 +13,13 @@ public class ScontoPerCliente implements Sconto,Serializable
 	 */
 	private static final long serialVersionUID = 9L;
 	
+	/**
+	 * Il costruttore della classe ScontoPerCliente iniziallizza un nuovo oggetto prendendo 
+	 * come riferimento una stringa che contiene la categoria del cliente e una percentuale.
+	 * @param String tipoCliente
+	 * @param int percentualeSconto
+	 */
+	
 	public  ScontoPerCliente(String tipoCliente, int percentualeSconto) 
 	{
 		this.tipoCliente = tipoCliente;
