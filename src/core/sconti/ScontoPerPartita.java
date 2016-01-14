@@ -12,7 +12,12 @@ public class ScontoPerPartita implements Sconto,Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 10L;
-	
+	/**
+	 * Il costruttore della classe ScontoPerPartita inizializza un ogetto prendendo
+	 * come riferimento una percentuale.
+	 * 
+	 * @param int percentuale
+	 */
 	public  ScontoPerPartita(int percentuale)
 	{
 		this.percentuale = percentuale;

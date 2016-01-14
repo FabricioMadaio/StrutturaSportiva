@@ -12,6 +12,13 @@ public class ScontoFasciaOraria implements Sconto,Serializable
 	 */
 	private static final long serialVersionUID = 7L;
 	
+	/**
+	 * Il costruttore della classe ScontoFaciaOrararia inizializza un oggetto 
+	 * prendendo come riferimento un oro iniziale un ora finale e una percentuale. 
+	 * @param double oraInizio
+	 * @param double oraFine
+	 * @param int percentuale
+	 */
 	public ScontoFasciaOraria(double oraInizio,double oraFine,int percentuale) 
 	{
 		this.oraFine = oraFine;
@@ -19,6 +26,7 @@ public class ScontoFasciaOraria implements Sconto,Serializable
 		this.percentuale = percentuale;
 	}
 	
+
 	@Override
 	public int getPercentualeSconto(Partita p, Cliente c) 
 	{
