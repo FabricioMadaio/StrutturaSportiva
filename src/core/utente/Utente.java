@@ -21,7 +21,7 @@ public class Utente implements Serializable{
 	private String password;
 	
 	/**
-	 * Utente: classe che modella l'utente (può essere studente o docente)
+	 * Utente: classe che modella l'utente (può essere Cliente o Gestore)
 	 * 
 	 * @param nome	nome
 	 * @param cognome	cognome

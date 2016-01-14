@@ -28,12 +28,18 @@ public class ScontoPerPartita implements Sconto,Serializable
 	}
 
 
+	/* (non-Javadoc)
+	 * @see core.sconti.Sconto#getPercentualeSconto(core.elementi.Partita, core.utente.Cliente)
+	 */
 	@Override
 	public int getPercentualeSconto(Partita p, Cliente c) 
 	{
 		return percentuale;
 	}
 
+	/* (non-Javadoc)
+	 * @see core.sconti.Sconto#verificaApplicabilita(core.elementi.Partita)
+	 */
 	@Override
 	public boolean verificaApplicabilita(Partita p) {
 
@@ -42,6 +48,9 @@ public class ScontoPerPartita implements Sconto,Serializable
 	
 	
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Sconto partita - " + percentuale + "%";

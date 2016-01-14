@@ -2,7 +2,6 @@ package core.utente;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import core.elementi.Biglietto;
@@ -31,25 +30,35 @@ public class Cliente extends Utente implements Serializable{
 
 		super(nome, cognome, username, password);
 		this.categoria = categoria;
-		scontoAttivo = true;
 		biglietti = new ArrayList<Biglietto>();
 	}
 
 
+	/**
+	 * @return categoria cliente
+	 */
 	public String getCategoria() 
 	{
 		return categoria;
 	}
 
 
+	/**
+	 * @param biglietti
+	 */
 	public void setBiglietti(ArrayList<Biglietto> biglietti) {
 		this.biglietti = biglietti;
 	}
 
 
+	/**
+	 * @param nb aggiunge un biglietto nuovo al cliente
+	 */
 	public void aggiungiBiglietto(Biglietto nb)
 	{
 
+		//cerchiamo se esiste già una prenotazione per il biglietto nuovo
+		//in caso positivo cancelliamo quella prenotazione e aggiungiamo il biglietto acquistato
 		for(int i=0;i<biglietti.size();i++){
 
 			Biglietto b = biglietti.get(i);
@@ -62,10 +71,17 @@ public class Cliente extends Utente implements Serializable{
 		biglietti.add(nb);
 	}
 
+	/**
+	 * @return lista dei biglietti
+	 */
 	public ArrayList<Biglietto> getBiglietti() {
 		return biglietti;
 	}
 
+	/**
+	 * cancella il biglietto prenotato o acquistato e setta il posto di nuovo come disponibile
+	 * @param b biglietto da eliminare
+	 */
 	public void annullaBiglietto(Biglietto b){
 
 		//setto il posto di nuovo come disponibile
@@ -96,7 +112,6 @@ public class Cliente extends Utente implements Serializable{
 	}
 
 	private String categoria;
-	private boolean scontoAttivo;
 	private ArrayList<Biglietto> biglietti;
 
 

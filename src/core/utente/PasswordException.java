@@ -1,7 +1,10 @@
 package core.utente;
 
 /**
- * @author Fabricio Nicolas Madaio
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
  */
 public class PasswordException extends Exception {
 		/**

@@ -8,6 +8,14 @@ import java.util.GregorianCalendar;
 import core.sconti.Sconto;
 import core.utente.Cliente;
 
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ * 
+ * Classe che modella la partita
+ */
 
 public class Partita implements Serializable
 {

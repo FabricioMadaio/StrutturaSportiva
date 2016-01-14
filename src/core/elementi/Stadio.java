@@ -3,6 +3,22 @@ import java.awt.Image;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ * 
+ * Classe che modella lo stadio
+ * 
+ * NOTA SULLA SERIALIZZAZIONE:
+ * L'immagine per lo sfondo dello stadio non può essere salvata sul database (non ha senso 
+ * perche si trova già su un file separato) quindi settiamo l'immagine come transient e salviamo
+ * invece il percorso della immagine su pathImmagine.
+ * Salvando il percorso possiamo settare come oggetto Image per lo stadio quella che ha il path 
+ * che combiacia con pathImmagine. (Vedi soluzione su ListaUtenti.java) 
+ */
+
 public class Stadio implements Serializable
 {
 
@@ -10,21 +26,13 @@ public class Stadio implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 5L;
-	private String nome;
-	private int capienza;
-	private double prezzoBase;
-	private double incasso;
-
-	private String pathImmagine;
-	private transient Image image;
-
-	private ArrayList<Posto> posti;
 
 	/**
-	 * ######################## FABRI VEDI TU #####################
-	 * @param nome
-	 * @param prezzoBase
-	 * @param pathImmagine
+	 * costruttore Stadio
+	 * 
+	 * @param nome	nome dello Stadio
+	 * @param prezzoBase	prezzo del biglietto base (senza sconti)
+	 * @param pathImmagine	percorso immagine dello sfondo
 	 */
 	public Stadio(String nome, int prezzoBase,String pathImmagine) {
 
@@ -111,23 +119,42 @@ public class Stadio implements Serializable
 	}
 
 	/**
-	 * ######################## Fabri i metodi restanti guardali tu ############
-	 * @return
+	 * @return percorso immagine
 	 */
 	public String getPathImmagine() {
 		return pathImmagine;
 	}
 
+	/**
+	 * @param pathImmagine setta un nuovo path per l'immagine di sfondo
+	 */
 	public void setPathImmagine(String pathImmagine) {
 		this.pathImmagine = pathImmagine;
 	}
 
+	/**
+	 * @return restituisce il riferimento alla immagine di sfondo
+	 */
 	public Image getImage() {
 		return image;
 	}
 
+	/**
+	 * @param image riferimento immagine da usare come sfondo
+	 */
 	public void setImage(Image image) {
 		this.image = image;
 	}
 
+	private String nome;
+	private int capienza;
+	private double prezzoBase;
+	private double incasso;
+
+	//l'oggetto immagine non va salvato su file
+	private transient Image image;
+	//salviamo invece il percorso
+	private String pathImmagine;
+
+	private ArrayList<Posto> posti;
 }

@@ -5,6 +5,11 @@ import java.util.Comparator;
 import core.elementi.Partita;
 
 /**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ * 
  * Ordina le partite in modo cronologico crecente.
  */
 public class OrdineCronologicoComparator  implements Comparator<Partita> 

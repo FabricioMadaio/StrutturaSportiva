@@ -19,7 +19,7 @@ public class ScontoPerCliente implements Sconto,Serializable
 	private static final long serialVersionUID = 9L;
 	
 	/**
-	 * Il costruttore della classe ScontoPerCliente iniziallizza un nuovo oggetto prendendo 
+	 * Il costruttore della classe ScontoPerCliente inizializza un nuovo oggetto prendendo 
 	 * come riferimento una stringa che contiene la categoria del cliente e una percentuale.
 	 * @param String tipoCliente
 	 * @param int percentualeSconto
@@ -32,6 +32,9 @@ public class ScontoPerCliente implements Sconto,Serializable
 	}
 
 
+	/* (non-Javadoc)
+	 * @see core.sconti.Sconto#getPercentualeSconto(core.elementi.Partita, core.utente.Cliente)
+	 */
 	@Override
 	public int getPercentualeSconto(Partita p, Cliente c)
 	{
@@ -42,15 +45,21 @@ public class ScontoPerCliente implements Sconto,Serializable
 		return 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see core.sconti.Sconto#verificaApplicabilita(core.elementi.Partita)
+	 */
 	@Override
 	public boolean verificaApplicabilita(Partita p) 
 	{
-
+		//sempre true
 		return true;
 	}
 	
 	
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Sconto per cliente " + tipoCliente + " - " + percentuale + "%";

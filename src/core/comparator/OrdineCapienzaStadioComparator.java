@@ -4,6 +4,11 @@ import java.util.Comparator;
 
 import core.elementi.*;
 /**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ * 
  * Ordina le partite secondo la capienza dello stadio in modo crescente.
  */
 public class OrdineCapienzaStadioComparator  implements Comparator<Partita> 
