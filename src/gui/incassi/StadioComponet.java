@@ -3,12 +3,24 @@ package gui.incassi;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
-
 import core.elementi.Stadio;
 import java.awt.Font;
 
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ */
+
 public class StadioComponet extends JPanel 
 {
+	/**
+	 * Il costruttore della classe StadioComponent la quale è una sottoclasse di JPanel
+	 * inizializza un oggetto prendendo come riferimento lo stadio. In questo oggetto
+	 * vengono visualizzati gli incassi dello stadio passato come riferimento.
+	 * @param Stadio stadio
+	 */
 	public StadioComponet(Stadio stadio) 
 	{
 		setBorder(new EtchedBorder());

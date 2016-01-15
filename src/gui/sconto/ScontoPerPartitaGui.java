@@ -15,10 +15,21 @@ import java.util.ArrayList;
 
 import gui.graphics.Finestra;
 import gui.graphics.ScrollablePanelList;
-
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ */
 public class ScontoPerPartitaGui extends Finestra 
 {
-
+	/**
+	 * Il costruttore di ScontoPerPartitaGui inizializza un oggetto finestra che prende come riferimento
+	 * un framne genitore e un oggetto lista utente. Questo oggetto permette di inserire uno sconto alla
+	 * sigola partita.
+	 * @param JFarem parent
+	 * @param ListaUtenti listaUtenti
+	 */
 
 	public ScontoPerPartitaGui(JFrame parent, ListaUtenti listaUtenti) {
 		super(parent,550, 260);
@@ -27,7 +38,9 @@ public class ScontoPerPartitaGui extends Finestra
 		operazioniSuFrame();
 	}
 
-
+	/**
+	 * Il metodo si occupa dell'inserimento dei JPanel sul frame e della loro disposizione.
+	 */
 	public void operazioniSuFrame()
 	{
 		JPanel panel = new JPanel();
@@ -43,6 +56,11 @@ public class ScontoPerPartitaGui extends Finestra
 		questaFinestra.setVisible(true);
 	}
 
+	/**
+	 * Il metodo crea un pannello dove all'interno è presente una combo box dove ci sono tutte le partite
+	 * e un campo  dove poter inserire la percentuale di sconto i due componenti sono idicati tramite delle label.
+	 * @return JPanel
+	 */
 	public JPanel creaPannelloAggiungiIformazioni()
 	{
 		JPanel panel = new JPanel();
@@ -70,22 +88,26 @@ public class ScontoPerPartitaGui extends Finestra
 
 		return panel;
 	}
-
+	/**
+	 * Il metodo crea un pannello dove all'interno viene inserito un bottone che permette di aggiunge lo 
+	 * sconto alla singola partita.
+	 * @return JPanel
+	 */
 	public JPanel creaaPannelloBottone()
 	{
 		JPanel panel = new JPanel();
 		JButton AggiungiScontoBtn = new JButton("Aggiungi Sconto");
-
+		
 		AggiungiScontoBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int percentuale = Integer.parseInt(percentualeField.getText());
-				
+
 				Partita p = (Partita)BoxPartita.getSelectedItem();
 				ScontoPerPartita sconto = new ScontoPerPartita(percentuale);
 				p.aggiungiSconto(sconto);
-				
+
 				questaFinestra.closeFrame();
 			}
 		});
@@ -97,7 +119,7 @@ public class ScontoPerPartitaGui extends Finestra
 	private JComboBox<Partita> BoxPartita;
 	private JTextField percentualeField;
 	private Finestra questaFinestra;
-	
+
 	private ArrayList<Partita> partite;
 
 }

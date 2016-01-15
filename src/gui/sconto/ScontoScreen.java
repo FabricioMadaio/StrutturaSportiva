@@ -24,9 +24,14 @@ import javax.swing.JTabbedPane;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ */
 public class ScontoScreen extends Finestra{
-	
+	//################ Fabri vedi tu ##############
 	private JButton btnGiornoSettimana;
 	
 	private Finestra questoFrame;

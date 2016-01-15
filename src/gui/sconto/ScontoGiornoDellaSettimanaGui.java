@@ -18,10 +18,20 @@ import core.sconti.Sconto;
 import core.sconti.ScontoGiornoDellaSettimana;
 import gui.graphics.Finestra;
 import gui.graphics.ScrollablePanelList;
-
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ */
 public class ScontoGiornoDellaSettimanaGui extends Finestra 
 {
-
+	/**
+	 * Il cotruttore della classe ScontoGiornoDellaSettimanGui inizializza un oggetto del tipo Finestra che prende come riferimento 
+	 * un frame genitore e un oggetto lista utenti. Questo oggetto permette di inserire uno sconto selezionando un giorno della settimana.
+	 * @param JFrame parent
+	 * @param ListaUtenti listaUtenti
+	 */
 	public ScontoGiornoDellaSettimanaGui(JFrame parent,ListaUtenti listaUtenti) {
 		super(parent, 400, 230);
 		questaFinestra = this;
@@ -29,7 +39,9 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 		operazioniSuFrame();
 	}
 
-
+	/**
+	 * Il metodo si occupa di inserire i pannelli nel frame e della loro disposizione.
+	 */
 	public void operazioniSuFrame()
 	{
 		JPanel panel = new JPanel();
@@ -44,7 +56,11 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 		questaFinestra.setResizable(false);
 		questaFinestra.setVisible(true);
 	}
-
+	/**
+	 * Il metodo inserisce in un panello una combo box dove all'interno ci sono i giorni della settimana e un campo dove
+	 * poter scrivere la percentuale di sconti, i due componenti sono indicati con delle label.
+	 * @return JPanel
+	 */
 	public JPanel creaPannelloAggiungiIformazioni()
 	{
 		JPanel panel = new JPanel();
@@ -67,7 +83,12 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 
 		return panel;
 	}
-
+	
+	/**
+	 * Il metodo cre un pannello dove all'interno è stato inserito un bottone cche serve ad applicare lo sconto per
+	 * giorno della settimana e quindo aggiunto nell'array list di scontoi globali.
+	 * @return JPanel
+	 */
 	public JPanel creaaPannelloBottone()
 	{
 		JPanel panel = new JPanel();
@@ -92,7 +113,7 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 	private JComboBox<String> BoxGiorni;
 	private JTextField percentualeField;
 	private Finestra questaFinestra;
-	
+
 	private String[] giorniDellaSettimana = {"Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato","Domenica"};
 	private ListaUtenti listaUtenti;
 }

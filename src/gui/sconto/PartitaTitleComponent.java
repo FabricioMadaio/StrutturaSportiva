@@ -16,6 +16,13 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.CompoundBorder;
 
+//#################################Fabri vedi tu ##############################
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ */
 public class PartitaTitleComponent extends JPanel{
 	
 	public PartitaTitleComponent(Partita partita) {

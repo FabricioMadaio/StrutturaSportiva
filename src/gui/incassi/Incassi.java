@@ -17,10 +17,24 @@ import javax.xml.bind.SchemaOutputResolver;
 import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
 
 import core.elementi.Stadio;
-
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ */
 public class Incassi extends Finestra
 {
-
+	/**
+	 * Il costruttore della Classe Incassi(la quale è una sottoclasse della classe Finistra)
+	 * inizializza un oggetto prendendo come riferimento un frame genitore e una lista di stadi.
+	 * Viene creata una finesta 700x500 poi all'interno di esse viene creato  un pannello dove 
+	 * all'interno è contenuta una JScrollablePanelList la quale
+	 * viene popolata di oggetti StadioComponent attraverso un for che scorre la lista degli 
+	 * stadi e infiene viene inserita una JLabel in fondo a sinista che mostra gli incassi totali. 
+ 	 * @param JFrame parent
+	 * @param ArrayList<Stadio> stadi
+	 */
 	public Incassi(JFrame parent,ArrayList<Stadio> stadi) 
 	{
 		super(parent, 700, 500);
@@ -49,6 +63,11 @@ public class Incassi extends Finestra
 		setVisible(true);
 	}
 	
+	/**
+	 * Il metodo viene utilizzato per calcolare il totale degli incassi
+	 * degli stadi che fanno parte della lista passata per riferimento al costruttore.
+	 * @return double totaleIncassi
+	 */
 	public double calcolaIncassoTotale()
 	{
 		double totale = 0;
