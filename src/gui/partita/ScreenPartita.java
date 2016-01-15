@@ -135,18 +135,22 @@ public class ScreenPartita extends Finestra
 	public JButton creaBottonePrenota()
 	{
 		JButton button = new JButton("Prenota");
+		//aggiungo il listener
 		button.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				//prendo la poltroncina selezionata
 				Poltroncina selezione = stadioCanvas.getSelezione();
 				
 				if(selezione!=null){
 					
+					//creo un nuovo biglietto
 					Biglietto biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
 					biglietto.setPosto(selezione.getPosto());
 					
+					//controlla se il posto è disponibile per la prenotazione
 					if(!controllaStatoPostoDisponobile())
 					{
 						try {
@@ -158,16 +162,18 @@ public class ScreenPartita extends Finestra
 					}
 					else 
 					{
+						//setto il biglietto come prenotazione
 						biglietto.setPrenotazione(true);
 						
+						//verifico che il biglietto non sia scaduto
 						if(biglietto.verificaPrenotazioneScaduta(new GregorianCalendar())){
 							JOptionPane.showMessageDialog(null,"il tempo per le prenotazioni è finito");
 						}else{
-							
-							selezione.getPosto().setStato(Stato.PRENOTATO);
+							//aggiorno lo stato del posto
 							selezione.setStato(Stato.PRENOTATO);
-							partita.getStadio().aggiungiIncasso(0);
+							//aggiungo il biglietto al cliente
 							cliente.aggiungiBiglietto(biglietto);
+							//aggiorno stadioCanvas
 							stadioCanvas.repaint();
 						}
 		
@@ -192,12 +198,15 @@ public class ScreenPartita extends Finestra
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				//prendo la poltroncina selezionata
 				Poltroncina selezione = stadioCanvas.getSelezione();
 				
 				if(selezione!=null){
+					//creo un nuovo biglietto
 					Biglietto biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
 					biglietto.setPosto(selezione.getPosto());
 	
+					//verifico se il posto è stato prenotato (deve essere prenotato per forza per essere acquistato)
 					if(!controllaStatoPostoPrenotato())
 					{
 						try {
@@ -212,13 +221,17 @@ public class ScreenPartita extends Finestra
 						if(!postoDisponibilePerAcquisto()){
 							JOptionPane.showMessageDialog(null,"il biglietto è stato prenotato da un altro cliente");
 						}else{
+							//controllo che il biglietto non sia scaduto
 							if(biglietto.verificaAcquistoScaduto(new GregorianCalendar())){
 								JOptionPane.showMessageDialog(null,"la partita si è gia conclusa");
 							}else{
+								//aggiorno lo stato del biglietto
 								biglietto.setAcquisto(true);
+								//aggiungo il prezzo del biglietto come incasso dello stadio
 								partita.getStadio().aggiungiIncasso(biglietto.getPrezzo());
-								selezione.getPosto().setStato(Stato.VENDUTO);
+								//aggiorno lo stato del posto
 								selezione.setStato(Stato.VENDUTO);
+								//aggiungo biglietto al cliente
 								cliente.aggiungiBiglietto(biglietto);
 								stadioCanvas.repaint();
 							}
@@ -230,6 +243,9 @@ public class ScreenPartita extends Finestra
 		return button;		
 	}
 
+	/**
+	 * @return bottone acquista subito
+	 */
 	public JButton creaBottoneAcquistaSubito()
 	{
 		JButton button = new JButton("Acquista Subito");
@@ -238,13 +254,16 @@ public class ScreenPartita extends Finestra
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				//prendo la poltroncina selezionata
 				Poltroncina selezione = stadioCanvas.getSelezione();
 				
 				if(selezione!=null){
 					
+					//creo un nuovo biglietto
 					Biglietto biglietto = new Biglietto(partita,partita.generaPrezzoBiglietto(cliente));
 					biglietto.setPosto(selezione.getPosto());
 	
+					//verifico se il posto è disponibile per l'acquisto (non può essere gia prenotato)
 					if(!controllaStatoPostoDisponobile() )
 					{
 						try {
@@ -256,14 +275,19 @@ public class ScreenPartita extends Finestra
 					}
 					else
 					{
+						//verifico se l'acquisto non è scaduto
 						if(biglietto.verificaAcquistoScaduto(new GregorianCalendar())){
 							JOptionPane.showMessageDialog(null,"la partita si è gia conclusa");
 						}else{
+							//aggiungo il prezzo del biglietto come incasso per lo stadio
 							partita.getStadio().aggiungiIncasso(biglietto.getPrezzo());
+							
+							//aggiorno il biglietto
 							biglietto.setPrenotazione(true);
 							biglietto.setAcquisto(true);
-							selezione.getPosto().setStato(Stato.VENDUTO);
+							//aggiorno lo stato del posto
 							selezione.setStato(Stato.VENDUTO);
+							//aggiungo il biglietto al cliente
 							cliente.aggiungiBiglietto(biglietto);
 							stadioCanvas.repaint();
 						}
@@ -343,6 +367,7 @@ public class ScreenPartita extends Finestra
 		
 		scontiTextArea.append("Prezzo base: "+partita.getStadio().getPrezzoBase()+"\n");
 		
+		//aggiungo la lista degli sconti per la partita
 		for(Sconto s:partita.getSconti())
 		scontiTextArea.append(s.toString()+"\n");
 		
