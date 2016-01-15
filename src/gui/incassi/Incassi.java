@@ -11,11 +11,6 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.util.ArrayList;
 
-import javax.swing.SwingConstants;
-import javax.xml.bind.SchemaOutputResolver;
-
-import com.sun.corba.se.impl.protocol.BootstrapServerRequestDispatcher;
-
 import core.elementi.Stadio;
 /**
  * @author Giovanni Leo 
@@ -40,19 +35,22 @@ public class Incassi extends Finestra
 		super(parent, 700, 500);
 		this.stadi= stadi;
 		
+		//Pannello visione incassi
 		JPanel pannelloIncassiStadio = new JPanel(new BorderLayout());
 		getContentPane().add(pannelloIncassiStadio, BorderLayout.CENTER);
 		ScrollablePanelList scrollIncassiStadi = new ScrollablePanelList();
 		
-		
+		//Pannello inserimento label
 		JPanel pannelloVisualizzazioneIncassiTotali = new JPanel();
 		getContentPane().add(pannelloVisualizzazioneIncassiTotali, BorderLayout.SOUTH);
 		pannelloVisualizzazioneIncassiTotali.setLayout(new BorderLayout(0, 0));
 		
+		//Label che mosttra gli incassi totali
 		JLabel lblIncassiTotatli = new JLabel("Incassi Totali:"+calcolaIncassoTotale());
 		lblIncassiTotatli.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		pannelloVisualizzazioneIncassiTotali.add(lblIncassiTotatli);
 		
+		//for chw inseriscw gli stadio component
 		for(Stadio s :stadi)
 		{
 			scrollIncassiStadi.add(new StadioComponent(s));
