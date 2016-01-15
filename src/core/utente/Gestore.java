@@ -3,7 +3,10 @@ package core.utente;
 import java.io.Serializable;
 
 /**
- * @author Fabricio Nicolas Madaio
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
  */
 public class Gestore extends Utente implements Serializable {
 
@@ -12,8 +15,8 @@ public class Gestore extends Utente implements Serializable {
 	/**
 	 * Gestore: classe che modella il Gestore
 	 * 
-	 * @param nome	nome docente
-	 * @param cognome	cognome docente
+	 * @param nome	nome 
+	 * @param cognome	cognome 
 	 * @param username	username
 	 * @param password	password
 	 */

@@ -34,12 +34,18 @@ public class ScontoFasciaOraria implements Sconto,Serializable
 	}
 	
 
+	/* (non-Javadoc)
+	 * @see core.sconti.Sconto#getPercentualeSconto(core.elementi.Partita, core.utente.Cliente)
+	 */
 	@Override
 	public int getPercentualeSconto(Partita p, Cliente c) 
 	{
 		return percentuale;	
 	}
 
+	/* (non-Javadoc)
+	 * @see core.sconti.Sconto#verificaApplicabilita(core.elementi.Partita)
+	 */
 	@Override
 	public boolean verificaApplicabilita(Partita p) 
 	{
@@ -49,19 +55,25 @@ public class ScontoFasciaOraria implements Sconto,Serializable
 		}
 		return false;
 	}
-	
-	//converte double in stringa
+
+	/**
+	 * converte double in stringa
+	 * 
+	 * @param ora orario di tipo double nel formato ore.minuti (es. 10.30) 
+	 * @return orario di tipo stringa nel formato "ore:minuti" (es. 10:30)
+	 */
 	private String formatTime(double ora){
 		return String.format("%.2f", ora).replace(",", ":"); 
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		
 		return "Sconto sulla fascia oraria [ " + formatTime(oraInizio)  + " - " + formatTime(oraFine) + " ] - "+ percentuale + "%";
 	}
-
-
 
 	private int percentuale;
 	private double oraInizio;

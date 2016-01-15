@@ -18,7 +18,7 @@ public interface Sconto
 	 * 
 	 * @param Partita p
 	 * @param Cliente c
-	 * @return
+	 * @return percentuale sconto
 	 */
 	
 	int getPercentualeSconto(Partita p, Cliente c);

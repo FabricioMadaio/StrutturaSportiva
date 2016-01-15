@@ -4,6 +4,17 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13
+ * 
+ * classe che modella il Biglietto
+ * NOTA:
+ * 	per biglietto si intende sia prenotazione che biglietto acquistato. fanno la differenza
+ *  le variabili acquisto e prezzo settate a true nei rispettivi casi
+ */
 public class Biglietto implements Serializable
 {
 	private static final long serialVersionUID = 11L;

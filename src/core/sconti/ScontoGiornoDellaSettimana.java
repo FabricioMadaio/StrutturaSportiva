@@ -22,7 +22,7 @@ public class ScontoGiornoDellaSettimana implements Sconto,Serializable
 	 * Il costruttore della classe ScontoGiornoDellaSettimana inizializza un nuovo 
 	 * oggetto prendendo come riferimento un giorno della settimana e una percentuale
 	 *  
-	 * @param String giornoDellaSettiman
+	 * @param String giornoDellaSettimana
 	 * @param int percentuale
 	 */
 	public ScontoGiornoDellaSettimana(String giornoDellaSettiman,int percentuale) 
@@ -32,6 +32,9 @@ public class ScontoGiornoDellaSettimana implements Sconto,Serializable
 	}
 
 
+	/* (non-Javadoc)
+	 * @see core.sconti.Sconto#getPercentualeSconto(core.elementi.Partita, core.utente.Cliente)
+	 */
 	@Override
 	public int getPercentualeSconto(Partita p, Cliente c) 
 	{
@@ -41,6 +44,9 @@ public class ScontoGiornoDellaSettimana implements Sconto,Serializable
 	}
 
 
+	/* (non-Javadoc)
+	 * @see core.sconti.Sconto#verificaApplicabilita(core.elementi.Partita)
+	 */
 	@Override
 	public boolean verificaApplicabilita(Partita p) 
 	{
@@ -77,6 +83,9 @@ public class ScontoGiornoDellaSettimana implements Sconto,Serializable
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Sconto per ogni " + giornoDellaSettima + " - " + percentuale

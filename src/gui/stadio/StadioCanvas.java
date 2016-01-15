@@ -19,29 +19,28 @@ import gui.graphics.Sprite;
 
 
 /**
- * @author Fabri
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ * 
+ *  StadioCanvas gestisce l'oggetto grafico che rappresenta uno stadio, consente di editare
+ *  le poltroncine e settare il prezzo dello stadio
+ *  la grafica è proporzionale al contenitore e le poltrone sono proporzionali alla immagine dello
+ *  sfondo.
+ * 
  *	NOTA SULLA TERMINOLOGIA
  *	Canvas Space: spazio della canvas (coordinate assolute indipendenti dallo schermo)
  *  Screen Space: spazio dello schermo (coordinate proporzionali alle dimensioni del JPanel)
  */
 public class StadioCanvas extends JPanel{
 	
-	private Sprite background;
-	private Poltroncina selezione;
 	
-	private Sprite glowBorder;
 	
-	private float canvasSx,canvasSy;
-	
-	private Image poltroncinaImg;
-	private ArrayList<Poltroncina> poltroncine;
-	private ArrayList<Posto> posti;
-	
-	private StadioListener stadioListener;
-	
-	private editMode modalita;
-	public enum editMode{AGGIUNGI,MODIFICA,SELEZIONA};
-	
+	/**
+	 *  costruttore di StadioCanvas
+	 *  carica le immagini delle poltroncine e del selettore
+	 */
 	public StadioCanvas(){
 		
 		//fattori di conversione tra Canvas space e Screen space
@@ -58,6 +57,7 @@ public class StadioCanvas extends JPanel{
     	poltroncine = new ArrayList<Poltroncina>();
     	selezione = null;
     	
+    	//setto la modalità di default come selezione
     	modalita = editMode.SELEZIONA;
  
 		try {
@@ -79,14 +79,26 @@ public class StadioCanvas extends JPanel{
 		
 	}
 	
+	/**
+	 * setta una immagine come sfondo dello stadio
+	 * @param backgroundImg
+	 */
 	public void setBackgroundImage(Image backgroundImg){			
 		this.background = new Sprite(0,0,0,0,backgroundImg);
 	}
 	
+	/**
+	 * aggiunge un listener che reagisce alla selezione di una poltrona
+	 * @param st StadioListener
+	 */
 	public void addStadioListener(StadioListener st){
 		stadioListener = st;
 	}
 	
+	/**
+	 * setta i posti dello stadio e crea le poltroncine
+	 * @param posti
+	 */
 	public void setPosti(ArrayList<Posto> posti) {
 		
 		this.posti = posti;
@@ -101,69 +113,102 @@ public class StadioCanvas extends JPanel{
 			poltroncine.add(pol);
 		}
 		
+		//annullo la selezione
 		resetSelezione();
 	}
 	
+	/**
+	 * @return modalita di utilizzo
+	 */
 	public editMode getModalita() {
 		return modalita;
 	}
 
+	/**
+	 * setta la modalità di utilizzo
+	 * @param modalita
+	 */
 	public void setModalita(editMode modalita) {
 		this.modalita = modalita;
 		resetSelezione();
 		repaint();
 	}
 
+	/**
+	 * classe interna per gestire l'imput da mouse
+	 *
+	 */
 	class MouseListener extends MouseAdapter {
 		public void mousePressed(MouseEvent e) {
 			
+			//modalità selezione o modifica
 			if(modalita==editMode.MODIFICA || modalita==editMode.SELEZIONA){
+				
 				resetSelezione();
+				//verifico se il mouse tocca una poltroncina
 				for(int i=0;i<poltroncine.size();i++){
+					
 					Poltroncina p = poltroncine.get(i);
 					if (p.contains(e.getX(), e.getY())) {
+						//metto la poltroncina in selezione, cosi verrà disegnata per ultima
 						selezione = p;
-						//sposto la poltroncina in cima
+						//cancello la poltroncina dall'array, non devo disegnarla due volte
 						poltroncine.remove(i);
 						
+						//lancio il listener della selezione
 						if(stadioListener!=null) stadioListener.onSelected(p);
 					}
 		    	}
 				repaint();
 			}
 			
+			//modalità aggiungi poltrona
 			if(modalita==editMode.AGGIUNGI){
 				
+				//creo un nuovo posto per lo stadio
 				Posto p = new Posto(0, 0,""+poltroncine.size());
 				posti.add(p);
 				
+				//creo una nuova poltroncina
 				Poltroncina pol = new Poltroncina(p,50,50,poltroncinaImg);
 				pol.setCanvasSpacePos(e.getX()/canvasSx, e.getY()/canvasSy);
 				poltroncine.add(pol);
 				
+				//aggiorno la selezione e ridisegno il componente
 				resetSelezione();
 				repaint();
 			}
 		}
 
 	}
+	/**
+	 * classe interna per gestire il trascinamento con il mouse
+	 */
 	class MouseMotionListener extends MouseMotionAdapter  {
 		public void mouseDragged(MouseEvent e) {
-			
+			//se siamo in modalità modifica e abbiamo selezionato un posto
 			if(modalita==editMode.MODIFICA && selezione!=null){
+				//setto le coordinate nuove per la selezione
 				selezione.setCanvasSpacePos(e.getX()/canvasSx, e.getY()/canvasSy);
 				repaint();
 			}
 		}
 	}
 	
+	/**
+	 * @return poltroncina selezionata
+	 */
 	public Poltroncina getSelezione() {
 		return selezione;
 	}
 	
-	//setta il posto p come posto selezionato
+	/**
+	 * setta il posto p come posto selezionato
+	 * @param p posto da selezionare
+	 */
 	public void setSelezione(Posto p) {
 		
+		//aggiorno la selezione
 		resetSelezione();
 		
 		//cerca la poltroncina con posto p
@@ -177,28 +222,48 @@ public class StadioCanvas extends JPanel{
     	}
 	}
 	
+	/**
+	 *  resetta la selezione
+	 */
 	public void resetSelezione(){
+		
 		if(selezione!=null){
+			//riporto la poltroncina da selezione a array poltroncine
 			poltroncine.add(selezione);
+			//lancio il listener sul rilascio della poltrona
 			if(stadioListener!=null) stadioListener.onReleased(selezione);
+			//annullo la selezione
 			selezione = null;
 		}
 	}
 	
+	/**
+	 * cancella la poltroncina selezionata
+	 */
 	public void destroySelezione(){
 		if(selezione!=null){
+			
+			//cancello il posto
 			posti.remove(selezione.getPosto());
+			//lancio il listener sul rilascio della poltrona
 			if(stadioListener!=null) stadioListener.onReleased(selezione);
+			
+			//annullo la selezione, il garbage collector distrugge la poltroncina
 			selezione = null;
 		}
 	}
 	
-	//calcola il fattore di scala tra lo schermo e la canvas
+	/**
+	 * calcola il fattore di scala tra lo schermo e la canvas
+	 */
 	public void calculateScaleFactor(){
 		canvasSx = getWidth()/(float)background.getFrameW();
 		canvasSy = getHeight()/(float)background.getFrameH();
 	}
 	
+	/* 
+	 * disegna l'oggetto grafico
+	 */
 	public void paintComponent(Graphics g)
     {
     	super.paintComponent(g);
@@ -208,6 +273,7 @@ public class StadioCanvas extends JPanel{
     	//aggiungere questa riga per usare la modalità filtro bilineare (scaling migliorato)
     	((Graphics2D)g).setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
     	
+    	//calcolo il fattore di scala 
     	calculateScaleFactor();
     	
     	//portiamo background in screen space
@@ -222,13 +288,29 @@ public class StadioCanvas extends JPanel{
     		p.draw(g);
     	}
     	
+    	//se ho una poltrona selezionata, disegno anche il bordo glowBorder
     	if(selezione!=null){
     		selezione.toScreenSpace(canvasSx, canvasSy);
-    		//NOTA: aggiungo offset di una unità
     		glowBorder.setPos(selezione.getX()-canvasSx, selezione.getY()-canvasSy);
     		glowBorder.setScale(selezione.getScaleX(), selezione.getScaleY());
     		glowBorder.draw(g);
     		selezione.draw(g);
     	}
     }
+	
+	private Sprite background;
+	private Poltroncina selezione;
+	
+	private Sprite glowBorder;
+	
+	private float canvasSx,canvasSy;
+	
+	private Image poltroncinaImg;
+	private ArrayList<Poltroncina> poltroncine;
+	private ArrayList<Posto> posti;
+	
+	private StadioListener stadioListener;
+	
+	private editMode modalita;
+	public enum editMode{AGGIUNGI,MODIFICA,SELEZIONA};
 }

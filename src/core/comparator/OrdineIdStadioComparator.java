@@ -4,7 +4,12 @@ import java.util.Comparator;
 import core.elementi.Partita;
 
 /**
- *Ordina le partite sencondo l'id stadio in modo crescente.
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ *
+ * Ordina le partite sencondo l'id stadio in modo crescente.
  */
 public class OrdineIdStadioComparator  implements Comparator<Partita> 
 {
