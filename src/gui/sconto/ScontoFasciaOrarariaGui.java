@@ -38,11 +38,12 @@ public class ScontoFasciaOrarariaGui extends Finestra
 	 */
 	public void operazioniSuFrame()
 	{
+		//Creo un pannello e una label 
 		JPanel panel = new JPanel();
 		JLabel label = new JLabel("Sconto Fascia Oraria");
 		label.setFont(new Font(null, Font.BOLD, 20));
 		panel.add(label);
-
+		//Aggiungo i componeti alla finestra
 		questaFinestra.getContentPane().add(panel,BorderLayout.NORTH);
 		questaFinestra.getContentPane().add(creaPannelloAggiungiIformazioni(),BorderLayout.CENTER);
 		questaFinestra.getContentPane().add(creaaPannelloBottone(),BorderLayout.SOUTH);
@@ -54,14 +55,14 @@ public class ScontoFasciaOrarariaGui extends Finestra
 	public JPanel creaPannelloAggiungiIformazioni()
 	{
 		JPanel panel = new JPanel();
-
+		//Inizializzo oggetti OrarioComponent
 		oraFineField = new OrarioComponent();
 		oraFineField.setBounds(197, 68, 180, 30);
 		oraInizioField = new OrarioComponent();
 		oraInizioField.setBounds(197, 11, 180, 30);
 		percentualeFiel = new JTextField(10);
 		percentualeFiel.setBounds(197, 127, 180, 30);
-
+		//Creo delle label e le posiziono
 		JLabel oraInizioLbl = new JLabel("Ora Inizio");
 		oraInizioLbl.setBounds(0, 0, 72, 44);
 		JLabel oraFineLbl = new JLabel("Ora Fine");
@@ -70,7 +71,7 @@ public class ScontoFasciaOrarariaGui extends Finestra
 		percentualeLbl.setBounds(0, 120, 72, 44);
 		panel.setLayout(null);
 
-
+		//Aggiungo al pannello
 		panel.add(oraInizioLbl);
 		panel.add(oraInizioField);
 		panel.add(oraFineLbl);
@@ -84,10 +85,12 @@ public class ScontoFasciaOrarariaGui extends Finestra
 
 	public JPanel creaaPannelloBottone()
 	{
+		//Creo un pannello e un bottone
 		JPanel panel = new JPanel();
 		JButton AggiungiScontoBtn = new JButton("Aggiungi Sconto");
 		AggiungiScontoBtn.addActionListener(new ActionListener() {
 
+			//Listeners
 			@Override
 			public void actionPerformed(ActionEvent e) {
 

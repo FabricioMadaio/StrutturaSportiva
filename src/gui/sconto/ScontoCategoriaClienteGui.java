@@ -44,15 +44,16 @@ public class ScontoCategoriaClienteGui extends Finestra
 	 */
 	public void operazioniSuFrame()
 	{
+		//Creo un pannello dove aggiungio una label
 		JPanel panel = new JPanel();
 		JLabel label = new JLabel("Sconto Categoria Cliente");
 		label.setFont(new Font(null, Font.BOLD, 20));
 		panel.add(label);
-
+		//Posiziono i vari pannelli nella finestra
 		questaFinestra.getContentPane().add(panel,BorderLayout.NORTH);
 		questaFinestra.getContentPane().add(creaPannelloAggiungiIformazioni(),BorderLayout.CENTER);
 		questaFinestra.getContentPane().add(creaaPannelloBottone(),BorderLayout.SOUTH);
-
+	
 		questaFinestra.setResizable(false);
 		questaFinestra.setVisible(true);
 	}
@@ -63,19 +64,20 @@ public class ScontoCategoriaClienteGui extends Finestra
 	 */
 	public JPanel creaPannelloAggiungiIformazioni()
 	{
+		//Creo un pannello e due label 
 		JPanel panel = new JPanel();
 		JLabel categorialbl = new JLabel("Categoria");
 		categorialbl.setBounds(10, 0, 69, 40);
 		JLabel percentualeLbl = new JLabel("Percentuale");
 		percentualeLbl.setBounds(10, 62, 69, 40);
 
-
+		//Inizializzo e posiziono una combo box e un text field
 		BoxCategorie = new JComboBox(categoria);
 		BoxCategorie.setBounds(201, 0, 183, 40);
 		percentualeField = new JTextField(10);
 		percentualeField.setBounds(201, 62, 183, 40);
 		panel.setLayout(null);
-
+		//Aggiungo al pannello principale
 		panel.add(categorialbl);
 		panel.add(BoxCategorie);
 		panel.add(percentualeLbl);
@@ -90,8 +92,11 @@ public class ScontoCategoriaClienteGui extends Finestra
 	 */
 	public JPanel creaaPannelloBottone()
 	{
+		//Creo un pannello dove aggiungero il bottone
 		JPanel panel = new JPanel();
+		//Creo il bottone
 		JButton AggiungiScontoBtn = new JButton("Aggiungi Sconto");
+		//Listener
 		AggiungiScontoBtn.addActionListener(new ActionListener() {
 
 			@Override

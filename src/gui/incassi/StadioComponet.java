@@ -23,6 +23,7 @@ public class StadioComponet extends JPanel
 	 */
 	public StadioComponet(Stadio stadio) 
 	{
+		//Creo il pannello che mostra l'incasso dello stadio
 		setBorder(new EtchedBorder());
 		JLabel stadioLabel = new JLabel(stadio.getNome()+"    "+"Incassi:"+stadio.getIncasso());
 		stadioLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));

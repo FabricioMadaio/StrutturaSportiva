@@ -44,11 +44,12 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 	 */
 	public void operazioniSuFrame()
 	{
+		//Creo un pannello e una label
 		JPanel panel = new JPanel();
 		JLabel label = new JLabel("Sconto Giorni Della Setimana");
 		label.setFont(new Font(null, Font.BOLD, 20));
 		panel.add(label);
-
+		//Aggiungo i componeti al frame
 		questaFinestra.getContentPane().add(panel,BorderLayout.NORTH);
 		questaFinestra.getContentPane().add(creaPannelloAggiungiIformazioni(),BorderLayout.CENTER);
 		questaFinestra.getContentPane().add(creaaPannelloBottone(),BorderLayout.SOUTH);
@@ -63,19 +64,20 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 	 */
 	public JPanel creaPannelloAggiungiIformazioni()
 	{
+		//Creo il pannello e due label
 		JPanel panel = new JPanel();
 		JLabel giornoDellaSettimanalbl = new JLabel("Giorno Della Settimana");
 		giornoDellaSettimanalbl.setBounds(10, 0, 139, 40);
 		JLabel percentualeLbl = new JLabel("Percentuale");
 		percentualeLbl.setBounds(10, 62, 69, 40);
 
-
+		//Creo la combo box e il text field
 		BoxGiorni = new JComboBox<String>(giorniDellaSettimana);
 		BoxGiorni.setBounds(201, 0, 183, 40);
 		percentualeField = new JTextField(10);
 		percentualeField.setBounds(201, 62, 183, 40);
 		panel.setLayout(null);
-
+		//Aggiungo al pannello i componenti
 		panel.add(giornoDellaSettimanalbl);
 		panel.add(BoxGiorni);
 		panel.add(percentualeLbl);
@@ -91,10 +93,12 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 	 */
 	public JPanel creaaPannelloBottone()
 	{
+		//Creo un pannello dove aggiungo un bottone
 		JPanel panel = new JPanel();
 		JButton AggiungiScontoBtn = new JButton("Aggiungi Sconto");
 		AggiungiScontoBtn.addActionListener(new ActionListener() {
 
+			//Listener
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String gionoSettimana = (String)BoxGiorni.getSelectedItem();
