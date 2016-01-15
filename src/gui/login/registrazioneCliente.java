@@ -20,21 +20,22 @@ import core.utente.PasswordException;
 import core.utente.Cliente;
 
 /**
- * @author Fabricio Nicolas Madaio
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ * 
+ * registrazioneCliente:
+ * 	interfaccia grafica per registrare il cliente nel sistema
  */
 
 public class registrazioneCliente extends Finestra{
 	
-	private JTextField nome;
-	private JTextField cognome;
-	private JTextField login;
-	private JTextField password;
-	
-	private Finestra frame;
-	private ListaUtenti listaUtenti;
 	
 	/**
-	 * FinestraRegistrazioneStudente: interfaccia grafica per registrare lo studente nel sistema
+	 * registrazioneCliente: interfaccia grafica per registrare lo studente nel sistema
+	 * contiene i campi per l'inserimento del nome utente, la password, l'username
+	 * e una combobox per le categorie
 	 * 
 	 * @param parent Finestra genitore
 	 * @param utenti lista di utenti	
@@ -96,8 +97,8 @@ public class registrazioneCliente extends Finestra{
 		JLabel lblCategoria = new JLabel("Categoria");
 		r1Panel.add(lblCategoria);
 		//ComboBox scelta categoria 
-		final JComboBox comboBox = new JComboBox(categoria);
-		r1Panel.add(comboBox);
+		comboBoxCategoria = new JComboBox<String>(categoria);
+		r1Panel.add(comboBoxCategoria);
 		//pulsante accedi
 		JPanel r2Panel = new JPanel();
 		r2Panel.setBorder(new EmptyBorder(2,0,2,0));
@@ -108,7 +109,7 @@ public class registrazioneCliente extends Finestra{
 		
 		frame.setVisible(true);
 		
-		//listeners
+		//listener pulsante di registrazione
 		RegistraBtn.addActionListener(new ActionListener(){
 
 			@Override
@@ -116,7 +117,7 @@ public class registrazioneCliente extends Finestra{
 
 					
 					//creo un nuovo studente		
-					Cliente s = new Cliente(nome.getText(),cognome.getText(),login.getText(),password.getText(),(String)comboBox.getSelectedItem());
+					Cliente s = new Cliente(nome.getText(),cognome.getText(),login.getText(),password.getText(),(String)comboBoxCategoria.getSelectedItem());
 					//lo registro e salvo le modifiche su file
 					try {
 						listaUtenti.registra(s);
@@ -132,6 +133,16 @@ public class registrazioneCliente extends Finestra{
 			
 		});
 	}
+	
+	private JTextField nome;
+	private JTextField cognome;
+	private JTextField login;
+	private JTextField password;
+	
+	private JComboBox<String> comboBoxCategoria;
+	
+	private Finestra frame;
+	private ListaUtenti listaUtenti;
 	
 	private String[] categoria = {"Studente","Pensionato","Bambino"};
 	

@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,15 +13,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import core.ListaUtenti;
-import core.sconti.Sconto;
 import core.sconti.ScontoGiornoDellaSettimana;
 import gui.graphics.Finestra;
-import gui.graphics.ScrollablePanelList;
 /**
  * @author Giovanni Leo 
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13 
+ * 
+ * ScontoGiornoDellaSettimanaGui:
+ * 	schermata per l'inserimento di un nuovo sconto per giorno della settimana
  */
 public class ScontoGiornoDellaSettimanaGui extends Finestra 
 {
@@ -98,7 +98,7 @@ public class ScontoGiornoDellaSettimanaGui extends Finestra
 		JButton AggiungiScontoBtn = new JButton("Aggiungi Sconto");
 		AggiungiScontoBtn.addActionListener(new ActionListener() {
 
-			//Listener
+			//Listener pulsante aggiungiSconto
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String gionoSettimana = (String)BoxGiorni.getSelectedItem();

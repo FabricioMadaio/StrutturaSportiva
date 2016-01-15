@@ -12,12 +12,26 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.SystemColor;
 import java.awt.GridLayout;
-import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ * 
+ * PartitaComponent:
+ * 	contiene l'oggetto grafico che visualizza i dati di una partia
+ */
 public class PartitaComponent extends JPanel
 {
+	/**
+	 * costruttore:
+	 * 	crea un singolo oggetto Jpanel con dettagli sulle squadre sfidanti, il nome e la capienza
+	 *  dello stadio e la data della partita
+	 * @param p partita
+	 */
 	public PartitaComponent(Partita p)
 	{
 		setBackground(SystemColor.activeCaption);
@@ -49,6 +63,10 @@ public class PartitaComponent extends JPanel
 		lblData.setFont(new Font("Tahoma", Font.PLAIN, 11));
 	}
 
+	/**
+	 * consente di agganciare un componente extra al pannello
+	 * @param comp componente
+	 */
 	public void appendComponent(JComponent comp){
 		panelAppend.add(comp);
 	}

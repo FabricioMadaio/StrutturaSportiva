@@ -17,16 +17,19 @@ import core.elementi.Stadio;
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13 
+ * 
+ * Incassi:
+ * 	schermata che visualizza gli incassi per ogni stadio e gli incassi totali 
  */
 public class Incassi extends Finestra
 {
 	/**
 	 * Il costruttore della Classe Incassi(la quale è una sottoclasse della classe Finistra)
 	 * inizializza un oggetto prendendo come riferimento un frame genitore e una lista di stadi.
-	 * Viene creata una finesta 700x500 poi all'interno di esse viene creato  un pannello dove 
+	 * Viene creata una finesta 700x500 poi all'interno di essa viene creato  un pannello dove 
 	 * all'interno è contenuta una JScrollablePanelList la quale
 	 * viene popolata di oggetti StadioComponent attraverso un for che scorre la lista degli 
-	 * stadi e infiene viene inserita una JLabel in fondo a sinista che mostra gli incassi totali. 
+	 * stadi e infiene viene inserita una JLabel in fondo a sinistta che mostra gli incassi totali. 
  	 * @param JFrame parent
 	 * @param ArrayList<Stadio> stadi
 	 */
@@ -45,12 +48,12 @@ public class Incassi extends Finestra
 		getContentPane().add(pannelloVisualizzazioneIncassiTotali, BorderLayout.SOUTH);
 		pannelloVisualizzazioneIncassiTotali.setLayout(new BorderLayout(0, 0));
 		
-		//Label che mosttra gli incassi totali
+		//Label che mostra gli incassi totali
 		JLabel lblIncassiTotatli = new JLabel("Incassi Totali:"+calcolaIncassoTotale());
 		lblIncassiTotatli.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		pannelloVisualizzazioneIncassiTotali.add(lblIncassiTotatli);
 		
-		//for chw inseriscw gli stadio component
+		//for che inserisce gli stadio component
 		for(Stadio s :stadi)
 		{
 			scrollIncassiStadi.add(new StadioComponent(s));

@@ -1,6 +1,5 @@
 package gui.sconto;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -8,8 +7,6 @@ import javax.swing.JFrame;
 
 import core.ListaUtenti;
 import core.elementi.Partita;
-import core.elementi.Posto;
-import core.elementi.Stadio;
 import core.sconti.Sconto;
 import core.sconti.ScontoFasciaOraria;
 import core.sconti.ScontoGiornoDellaSettimana;

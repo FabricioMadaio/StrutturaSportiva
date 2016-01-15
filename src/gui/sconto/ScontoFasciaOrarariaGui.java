@@ -1,6 +1,7 @@
 package gui.sconto;
 
 import gui.graphics.Finestra;
+
 import gui.graphics.OrarioComponent;
 import javax.swing.*;
 import core.ListaUtenti;
@@ -8,16 +9,20 @@ import core.sconti.ScontoFasciaOraria;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 /**
  * @author Giovanni Leo 
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13 
+ * 
+ * ScontoFasciaOrarariaGui:
+ * 	schermata che consente di inserire un nuovo sconto per fascia oraria nel sistema
  */
 
 public class ScontoFasciaOrarariaGui extends Finestra 
 {
-	private JTextField textField;
+
 	/**
 	 * Il costruttore dellla classe ScontoFasciaOrarariaGui inizializza un oggetto Finestra che prende come riferimento
 	 * un frame genitore e una oggetto lista utenti.Questo oggetto permette di inserire uno sconto per fascia oraria
@@ -43,15 +48,19 @@ public class ScontoFasciaOrarariaGui extends Finestra
 		JLabel label = new JLabel("Sconto Fascia Oraria");
 		label.setFont(new Font(null, Font.BOLD, 20));
 		panel.add(label);
-		//Aggiungo i componeti alla finestra
+		//Aggiungo i componenti alla finestra
 		questaFinestra.getContentPane().add(panel,BorderLayout.NORTH);
 		questaFinestra.getContentPane().add(creaPannelloAggiungiIformazioni(),BorderLayout.CENTER);
-		questaFinestra.getContentPane().add(creaaPannelloBottone(),BorderLayout.SOUTH);
+		questaFinestra.getContentPane().add(creaPannelloBottone(),BorderLayout.SOUTH);
 
 		questaFinestra.setResizable(false);
 		questaFinestra.setVisible(true);
 	}
 
+	/**
+	 * crea il pannello di inserimento per orainizio, orafine e percentuale sconto
+	 * @return pannello
+	 */
 	public JPanel creaPannelloAggiungiIformazioni()
 	{
 		JPanel panel = new JPanel();
@@ -83,26 +92,32 @@ public class ScontoFasciaOrarariaGui extends Finestra
 		return panel;
 	}
 
-	public JPanel creaaPannelloBottone()
+	/**
+	 * crea il pannello con il pulsante di conferma
+	 * @return pannello
+	 */
+	public JPanel creaPannelloBottone()
 	{
 		//Creo un pannello e un bottone
 		JPanel panel = new JPanel();
 		JButton AggiungiScontoBtn = new JButton("Aggiungi Sconto");
 		AggiungiScontoBtn.addActionListener(new ActionListener() {
 
-			//Listeners
+			//Listener pulsante aggiungi sconto
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				double oraInizio = oraInizioField.getOrario();
 				double oraFine = oraFineField.getOrario();
 				int percentuale = Integer.parseInt(percentualeFiel.getText());
+				//creo il nuovo sconto
 				ScontoFasciaOraria sconto = new ScontoFasciaOraria(oraInizio, oraFine, percentuale);
 				listaUtenti.addSconto(sconto);
 				
 				questaFinestra.closeFrame();
 			}
 		});
+		
 		panel.add(AggiungiScontoBtn);
 		return panel;
 

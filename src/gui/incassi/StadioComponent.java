@@ -11,6 +11,8 @@ import java.awt.Font;
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13 
+ * 
+ * StadioComponent definisce un oggetto grafico contenente il nome di uno stadio e il suo incasso
  */
 
 public class StadioComponent extends JPanel 

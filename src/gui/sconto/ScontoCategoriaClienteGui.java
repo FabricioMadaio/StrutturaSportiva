@@ -1,24 +1,23 @@
 package gui.sconto;
 
 import gui.graphics.Finestra;
-import gui.graphics.ScrollablePanelList;
 
 import javax.swing.*;
 
 import core.ListaUtenti;
-import core.sconti.Sconto;
-import core.sconti.ScontoGiornoDellaSettimana;
 import core.sconti.ScontoPerCliente;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 /**
  * @author Giovanni Leo 
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13 
+ * 
+ * ScontoCategoriaClienteGui:
+ * 	schermata per l'inserimento nel sistema di un nuovo sconto per categoria di cliente
  */
 public class ScontoCategoriaClienteGui extends Finestra
 {
@@ -72,7 +71,7 @@ public class ScontoCategoriaClienteGui extends Finestra
 		percentualeLbl.setBounds(10, 62, 69, 40);
 
 		//Inizializzo e posiziono una combo box e un text field
-		BoxCategorie = new JComboBox(categoria);
+		BoxCategorie = new JComboBox<String>(categoria);
 		BoxCategorie.setBounds(201, 0, 183, 40);
 		percentualeField = new JTextField(10);
 		percentualeField.setBounds(201, 62, 183, 40);
@@ -115,7 +114,7 @@ public class ScontoCategoriaClienteGui extends Finestra
 	}
 
 
-	private JComboBox BoxCategorie;
+	private JComboBox<String> BoxCategorie;
 	private JTextField percentualeField;
 	private Finestra questaFinestra;
 	private String[] categoria = {"Studente","Pensionato","Bambino"};

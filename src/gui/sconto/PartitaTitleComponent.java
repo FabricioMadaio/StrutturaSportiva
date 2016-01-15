@@ -4,10 +4,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import core.elementi.Partita;
-import core.sconti.Sconto;
 import javax.swing.border.BevelBorder;
 import java.awt.Font;
-import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
 import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
@@ -16,16 +14,23 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.CompoundBorder;
 
-//#################################Fabri vedi tu ##############################
 /**
  * @author Giovanni Leo 
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13 
+ * 
+ * PartitaTitleComponent:
+ * 	componente grafico contenente le informazioni minime per identificare la partita
+ *  visualizza le squadre sfidanti e la data. 
  */
 public class PartitaTitleComponent extends JPanel{
 	
+	/**
+	 * @param partita partita
+	 */
 	public PartitaTitleComponent(Partita partita) {
+		
 		setBackground(UIManager.getColor("textHighlight"));
 		setBorder(new CompoundBorder(new LineBorder(new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, null, null, null)));
 		this.partita = partita;

@@ -4,9 +4,7 @@ import javax.swing.*;
 
 import core.ListaUtenti;
 import core.elementi.Partita;
-import core.sconti.Sconto;
 import core.sconti.ScontoPerPartita;
-import core.utente.Cliente;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,12 +12,14 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import gui.graphics.Finestra;
-import gui.graphics.ScrollablePanelList;
 /**
  * @author Giovanni Leo 
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13 
+ * 
+ * ScontoPerPartitaGui:
+ * 	schermata per l'inserimento di uno sconto per una determinata partita
  */
 public class ScontoPerPartitaGui extends Finestra 
 {

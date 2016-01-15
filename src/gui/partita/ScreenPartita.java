@@ -33,14 +33,33 @@ import java.awt.Font;
 import javax.swing.border.EmptyBorder;
 import java.awt.SystemColor;
 
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ * 
+ * ScreenPartita:
+ * 	schermata partita di cliente, consente al cliente di prenotare o acquistare un biglietto
+ *  di una determinata partita
+ */
 public class ScreenPartita extends Finestra
 {
+	/**
+	 * costruttore:
+	 * 	crea una nuova finestra 800x700 e carica i dati della partita in stadioCanvas
+	 * @param parent
+	 * @param partita	
+	 * @param cliente
+	 */
 	public ScreenPartita(JFrame parent,Partita partita,Cliente cliente) 
 	{
 		super(parent, 800, 700);
 		this.partita = partita;
 		questoFrame = this;
 		this.cliente = cliente;
+		
+		//aggiungiamo i pulsanti con le operazioni
 		operazioniSuFrame();
 		
 		
@@ -54,6 +73,9 @@ public class ScreenPartita extends Finestra
 
 
 
+	/**
+	 * inserisce i componenti di input nella schermata
+	 */
 	public void operazioniSuFrame()
 	{
 
@@ -62,7 +84,7 @@ public class ScreenPartita extends Finestra
 
 			@Override
 			public void onSelected(Poltroncina p) {
-				// TODO Auto-generated method stub
+				//carico nella schermata i dettagli del posto selezionato
 				aggiornaDettaglioPosto();
 			}
 
@@ -80,6 +102,9 @@ public class ScreenPartita extends Finestra
 		questoFrame.setVisible(true);
 	}
 
+	/**
+	 * @return pannello operazioni sul posto selezionato
+	 */
 	public JPanel creaPannelloInformazioniTransazioni()
 	{
 		JPanel panel = new JPanel(new BorderLayout());
@@ -88,6 +113,9 @@ public class ScreenPartita extends Finestra
 		return panel;
 	}
 
+	/**
+	 * @return pannello con i pulsanti per le operazioni sul posto selezionato
+	 */
 	public JPanel creaListaDiBottoni()
 	{
 		JPanel panel = new JPanel();
@@ -101,6 +129,9 @@ public class ScreenPartita extends Finestra
 		return panel;
 	}
 
+	/**
+	 * @return pulsante prenota
+	 */
 	public JButton creaBottonePrenota()
 	{
 		JButton button = new JButton("Prenota");
@@ -150,6 +181,9 @@ public class ScreenPartita extends Finestra
 	}
 
 
+	/**
+	 * @return pulsante acquista
+	 */
 	public JButton creaBottoneAcquista()
 	{
 		JButton button = new JButton("Acquista");
@@ -241,6 +275,9 @@ public class ScreenPartita extends Finestra
 	}
 
 
+	/**
+	 * @return pannello con dettagli sulla partita (descrizione, prezzo e sconti applicati)
+	 */
 	public JPanel creaTextArea()
 	{
 		JPanel panel = new JPanel();
@@ -315,6 +352,9 @@ public class ScreenPartita extends Finestra
 		return panel;
 	}
 
+	/**
+	 * aggiorna la schermata con i dettagli del posto selezionato su stadioCanvas
+	 */
 	public void aggiornaDettaglioPosto(){
 		
 		Poltroncina selezione = stadioCanvas.getSelezione();
@@ -332,6 +372,9 @@ public class ScreenPartita extends Finestra
 		}
 	}
 	
+	/**
+	 * @return true se il posto selezionato è disponibile
+	 */
 	public boolean controllaStatoPosto()
 	{
 		Stato stato = Stato.NON_DISPONIBILE;
@@ -343,6 +386,9 @@ public class ScreenPartita extends Finestra
 		return true;
 	}
 
+	/**
+	 * @return  true se il posto selezionato è stato prenotato
+	 */
 	public boolean controllaStatoPostoPrenotato()
 	{
 		Stato stato = Stato.PRENOTATO;
@@ -354,8 +400,12 @@ public class ScreenPartita extends Finestra
 		return true;
 	}
 	
+	/**
+	 * @return true se il posto selezionato è stato acquistato dal cliente attuale
+	 */
 	public boolean postoDisponibilePerAcquisto(){
 		
+		//cerco se tra i biglietti del cliente (per questa partita) il posto selezionato è presente
 		for(Biglietto b:cliente.getBiglietti()){
 			
 			if(b.getPartita().equals(partita))
@@ -366,6 +416,9 @@ public class ScreenPartita extends Finestra
 		return false;
 	}
 
+	/**
+	 * @return true se il posto selezionato è diverso da disponibile
+	 */
 	public boolean controllaStatoPostoDisponobile()
 	{
 		Stato stato = Stato.DISPONIBILE;

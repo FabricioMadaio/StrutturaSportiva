@@ -27,15 +27,17 @@ import gui.graphics.Finestra;
 import javax.swing.border.EmptyBorder;
 
 /**
+ * @author Giovanni Leo 
  * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ * 
+ * FormLogin:
+ * 	schermata iniziale della struttura sportiva, estende Finestra e alla chiusura
+ *  salva i dati dell'intera struttura su file
  */
+
 public class FormLogin extends Finestra{
-	
-	private JTextField loginField;
-	private JTextField passField;
-	
-	private ListaUtenti utenti;
-	private Finestra frame;
 
 	/**
 	 *  FormLogin: contiene la schermata di login, consente di aprire le schermate utente e le schermate
@@ -108,20 +110,23 @@ public class FormLogin extends Finestra{
 		
 		this.setVisible(true);
 		
-		//listeners
+		//listener pulsante accedi
 		AccediBtn.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//effettua il login per l'utente
 				Utente u = utenti.login(loginField.getText(), passField.getText());
 				
 				if(u!=null){
+					//se l'utente è un cliente apro la schermata cliente
 					if(u instanceof Cliente){
 						ScreenClient sc = new ScreenClient(frame,(Cliente)u,utenti);
 						sc.setVisible(true);
 						loginField.setText("");
 						passField.setText("");
 					}
+					//se l'utente è un gestore apro la schermata gestore
 					if(u instanceof Gestore){
 						GestoreScreen gs = new GestoreScreen(frame,utenti);
 						gs.setVisible(true);
@@ -129,6 +134,7 @@ public class FormLogin extends Finestra{
 						passField.setText("");
 					}
 				}else{
+					//non trova il cliente
 					JOptionPane.showMessageDialog(frame, "Username e/o password errati");
 				}
 				
@@ -136,22 +142,24 @@ public class FormLogin extends Finestra{
 			
 		});
 		
+		//listener pulsante registra cliente
 		ClienteBtn.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				registrazioneCliente frs = new registrazioneCliente(frame,utenti);
+				// apre la schermata registrazione cliente
+				new registrazioneCliente(frame,utenti);
 			}
 			
 		});
 		
+		//listener pulsante registra gestore
 		GestoreBtn.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				registrazioneGestore frd = new registrazioneGestore(frame,utenti);
+				new registrazioneGestore(frame,utenti);
 			}
 			
 		});
@@ -161,7 +169,7 @@ public class FormLogin extends Finestra{
 
 			@Override
 			public void windowClosing(WindowEvent e) {
-				// TODO Auto-generated method stub
+				// salvo la struttura su file alla chiusura della finestra
 				utenti.salvaDB();
 			}
 
@@ -203,4 +211,10 @@ public class FormLogin extends Finestra{
 		});
 	
 	}
+	
+	private JTextField loginField;
+	private JTextField passField;
+	
+	private ListaUtenti utenti;
+	private Finestra frame;
 }

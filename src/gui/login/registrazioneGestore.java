@@ -4,11 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,21 +20,27 @@ import core.ListaUtenti;
 import core.utente.Gestore;
 
 /**
- * @author Fabricio Nicolas Madaio
- */
+* @author Giovanni Leo 
+* @author Fabricio Nicolas Madaio 
+* @version 1.0
+* @since   2016-01-13 
+* 
+* registrazioneGestore:
+* 	interfaccia grafica per registrare il gestore nel sistema
+*/
 public class registrazioneGestore extends Finestra{
 	
 	private JTextField nome;
 	private JTextField cognome;
 	private JTextField login;
 	private JTextField password;
-	private JComboBox<Object>  insegnamento;
 	private Finestra frame;
 	
 	private ListaUtenti listaUtenti;
 	
 	/**
-	 * FinestraRegistrazioneDocente: interfaccia grafica per registrare il docente nel sistema
+	 * registrazioneGestore: interfaccia grafica per registrare il gestore nel sistema
+	 * contiene i campi per l'inserimento del nome utente, la password e l'username.
 	 * 
 	 * @param parent Finestra genitore
 	 * @param utenti lista di utenti
@@ -106,7 +109,7 @@ public class registrazioneGestore extends Finestra{
 		
 		frame.setVisible(true);
 		
-		//listeners
+		//listener  pulsante registrazione
 		RegistraBtn.addActionListener(new ActionListener(){
 
 			@Override

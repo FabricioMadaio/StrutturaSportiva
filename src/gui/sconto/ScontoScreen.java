@@ -1,13 +1,10 @@
 package gui.sconto;
 
 import javax.swing.JFrame;
-import java.awt.Graphics;
 
 import core.ListaUtenti;
 import core.elementi.Partita;
 import core.sconti.Sconto;
-import core.sconti.ScontoPerCliente;
-import core.sconti.ScontoPerPartita;
 import gui.graphics.Finestra;
 import gui.graphics.ScrollablePanelList;
 
@@ -29,16 +26,21 @@ import java.awt.event.ActionListener;
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13 
+ * 
+ * ScontoScreen:
+ * 	Schermata per visualizzare e inserire nuovi sconti, sia globali e sia per partita
  */
 public class ScontoScreen extends Finestra{
-	//################ Fabri vedi tu ##############
-	private JButton btnGiornoSettimana;
 	
-	private Finestra questoFrame;
-	private ListaUtenti listaUtenti;
-	private ScrollablePanelList scrollListPartita;
-	private ScrollablePanelList scrollListGlobal;
 	
+	/**
+	 * costruttore 
+	 * 	crea una finestra 800x600 e inserisce gli sconti in due tab (uno per gli sconti globali
+	 *  e uno per gli sconti per partita)
+	 *  	
+	 * @param parent
+	 * @param listautenti
+	 */
 	public ScontoScreen(JFrame parent, ListaUtenti listautenti) {
 
 		super(parent, 800, 600);
@@ -53,6 +55,7 @@ public class ScontoScreen extends Finestra{
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0};
 		getContentPane().setLayout(gridBagLayout);
 
+		//creo il pannello per i tab
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		GridBagConstraints gbc_tabbedPane = new GridBagConstraints();
@@ -61,6 +64,7 @@ public class ScontoScreen extends Finestra{
 		gbc_tabbedPane.gridy = 0;
 		getContentPane().add(tabbedPane, gbc_tabbedPane);
 
+		//creo il pannello per gli sconti globali e ci passo una scrollList
 		scrollListGlobal = new ScrollablePanelList();
 		JPanel panelScontiGlobali = new JPanel();
 		tabbedPane.addTab("Sconti Globali", null, panelScontiGlobali, null);
@@ -68,6 +72,7 @@ public class ScontoScreen extends Finestra{
 		panelScontiGlobali.setLayout(new BorderLayout(0, 0));
 		panelScontiGlobali.add(scrollListGlobal);
 
+		//creo il pannello per gli sconti per partita e ci passo una scrollList
 		scrollListPartita = new ScrollablePanelList();
 		JPanel panelScontiPerPartita = new JPanel();
 		panelScontiPerPartita.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -98,9 +103,8 @@ public class ScontoScreen extends Finestra{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-
-				ScontoPerPartitaGui scntoPartita = new ScontoPerPartitaGui(questoFrame, listaUtenti);
+				//apro la schermata di inserimento sconto per partita
+				new ScontoPerPartitaGui(questoFrame, listaUtenti);
 
 			}
 		});
@@ -115,8 +119,8 @@ public class ScontoScreen extends Finestra{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				ScontoFasciaOrarariaGui scontoFasciaOrararia = new ScontoFasciaOrarariaGui(questoFrame, listaUtenti);
+				//apro la schermata di inserimento sconto per fascia oraria
+				new ScontoFasciaOrarariaGui(questoFrame, listaUtenti);
 
 			}
 		});
@@ -134,8 +138,8 @@ public class ScontoScreen extends Finestra{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				ScontoGiornoDellaSettimanaGui scontoGiornoDellaSettimana = new ScontoGiornoDellaSettimanaGui(questoFrame,listaUtenti);
+				//apro la schermata di inserimento sconto per giorno della settimana
+				new ScontoGiornoDellaSettimanaGui(questoFrame,listaUtenti);
 
 			}
 		});
@@ -149,8 +153,8 @@ public class ScontoScreen extends Finestra{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				ScontoCategoriaClienteGui scontoCategoriaCliente = new ScontoCategoriaClienteGui(questoFrame,listaUtenti);
+				//apro la schermata di inserimento sconto per categoria di cliente
+				new ScontoCategoriaClienteGui(questoFrame,listaUtenti);
 
 			}
 		});
@@ -163,11 +167,16 @@ public class ScontoScreen extends Finestra{
 		this.setVisible(true);
 	}
 	
+	/**
+	 * aggiorna gli sconti visualizzati in entrambe le liste (sconti globali e sconti per partita)
+	 */
 	public void updateSconti(){
 		
+		//cancello tutte le voci esistenti nelle scrollList
 		scrollListPartita.removeAll();
 		scrollListGlobal.removeAll();
 		
+		//carico gli sconti per partita
 		for(Partita p:listaUtenti.getPartite()){
 			scrollListPartita.add(new PartitaTitleComponent(p));
 			for(Sconto s:p.getSconti()){
@@ -177,19 +186,27 @@ public class ScontoScreen extends Finestra{
 			}
 		}
 
+		//carico gli sconti globali
 		for(Sconto s:listaUtenti.getScontiGlobali()){
 			scrollListGlobal.add(new ScontoComponent(s));
 		}
 
-		
+		//aggiorno la grafica
 		this.revalidate();
 	}
 
+	/* 
+	 * al ritorno da una schermata figlia, ricarico i campi delle liste
+	 */
 	@Override
 	public void OnReturnFromChild() {
 		// TODO Auto-generated method stub
 		updateSconti();
 	}
 
-	
+	private JButton btnGiornoSettimana;
+	private Finestra questoFrame;
+	private ListaUtenti listaUtenti;
+	private ScrollablePanelList scrollListPartita;
+	private ScrollablePanelList scrollListGlobal;
 }
