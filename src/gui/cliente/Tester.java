@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 import core.ListaUtenti;
 
-public class Client {
+public class Tester {
 	
 	public static void main(String[] args){
 		

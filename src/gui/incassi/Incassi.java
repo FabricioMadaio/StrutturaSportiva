@@ -17,6 +17,7 @@ import core.elementi.Stadio;
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13 
+ * La classe mostra gli incassi dei relativi stadi e la somma degli incassi di tutti gli stadi.
  */
 public class Incassi extends Finestra
 {
@@ -50,7 +51,7 @@ public class Incassi extends Finestra
 		lblIncassiTotatli.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		pannelloVisualizzazioneIncassiTotali.add(lblIncassiTotatli);
 		
-		//for chw inseriscw gli stadio component
+		//for che inserisce gli stadio component
 		for(Stadio s :stadi)
 		{
 			scrollIncassiStadi.add(new StadioComponent(s));

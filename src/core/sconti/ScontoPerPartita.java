@@ -9,6 +9,7 @@ import core.utente.Cliente;
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13 
+ * La classe permette di aggiungere uno sconto alla singola partita.
  */
 public class ScontoPerPartita implements Sconto,Serializable  
 {
