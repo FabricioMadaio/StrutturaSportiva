@@ -2,7 +2,6 @@ package core.utente;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import core.elementi.Biglietto;

@@ -2,23 +2,29 @@ package gui.sconto;
 
 import gui.graphics.Finestra;
 import gui.graphics.OrarioComponent;
-import gui.graphics.ScrollablePanelList;
-
 import javax.swing.*;
-
 import core.ListaUtenti;
-import core.sconti.Sconto;
 import core.sconti.ScontoFasciaOraria;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ */
 
 public class ScontoFasciaOrarariaGui extends Finestra 
 {
 	private JTextField textField;
-
+	/**
+	 * Il costruttore dellla classe ScontoFasciaOrarariaGui inizializza un oggetto Finestra che prende come riferimento
+	 * un frame genitore e una oggetto lista utenti.Questo oggetto permette di inserire uno sconto per fascia oraria
+	 * selezionando un intervallo di tempo.
+	 * @param JFrame parent
+	 * @param ListaUtenti listaUtenti
+	 */
 	public ScontoFasciaOrarariaGui(JFrame parent,ListaUtenti listaUtenti) 
 	{
 		super(parent, 400, 300);
@@ -27,6 +33,9 @@ public class ScontoFasciaOrarariaGui extends Finestra
 		operazioniSuFrame();
 	}
 
+	/**
+	 * Il metodo si occupa dell'inserimento dei vari pannelli all'interno del frame e della loro disposizione
+	 */
 	public void operazioniSuFrame()
 	{
 		JPanel panel = new JPanel();

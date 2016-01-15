@@ -14,9 +14,22 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/**
+ * @author Giovanni Leo 
+ * @author Fabricio Nicolas Madaio 
+ * @version 1.0
+ * @since   2016-01-13 
+ */
 public class ScontoCategoriaClienteGui extends Finestra
 {
+
+	/**
+	 * La Classe ScontoPerCategoriaGui inizializza un nuovo oggetto del tipo Finistra il quale prende 
+	 * per riferimento una lista degli utenti e un frame genitore.questo oggetto permette di inserire
+	 * uno sconto selezionando una categoria utente.
+	 * @param JFrame parent
+	 * @param ListaUtenti listaUtenti
+	 */
 
 	public ScontoCategoriaClienteGui(JFrame parent,ListaUtenti listaUtenti) {
 		super(parent, 400, 230);
@@ -25,7 +38,10 @@ public class ScontoCategoriaClienteGui extends Finestra
 		operazioniSuFrame();
 	}
 
-
+	/**
+	 * Il metodo si occupa di tutte le operazioni su frame come l'nserimento dei JPanel e la loro
+	 * disposizione su frame.
+	 */
 	public void operazioniSuFrame()
 	{
 		JPanel panel = new JPanel();
@@ -40,7 +56,11 @@ public class ScontoCategoriaClienteGui extends Finestra
 		questaFinestra.setResizable(false);
 		questaFinestra.setVisible(true);
 	}
-
+	/**
+	 * Il metodo inserisce all'interno di un pannello una combobox che indica la categoria del cliente e
+	 * un campo di testo per scrive la percentuale di sconto, entrambi gli elementi sono indicati con delle label.
+	 * @return JPanel panel
+	 */
 	public JPanel creaPannelloAggiungiIformazioni()
 	{
 		JPanel panel = new JPanel();
@@ -63,7 +83,11 @@ public class ScontoCategoriaClienteGui extends Finestra
 
 		return panel;
 	}
-
+	/**
+	 * Il metodo crea un pannello dove all'interno è inserito un bottone che serve ad applicare lo sconto per
+	 * categoria e quindi  lo sconto verra aggiunto nell'array list di sconti globali.
+	 * @return JPanel 
+	 */
 	public JPanel creaaPannelloBottone()
 	{
 		JPanel panel = new JPanel();

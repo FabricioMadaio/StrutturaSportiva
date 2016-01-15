@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 import core.sconti.Sconto;
 import javax.swing.border.BevelBorder;
-
+//################## fabri vedi tu ####################
 public class ScontoComponent extends JPanel{
 	
 	public ScontoComponent(Sconto sconto) {
