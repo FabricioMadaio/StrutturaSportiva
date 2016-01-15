@@ -9,6 +9,7 @@ import core.utente.Cliente;
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13 
+ * La classepermette di aggiungere uno sconto per categoria di cliente.
  */
 public class ScontoPerCliente implements Sconto,Serializable  
 {

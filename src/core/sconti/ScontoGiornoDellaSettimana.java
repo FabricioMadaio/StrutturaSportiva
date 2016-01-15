@@ -11,6 +11,7 @@ import core.utente.Cliente;
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13 
+ * La classe permette di aggiungere uno sconto per giorno della settiman.
  */
 public class ScontoGiornoDellaSettimana implements Sconto,Serializable  
 {
