@@ -55,7 +55,7 @@ public class Incassi extends Finestra
 		
 		for(Stadio s :stadi)
 		{
-			scrollIncassiStadi.add(new StadioComponet(s));
+			scrollIncassiStadi.add(new StadioComponent(s));
 		}
 		
 		pannelloIncassiStadio.add(scrollIncassiStadi,BorderLayout.CENTER);

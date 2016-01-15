@@ -13,7 +13,7 @@ import java.awt.Font;
  * @since   2016-01-13 
  */
 
-public class StadioComponet extends JPanel 
+public class StadioComponent extends JPanel 
 {
 	/**
 	 * Il costruttore della classe StadioComponent la quale è una sottoclasse di JPanel
@@ -21,7 +21,7 @@ public class StadioComponet extends JPanel
 	 * vengono visualizzati gli incassi dello stadio passato come riferimento.
 	 * @param Stadio stadio
 	 */
-	public StadioComponet(Stadio stadio) 
+	public StadioComponent(Stadio stadio) 
 	{
 		setBorder(new EtchedBorder());
 		JLabel stadioLabel = new JLabel(stadio.getNome()+"    "+"Incassi:"+stadio.getIncasso());
