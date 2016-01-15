@@ -37,7 +37,7 @@ public class PrenotazioneComponent extends BigliettoComponent
 	 */
 	public JButton creaBottoneRimuovi()
 	{
-		//Creo il bootone
+		//Creo il bottone
 		JButton rimuoviBtn = new JButton("X");
 		//Setto lo sfondo
 		rimuoviBtn.setBackground(Color.RED);

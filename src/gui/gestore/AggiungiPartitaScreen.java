@@ -132,13 +132,19 @@ public class AggiungiPartitaScreen extends Finestra {
 		for(Stadio s: listaUtenti.getStadi()){
 			comboBoxStadio.addItem(s);
 		}
-		//#################Fabri vedi tu ###################
+		
+		//modifica la visualizzazione grafica della combo box,
+		// all'interno di ogni opzione visualizzo solo il nome dello stadio
 		comboBoxStadio.setRenderer(new ListCellRenderer<Stadio>(){
-
+			
+			/* 
+			 * questo metodo modifica la visualizzazione del singolo elemento della combobox
+			 * JList<? extends Stadio> prende la lista di oggetti generici che estendono Stadio
+			 */
 			@Override
 			public Component getListCellRendererComponent(JList<? extends Stadio> list, Stadio value, int index,
 					boolean isSelected, boolean cellHasFocus) {
-				// TODO Auto-generated method stub
+				// per il singolo elemento visualizzo solo il nome
 				return new JLabel(value.getNome());
 			}});
 		

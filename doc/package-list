@@ -1,1 +1,15 @@
 core
+core.comparator
+core.elementi
+core.filtri
+core.sconti
+core.utente
+gui.carrello
+gui.cliente
+gui.gestore
+gui.graphics
+gui.incassi
+gui.login
+gui.partita
+gui.sconto
+gui.stadio

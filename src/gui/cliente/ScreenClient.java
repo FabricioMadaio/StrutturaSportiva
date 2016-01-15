@@ -70,9 +70,9 @@ public class ScreenClient extends Finestra {
 		this.questoFrame = this;
 		this.comparator = new OrdineCapienzaStadioComparator();
 		this.cliente = cliente;
-		//Creo una meno bar
+		//Creo una menu bar
 		this.setJMenuBar(createMenuWithButton());
-		//onizializzo la lista delle partite
+		//inizializzo la lista delle partite
 		listaPartite = new ScrollablePanelList();
 
 		getContentPane().add(listaPartite,BorderLayout.CENTER);
@@ -112,7 +112,7 @@ public class ScreenClient extends Finestra {
 		panel_3.add(panel_2, BorderLayout.EAST);
 		panel_2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Ordinamento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_2.setLayout(new BorderLayout(0, 0));
-		//Creo un pannello dove all'interno inseriscola comboBox che mi fa scegliere il tipo di ordinamento
+		//Creo un pannello dove all'interno inserisco la comboBox che mi fa scegliere il tipo di ordinamento
 		JPanel panel_5 = new JPanel();
 		panel_5.setBorder(new EmptyBorder(8, 0, 8, 0));
 		panel_2.add(panel_5, BorderLayout.EAST);
@@ -276,6 +276,9 @@ public class ScreenClient extends Finestra {
 		repaint();
 	}
 
+	/**
+	 * @return cliente
+	 */
 	public Cliente getCliente(){
 		return cliente;
 	}

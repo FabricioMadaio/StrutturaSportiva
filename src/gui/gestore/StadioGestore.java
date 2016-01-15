@@ -26,6 +26,7 @@ import javax.swing.border.EmptyBorder;
  * @author Fabricio Nicolas Madaio 
  * @version 1.0
  * @since   2016-01-13
+ * 
  * La classe  permette di effettuare modicheallo stadio
  * come aggiungere posti cancellarli e modicarne lo stato.
  */
@@ -117,14 +118,20 @@ public class StadioGestore extends Finestra
 	{
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-		panel.add(creaPannelloSettaggioCosto());
+		panel.add(creaPannelloSettaggioStadio());
 		panel.add(creaPannelloModalita());
 
 		return panel;
 	}
 
-	//############### fabri vedi tu #################
-	public JPanel creaPannelloSettaggioCosto()
+	/**
+	 * questo pannello serve a cambiare lo stadio visualizzato e settare il prezzo
+	 * @return pannello stadio
+	 */
+	/**
+	 * @return
+	 */
+	public JPanel creaPannelloSettaggioStadio()
 	{
 		JPanel panel = new JPanel();
 		panel.setBorder(new EmptyBorder(10, 10, 5, 10));
@@ -133,27 +140,40 @@ public class StadioGestore extends Finestra
 
 		panel.add(labelStadio);
 
+		//creo una combobox di oggetti di tipo stadio
 		comboBoxStadio = new JComboBox<Stadio>();
+		//carico tutti gli stadi nella combo box
 		for(Stadio s:listaUtenti.getStadi()){
 			comboBoxStadio.addItem(s);
 		}
 
+		//modifico la visualizzazione grafica della combobox e visualizzo solo il nome dello stadio
+		//per ogni voce
 		comboBoxStadio.setRenderer( new ListCellRenderer<Stadio>(){
 
+			/* 
+			 * questo metodo modifica la visualizzazione del singolo elemento della combobox
+			 * JList<? extends Stadio> prende la lista di oggetti generici che estendono Stadio
+			 */
 			@Override
 			public Component getListCellRendererComponent(JList<? extends Stadio> list, Stadio value, int index,
 					boolean isSelected, boolean cellHasFocus) {
+				//creo una label con il nome dello stadio
 				JLabel nome = new JLabel(value.getNome());
 				return nome;
 			}
 
 		});
-
+		
+		/* 
+		 * implemento un listener di tipo ItemListener, che reagisce al cambiamento
+		 * della selezione dentro una combobox
+		 */
 		comboBoxStadio.addItemListener(new ItemListener(){
 
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
+				// carica lo stadio selezionato
 				caricaStadio((Stadio)e.getItem());
 			}
 
@@ -166,6 +186,9 @@ public class StadioGestore extends Finestra
 		costoFieldStadio = new JTextField(10);
 		panel.add(costoFieldStadio);
 
+		/*aggiungo un listener per il textfield, lancio la funzione update ogni volta che si
+		 *modifica il testo
+		 */
 		costoFieldStadio.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				update();
@@ -176,7 +199,10 @@ public class StadioGestore extends Finestra
 			public void insertUpdate(DocumentEvent e) {
 				update();
 			}
-
+			
+			/**
+			 * setta un prezzo base nuovo
+			 */
 			public void update() {
 				if(stadioCorrente!=null && !costoFieldStadio.getText().isEmpty()){
 					stadioCorrente.setPrezzoBase(Double.parseDouble(costoFieldStadio.getText()));
@@ -204,8 +230,11 @@ public class StadioGestore extends Finestra
 		return panel;
 	}
 	
-	//#######fabri vedi tu#########
-
+	/**
+	 * questo metodo restituisce un pannello che contiene gli oggetti per modificare
+	 * lo stato del posto selezionato
+	 * @return pannello 
+	 */
 	public JPanel creaPannelloSelezione()
 	{
 		JPanel panel = new JPanel();
@@ -243,6 +272,9 @@ public class StadioGestore extends Finestra
 
 		});
 
+		/*aggiungo un listener per il textfield, lancio la funzione update ogni volta che si
+		 *modifica il testo
+		 */
 		nomeFieldPosto.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				update();
@@ -262,6 +294,7 @@ public class StadioGestore extends Finestra
 			}
 		});
 
+		//listener bottone cancella posto
 		btnCancellaPoltrona.addActionListener(new ActionListener(){
 
 			@Override
@@ -277,7 +310,7 @@ public class StadioGestore extends Finestra
 	}
 
 	/**
-	 * Il metodo crea un pannello dove all'interno co sono dei toggleButton
+	 * Il metodo crea un pannello dove all'interno ci sono dei toggleButton
 	 * che permettono di modificare e aggiungere poltroncine.
 	 * @return
 	 */
@@ -345,15 +378,27 @@ public class StadioGestore extends Finestra
 	}
 
 
-	//########### vedi tu questi metodi ################
+	
+	/**
+	 * abilita un panel e i suoi figli sottostanti
+	 * @param panel
+	 * @param enabled 
+	 */
 	public void abilitaPanel(JPanel panel, boolean enabled){
 		panel.setEnabled(enabled);
+		
+		//prendo i figli del panel
 		Component[] comps = panel.getComponents();
+		//scorro i figli e li setto a enabled
 		for (Component comp:comps){
 			comp.setEnabled(enabled);
 		}
 	}
 
+	/**
+	 * aggiorna i campi della schermata con i dati del posto selezionato
+	 * @param enabled
+	 */
 	public void aggiornaSelezione(boolean enabled){
 		comboBoxStatoPosto.setSelectedItem(stadioCanvas.getSelezione().getStato());
 		nomeFieldPosto.setText(stadioCanvas.getSelezione().getPosto().getSigla());

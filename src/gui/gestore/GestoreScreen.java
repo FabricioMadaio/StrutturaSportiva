@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Comparator;
-import java.util.GregorianCalendar;
 
 import javax.swing.*;
 
@@ -48,15 +47,15 @@ public class GestoreScreen extends Finestra
 	}
 
 	/**
-	 * Il metodo si occupa della disposizione e dell'aggiunta dei componeti sul frame.
+	 * Il metodo si occupa della disposizione e dell'aggiunta dei componenti sul frame.
 	 */
 	public void operazioniSuFrame()
 	{
 		//Aggiungo una menu bar
 		questoFrame.setJMenuBar(creaMenuBar());
-		//Aggiunge ilk pannello ordinamento
+		//Aggiunge il pannello ordinamento
 		questoFrame.add(creaPannelloComboBox(),BorderLayout.NORTH);
-		//Aggiunge il pèannello delle partite
+		//Aggiunge il pannello delle partite
 		questoFrame.add(creaPanelloInterattivo(),BorderLayout.CENTER);
 		//aggiunge il pannello dove si trova il bottone aggiungi partita
 		questoFrame.add(creaPaneelloAggiugiPartita(),BorderLayout.SOUTH);
@@ -83,7 +82,7 @@ public class GestoreScreen extends Finestra
 	}
 
 	/**
-	 * Il metodo aggiunge un bottone incassi il quale ppermette di accedere
+	 * Il metodo aggiunge un bottone incassi il quale permette di accedere
 	 * alla schermata degli incassi.
 	 * @return JButton button
 	 */
@@ -97,7 +96,7 @@ public class GestoreScreen extends Finestra
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				Incassi incassi = new Incassi(questoFrame, listaUtenti.getStadi());
+				new Incassi(questoFrame, listaUtenti.getStadi());
 				
 			}
 		});
@@ -119,7 +118,7 @@ public class GestoreScreen extends Finestra
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				ScontoScreen s = new ScontoScreen(questoFrame,listaUtenti);
+				new ScontoScreen(questoFrame,listaUtenti);
 			}
 			
 		});
@@ -140,7 +139,7 @@ public class GestoreScreen extends Finestra
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				StadioGestore s = new StadioGestore(questoFrame,listaUtenti);
+				new StadioGestore(questoFrame,listaUtenti);
 			}
 			
 		});
@@ -163,7 +162,7 @@ public class GestoreScreen extends Finestra
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				AggiungiPartitaScreen ps = new AggiungiPartitaScreen(questoFrame, listaUtenti);
+				new AggiungiPartitaScreen(questoFrame, listaUtenti);
 			}
 			
 		});
