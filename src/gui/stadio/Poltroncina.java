@@ -44,8 +44,8 @@ public class Poltroncina extends Sprite{
 	 * @param y
 	 */
 	public void setCanvasSpacePos(float x,float y){
-		posto.setX((int)x);
-		posto.setY((int)y);
+		posto.setX(x);
+		posto.setY(y);
 	}
 	
 	/**

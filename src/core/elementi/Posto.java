@@ -23,7 +23,7 @@ public class Posto implements Serializable{
 	 * @param y
 	 * @param sigla descrittore del posto
 	 */
-	public Posto(int x, int y, String sigla) {
+	public Posto(float x, float y, String sigla) {
 		this.x = x;
 		this.y = y;
 		this.sigla = sigla;
@@ -33,28 +33,28 @@ public class Posto implements Serializable{
 	/**
 	 * @return x
 	 */
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 
 	/**
 	 * @param x
 	 */
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
 	/**
 	 * @return y
 	 */
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 
 	/**
 	 * @param y
 	 */
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 
@@ -101,8 +101,8 @@ public class Posto implements Serializable{
 	};
 	
 	private static final long serialVersionUID = 4L;
-	private int x;
-	private int y;
+	private float x;
+	private float y;
 	private String sigla;
 	
 	private Stato stato;

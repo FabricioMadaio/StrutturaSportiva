@@ -48,7 +48,68 @@ public class StadioGestore extends Finestra
 
 		caricaStadio(listaUtenti.getStadi().get(0));
 		stadioCanvas.setModalita(StadioCanvas.editMode.MODIFICA);
+		
+		//menu per la selezione della griglia
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnGrid = new JMenu("Griglia");
+		menuBar.add(mnGrid);
+		
+		//assegno ad ogni elemento una dimensione diversa
+		JMenuItem mntmPx = new JMenuItem(" -   1 px");
+		//passo al listener la dimensione della griglia
+		mntmPx.addActionListener(new MenuActionListener(1));
+		mnGrid.add(mntmPx);
+		
+		JMenuItem mntmPx_1 = new JMenuItem(" -   4 px");
+		mntmPx_1.addActionListener(new MenuActionListener(4));
+		mnGrid.add(mntmPx_1);
+		
+		JMenuItem mntmPx_2 = new JMenuItem(" -   8 px");
+		mntmPx_2.addActionListener(new MenuActionListener(8));
+		mnGrid.add(mntmPx_2);
+		
+		JMenuItem mntmPx_3 = new JMenuItem(" - 10 px");
+		mntmPx_3.addActionListener(new MenuActionListener(10));
+		mnGrid.add(mntmPx_3);
+		
+		JMenuItem mntmPx_4 = new JMenuItem(" - 12 px");
+		mntmPx_4.addActionListener(new MenuActionListener(12));
+		mnGrid.add(mntmPx_4);
+		
+		JMenuItem mntmPx_5 = new JMenuItem(" - 16 px");
+		mntmPx_5.addActionListener(new MenuActionListener(16));
+		mnGrid.add(mntmPx_5);
+		
+		JMenuItem mntmPx_6 = new JMenuItem(" - 20 px");
+		mntmPx_6.addActionListener(new MenuActionListener(20));
+		mnGrid.add(mntmPx_6);
+		
 	}
+	
+	/**
+	 * classe per la cattura dell'evento sul menu
+	 *  modifica la dimensione delle celle della griglia
+	 */
+	class MenuActionListener implements ActionListener {
+		
+		//dimensione cella della griglia
+		int pixels; 
+		
+		/**
+		 * costruttore 
+		 * @param pixels dimensione della griglia selezionata
+		 */
+		public MenuActionListener(int pixels){
+			this.pixels = pixels;
+		}
+	
+		public void actionPerformed(ActionEvent e) {
+			//assegno alla griglia il valore di pixels
+			stadioCanvas.setGrid(pixels);
+		}
+}
 
 	/**
 	 * Il metodo serve a caricare lo stadio.

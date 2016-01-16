@@ -33,12 +33,12 @@ public class Sprite extends PhysicBody{
 	 * @param frameH altezza ritaglio immagine
 	 * @param img riferimento immagine
 	 */
-	public Sprite(int xPos,int yPos,int frameW,int frameH,Image img){
+	public Sprite(float xPos,float yPos,int frameW,int frameH,Image img){
 			
 		this.img = img;
 		
-		x = (int)xPos;
-		y = (int)yPos;
+		x = xPos;
+		y = yPos;
 		
 		direction = -1; //l'immagine non viene specchiata
 		visible = true; //lo sprite è visible
@@ -183,8 +183,11 @@ public class Sprite extends PhysicBody{
 		 * Y = y - scalay*altezzaFrame/2
 		 */
 		
-		int X = (int)x + ((int)(sx*frameW))/2*direction;
-		int Y = (int)y - ((int)(sy*frameH))/2;
+		//int X = (int)(x + sx*frameW/2*direction);
+		//int Y = (int)(y - sy*frameH/2);
+		
+		float X = x + (sx*frameW/2)*direction;
+		float Y = y - (sy*frameH/2);
 		
 		/*
 		 * calcolo l'incremento delle coordinate rispetto al valore del frame (per le animazioni)
@@ -199,7 +202,7 @@ public class Sprite extends PhysicBody{
 		float scaleW = (direction>0)?-sx:sx; //fattore di scala x (tiene conto dello specchio)
 
 		//disegna immagine ritagliata (vedi definizione g.drawImage)
-		g.drawImage(img, (int)X, (int)Y, (int)(frameW*scaleW+X),(int)(frameH*scaleH+Y),i, j, i+frameW, j+frameH, null);
+		g.drawImage(img, Math.round(X), Math.round(Y), Math.round(frameW*scaleW+X),Math.round(frameH*scaleH+Y),i, j, i+frameW, j+frameH, null);
 		
     }
 	
