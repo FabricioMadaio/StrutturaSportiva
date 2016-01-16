@@ -2,11 +2,6 @@ package gui.graphics;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.ArrayList;
-
-import gui.graphics.PhysicBody;
-import gui.graphics.Animation;
-import gui.graphics.Executable;
 
 /**
  * @author Giovanni Leo 
@@ -17,12 +12,8 @@ import gui.graphics.Executable;
  * Classe Sprite:
  * 	definisce un oggetto grafico disegnato come una immagine ritagliata, spostando il ritaglio (frame)
  *  è possibile animare l'oggetto.
- *  Le animazioni possono essere gestite in maniera automatica dalla classe Animation e invocando il 
- *  metodo next per passare al ritaglio successivo.
- *  La classe dispone dei metodi ereditati da physicBody per gestire il movimento dello sprite seguendo
- *  una simulazione fisica.
  */
-public class Sprite extends PhysicBody{
+public class Sprite{
 	
 	/**
 	 * costruttore sprite
@@ -54,14 +45,6 @@ public class Sprite extends PhysicBody{
 		this.frameH = (frameH==0)?img.getHeight(null):frameH;
 		
 		frame = 0;
-		this.currentAnim = null;
-		
-		this.accumulator = 0;	//azzero il tempo trascorso dall'ultima animazione
-		
-		animations = new ArrayList<Animation>(); 
-	
-		//inizializzo la fisica
-		super.Init(x,y,frameW,frameH,1.0f);
 	}
 	
 	/**
@@ -206,82 +189,8 @@ public class Sprite extends PhysicBody{
 		
     }
 	
-	/**
-	 * setta il frame e annulla l'animazione corrente
-	 * @param f
-	 */
-	public void setStaticAnimation(int f) {
-		// TODO Auto-generated method stub
-		currentAnim = null;
-		frame = f;
-	}
-	
-	/**
-	 * setta l'animazione con nome name
-	 * @param name
-	 */
-	public void setAnimation(String name){
-		
-		if(currentAnim!= null && currentAnim.getName().equals(name)) return;
-		
-		//cerco l'animazione name, faccio il reset dell'animazione corrente e setto
-		//quella trovata come quella corrente
-		for(Animation a : animations){
-			if(a.getName().equals(name)){
-				a.reset();
-				currentAnim = a;
-				return;
-			}
-		}
-		
-	}
-	
-	/**
-	 * aggiungo una nuova animazione
-	 * 
-	 * @param string nome animazione
-	 * @param is	array di frames
-	 * @param speed	velocità animazione
-	 * @param duration	durata animazione (secondi)
-	 */
-	public void addAnimation(String string, int[] is,float speed,float duration) {
 
-		this.addAnimation(string,is,speed,duration,null);
-	}
 
-	/**
-	 * aggiungo una animazione con listener alla fine del ciclo
-	 * 
-	 * @param string nome animazione
-	 * @param is	array di frames
-	 * @param speed	velocità animazione
-	 * @param duration	durata animazione (secondi)
-	 * @param func listener fine ciclo
-	 */
-	public void addAnimation(String string, int[] is,float speed,float duration,Executable func) {
-
-		Animation a = new Animation(string,is,speed,duration,func);
-		animations.add(a);
-	}
-	
-	/**
-	 * gestisce l'animazione automatica
-	 * @param dt step della simulazione (tempo in secondi)
-	 */
-	public void animate(float dt){
-		
-		if(currentAnim==null) return;
-		
-		accumulator+=dt; //aggiorno il tempo trascorso dalla precedente animazione
-		
-		//se il tempo trascorso supera la durata, scatta il fotogramma seguente
-		if(accumulator> currentAnim.getDuration()){
-			currentAnim.next();
-			frame = currentAnim.getFrame();
-			accumulator = 0;
-		}
-		
-	}
 
 	private float x;
 	private float y;
@@ -296,8 +205,4 @@ public class Sprite extends PhysicBody{
 	private boolean visible;
 	
 	private Image img;
-	
-	private ArrayList<Animation> animations;
-	private Animation currentAnim;
-	private float accumulator;
 }
