@@ -72,8 +72,10 @@ public class ListaUtenti implements Serializable{
 			//creo due stadi di default
 			Stadio st1 = new Stadio("stadio1",2,"res/Stadio.png");
 			Stadio st2 = new Stadio("stadio2",3,"res/Stadio2.png");
+			Stadio st3 = new Stadio("stadio3",4,"res/Stadio3.png");
 			addStadio(st1);
 			addStadio(st2);
+			addStadio(st3);
 			
 			e.printStackTrace();
 		}

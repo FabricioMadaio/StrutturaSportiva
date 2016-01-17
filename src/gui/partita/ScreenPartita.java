@@ -54,7 +54,7 @@ public class ScreenPartita extends Finestra
 	 */
 	public ScreenPartita(JFrame parent,Partita partita,Cliente cliente) 
 	{
-		super(parent, 800, 700);
+		super(parent, 900, 700);
 		this.partita = partita;
 		questoFrame = this;
 		this.cliente = cliente;

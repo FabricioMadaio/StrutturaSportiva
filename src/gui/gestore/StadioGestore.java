@@ -41,7 +41,7 @@ public class StadioGestore extends Finestra
 	 */
 	public StadioGestore(JFrame parent,ListaUtenti listaUtenti)
 	{
-		super(parent,800, 600);
+		super(parent,900, 700);
 		this.listaUtenti = listaUtenti;
 		questoFrame = this;
 		operazioniSuFrame();
