@@ -165,10 +165,7 @@ public class Sprite{
 		 * X = x + scalaX*larghezzaFrame/2 * specchiato
 		 * Y = y - scalay*altezzaFrame/2
 		 */
-		
-		//int X = (int)(x + sx*frameW/2*direction);
-		//int Y = (int)(y - sy*frameH/2);
-		
+
 		float X = x + (sx*frameW/2)*direction;
 		float Y = y - (sy*frameH/2);
 		

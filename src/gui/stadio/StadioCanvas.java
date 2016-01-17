@@ -310,6 +310,8 @@ public class StadioCanvas extends JPanel{
 	 * calcola il fattore di scala tra lo schermo e la canvas
 	 */
 	public void calculateScaleFactor(){
+		//getWidth() : dimensione dello schermo
+		//background.getFrameW() : dimensione dell'immagine
 		canvasSx = getWidth()/(float)background.getFrameW();
 		canvasSy = getHeight()/(float)background.getFrameH();
 	}
