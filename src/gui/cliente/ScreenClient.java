@@ -233,7 +233,7 @@ public class ScreenClient extends Finestra {
 		//Listener
 		btnCarrello.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Carrello c = new Carrello(questoFrame, cliente);
+				new Carrello(questoFrame, cliente);
 			}
 		});
 		//Creo il pannello e aggiungo il bottone
@@ -258,8 +258,11 @@ public class ScreenClient extends Finestra {
 		listaPartite.removeAll();
 		//Ordina
 		listaUtenti.getPartite().sort(comparator);
+		
 		//Copia l'array list di partite
-		ArrayList<Partita> partite = (ArrayList<Partita>) listaUtenti.getPartite().clone();
+		ArrayList<Partita> partite = new ArrayList<Partita>();
+		partite.addAll(listaUtenti.getPartite());
+		
 		//controlla se le check box sono selezionate
 		if(chbxStadio.isSelected())
 			partite = ListaUtenti.filtraPartite(new FiltroPartitaSuStadio((Stadio)comboBoxStadio.getSelectedItem()),partite);

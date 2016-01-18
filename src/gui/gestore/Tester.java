@@ -2,12 +2,8 @@ package gui.gestore;
 
 import java.util.GregorianCalendar;
 
-import javax.swing.JFrame;
-
 import core.ListaUtenti;
 import core.elementi.Partita;
-import core.elementi.Posto;
-import core.elementi.Stadio;
 
 public class Tester {
 
@@ -33,7 +29,7 @@ public class Tester {
 		
 		ls.addPartita(new Partita(new GregorianCalendar(),"a","b",ls.getStadi().get(0)));
 		
-		GestoreScreen s = new GestoreScreen(null,ls);
+		new GestoreScreen(null,ls);
 		//AggiungiPartitaScreen s = new AggiungiPartitaScreen(null,ls);
 
 		//StadioGestore s = new StadioGestore((JFrame)null,ls);

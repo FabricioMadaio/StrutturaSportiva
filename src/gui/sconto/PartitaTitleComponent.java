@@ -33,7 +33,6 @@ public class PartitaTitleComponent extends JPanel{
 		
 		setBackground(UIManager.getColor("textHighlight"));
 		setBorder(new CompoundBorder(new LineBorder(new Color(0, 0, 0)), new BevelBorder(BevelBorder.RAISED, null, null, null, null)));
-		this.partita = partita;
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -49,6 +48,5 @@ public class PartitaTitleComponent extends JPanel{
 		JLabel data = new JLabel(partita.getData().getTime().toString()+"  ");
 		panel.add(data, BorderLayout.EAST);
 	}
-
-	private Partita partita;
+	
 }

@@ -26,7 +26,7 @@ public class Tester extends JFrame
 		Partita p1 = new Partita(data1, "squadraA", "squadraB", st1);
 		p1.copiaPosti(st1.getPosti());
 		
-		ScreenPartita sp1 = new ScreenPartita(null,p1,c);
+		new ScreenPartita(null,p1,c);
 		
 		//JFrame frame = new JFrame();
 		

@@ -2,21 +2,14 @@ package gui.gestore;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
-
-import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
-import com.toedter.components.JSpinField;
 
 import core.ListaUtenti;
 import core.elementi.Partita;
 import core.elementi.Stadio;
 import gui.graphics.Finestra;
 import gui.graphics.OrarioComponent;
-import gui.graphics.WeekPicker;
-import java.awt.FlowLayout;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.EmptyBorder;
@@ -25,7 +18,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javax.swing.JLabel;
@@ -34,10 +26,6 @@ import javax.swing.JOptionPane;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-
-import javax.swing.BoxLayout;
-import java.awt.Label;
-import java.awt.Font;
 /**
  * @author Giovanni Leo 
  * @author Fabricio Nicolas Madaio 

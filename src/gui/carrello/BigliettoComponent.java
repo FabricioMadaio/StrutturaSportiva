@@ -32,7 +32,6 @@ public class BigliettoComponent extends JPanel
 	{
 		//Setto lo sfondo del JPanel sottostante
 		setBackground(SystemColor.activeCaption);
-		prenotazione = b;
 		Partita partita = b.getPartita();
 		setLayout(new BorderLayout(0, 0));
 		//Aggiungo un CompaundBorder ovvero un bordo composto da due bordi
@@ -70,5 +69,4 @@ public class BigliettoComponent extends JPanel
 	}
 
 	private JPanel panelAppend;
-	private Biglietto prenotazione;
 }

@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import java.awt.Component;
-import javax.swing.ScrollPaneConstants;
 
 /**
  * @author Giovanni Leo 
