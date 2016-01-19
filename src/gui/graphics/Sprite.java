@@ -38,7 +38,7 @@ public class Sprite{
 		this.sx = 1;	
 		this.sy = 1;
 		
-		//calcolo il numero di frames
+		//calcolo il numero di frames per riga
 		this.framesRow = (frameW==0)?1:img.getWidth(null)/frameW;
 		
 		this.frameW = (frameW==0)?img.getWidth(null):frameW;
@@ -76,7 +76,7 @@ public class Sprite{
 	}
 
 	/**
-	 * @param right direzione dello sprite (se vale 1 risulta specchiato, -1 normale)
+	 * @param right direzione dello sprite (se vale 1 risulta specchiato, -1 normale) never used
 	 */
 	public void setDirection(boolean right){
 		if(right==true)

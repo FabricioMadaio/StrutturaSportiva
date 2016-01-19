@@ -6,7 +6,7 @@ package gui.login;
 * @version 1.0
 * @since   2016-01-13 
 */
-public class Tester {
+public class Main {
 
 	/**
 	 * Classe Principale

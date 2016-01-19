@@ -76,6 +76,9 @@ public class WeekPicker extends JComponent{
 				initialDate.add(Calendar.DAY_OF_MONTH, 7);
 				finalDate.add(Calendar.DAY_OF_MONTH, 7);
 				updateFields();
+				//devo lanciare l'evento actionPerformed in itemListener, perche si è appena generato
+				//actionPerformed vuole un parametro di tipo ActionEvent (contiene i dettagli dell'evento)
+				//passiamo all'evento ActionEvent il riferimento allo stesso WeekPicker
 				itemListener.actionPerformed(new ActionEvent(thisPicker, ActionEvent.ACTION_PERFORMED, null));
 			}
 		});
